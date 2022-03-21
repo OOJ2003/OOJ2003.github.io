@@ -24,7 +24,7 @@
 <meta property="og:description" content="实现简单链表的第一步">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-20T09:47:13.000Z">
-<meta property="article:modified_time" content="2022-03-20T13:20:09.925Z">
+<meta property="article:modified_time" content="2022-03-21T06:19:09.133Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="rust">
 <meta property="article:tag" content="数据结构">
@@ -267,8 +267,9 @@
 <p>不太对劲，我们只是想在所有权的链条中插入一环，但是为什么编译器在抱怨我们没有给Option&lt;Box&lt;Node<i32>&gt;&gt;实现Copy trait？？？</p>
 <p>这里就是rust与很多语言并不一致的地方，rust的自定义类型和内建的在堆上分配数据的类型在赋值时并不会发生拷贝（深克隆），而是默认采用了和c++11差不多的移动语义。由于rust的所有权模型还没有聪明到理解我们的行为，它在这种情形下只会笨笨的期望得到一个原链表的拷贝，所以这里我们采用一种偷天换日的方法来实现我们的想法。</p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">push</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, elem: <span class="hljs-type">i32</span>) &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">new_node</span> = Box::<span class="hljs-title function_ invoke__">new</span>(Node::<span class="hljs-title function_ invoke__">new</span>(elem));<br>    new_node.next = std::mem::<span class="hljs-title function_ invoke__">replace</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>.head, <span class="hljs-literal">None</span>);<br>    <span class="hljs-keyword">self</span>.head = <span class="hljs-title function_ invoke__">Some</span>(new_node);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>标准库中的replace()就是专为这种情形而生的，这个函数接受</p>
-<p>ToDo....</p>
+<p>标准库中的replace()就是专为这种情形而生的。</p>
+<p>一下是标准库内replace()的类型签名。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
