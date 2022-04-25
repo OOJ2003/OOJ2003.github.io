@@ -24,7 +24,7 @@
 <meta property="og:description" content="为链表实现迭代器相关 trait">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-02T06:22:40.000Z">
-<meta property="article:modified_time" content="2022-04-05T02:52:53.533Z">
+<meta property="article:modified_time" content="2022-04-25T07:16:16.453Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="rust">
 <meta property="article:tag" content="数据结构">
@@ -210,7 +210,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      31 字
+      480 字
     </span>
   
 
@@ -219,7 +219,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      5 分钟
     </span>
   
 
@@ -251,7 +251,29 @@
             <h1 style="display: none">用rust搞个数据结构-链表3</h1>
             
             <div class="markdown-body">
-              <p>rust 里面的 for 循环实际上是个迭代器的语法糖</p>
+              <p>rust 里面的 for 循环实际上是个迭代器的语法糖。</p>
+<p>比如常见的</p>
+<figure class="highlight rust"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs rust"><span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>..<span class="hljs-number">100</span> &#123;<br>    todo!();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>这里我们用 let 绑定一个变量到 1..100 上，利用标准库里的
+type_name::<T>() 查看类型信息。</p>
+<figure class="highlight rust"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">type_of</span>&lt;T&gt;(_: &amp;T) <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>&#123;<br>    std::any::type_name::&lt;T&gt;()<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">i</span> = <span class="hljs-number">1</span>..<span class="hljs-number">10</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, <span class="hljs-title function_ invoke__">type_of</span>(&amp;i));<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+<p>编译运行终端的输出为</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/04/24/20220424-165212.png" srcset="/img/loading.gif" lazyload
+alt="image-20220424165202675" />
+<figcaption aria-hidden="true">image-20220424165202675</figcaption>
+</figure>
+<p>而标准库中这个泛型类型也实现了与迭代器相关的 trait</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/04/25/20220425-141409.png" srcset="/img/loading.gif" lazyload
+alt="image-20220425141407617" />
+<figcaption aria-hidden="true">image-20220425141407617</figcaption>
+</figure>
+<p>在实际编译时 for 循环会被展开成基于迭代器的 loop 循环。</p>
+<p>也正是因为 for 循环的这种特性，任何一个集合类型只要实现了迭代器相关的
+trait ， 就可以遍历其所有子元素并进行操作。</p>
 <p>todo...</p>
 
             </div>
