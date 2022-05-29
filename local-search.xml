@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>第十五届ciscn签到题题解</title>
+    <link href="/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E7%AD%BE%E5%88%B0%E9%A2%98%E9%A2%98%E8%A7%A3/"/>
+    <url>/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E7%AD%BE%E5%88%B0%E9%A2%98%E9%A2%98%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<p>根据题目描述，我们应该需要用“电报机”发送一段莫斯电码即可获得题解，但是手动输入实在太慢了，用<strong>burp</strong> 抓下包看下。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-142853.png" /></p><p>貌似发送的电报的内容跟在 /send?msg=后面，根据页面提示，将其内容替换为 s 试试。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-143308.png" /></p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-143317.png" /></p><p>可以发现确实启动了电报机，我们的猜想是正确的，接下来只要构造出来需要发送的密文即可。</p><p>到这里思路就有点脱线了，怎么构造密文呢。。。题目上说可以关注公众号获取提示，那就搞一波。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-144246.jpeg" /></p><p>这提示给的很足，我们来看下。</p><p>首先是题目附带的密码本</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-144438.png" /></p><p>幸好题目很和善的还提供了纯数字形式，按照提示内容，这里只需要截取前 28位即可，参考 <strong>Python</strong> 脚本如下。</p><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">data = <span class="hljs-string">&quot;834685648904867613192673099158666557417553051522197326843480079548094074854764&quot;</span> \<br>       <span class="hljs-string">&quot;095047630000191153794197926361233736842472609828318082651439775355635663788013209&quot;</span> \<br>       <span class="hljs-string">&quot;25197425819452264702325443888920796415984073398294910727986125227947279765077202712&quot;</span> \<br>       <span class="hljs-string">&quot;6232829303975039778738498565689820634982168970069248569722529016689899816187765139477&quot;</span> \<br>       <span class="hljs-string">&quot;2472903500097506233876971292747251029017554573542354309201988176266150040395581176749534&quot;</span> \<br>       <span class="hljs-string">&quot;7399695531808357741572461296215239426044448640545307459932331102609691986455648348242316032&quot;</span> \<br>       <span class="hljs-string">&quot;47594332524713466289315&quot;</span><br><br>b = [<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> data]<br>t1 = b[<span class="hljs-number">0</span>:<span class="hljs-number">28</span>]<br></code></pre></div></td></tr></table></figure><p>类似的，将提供的 7 个电码也转换为 <strong>Python</strong>数组（已经去除了空格）</p><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&quot;1732251413440356045166710055&quot;</span><br>t2 = [<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> s]<br></code></pre></div></td></tr></table></figure><p>然后再将 t1 和 t2 数组中的每一位相加模 10 后拼接起来，最后输出</p><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">ans = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">28</span>):<br>    ans.append((t1[i] + t2[i]) % <span class="hljs-number">10</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ans:<br>    <span class="hljs-built_in">print</span>(i, end=<span class="hljs-string">&quot;&quot;</span>)<br></code></pre></div></td></tr></table></figure><p>运行结果如下</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-145625.png" /></p><p>在 <strong>burp</strong> 中抓包并修改。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-145821.png" /></p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-145837.png" /></p><p>然后就获得了 flag 。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ctf</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ctf</tag>
+      
+      <tag>crypto</tag>
+      
+      <tag>web</tag>
+      
+      <tag>writeup</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>shell编程1</title>
     <link href="/2022/05/17/shell%E7%BC%96%E7%A8%8B1/"/>
     <url>/2022/05/17/shell%E7%BC%96%E7%A8%8B1/</url>
