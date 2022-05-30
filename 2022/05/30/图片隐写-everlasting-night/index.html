@@ -16,24 +16,20 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="主办方环境出bug了">
+    <meta name="description" content="题目给了一张图片，看起来平平无奇的。  用 binwalk 看下，里面似乎藏了个压缩包。  用16进制编辑器打开看下，在文件的尾端有一串奇怪的HEX。  先记下来，之后再看下。 1FB 3E FC E4 CE AC 2F 54 45 C7 AE 17 E3 E9 69 AB 再用 stegsolve 看看，注意到右下角有竖立的奇怪的黑色斑块，故用列模式查看。  又是一串奇怪的乱码，同样记下来。 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第十五届ciscn捉虫题-基于挑战码的双向认证12">
-<meta property="og:url" content="http://example.com/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E6%8D%89%E8%99%AB%E9%A2%98-%E5%9F%BA%E4%BA%8E%E6%8C%91%E6%88%98%E7%A0%81%E7%9A%84%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%8112/index.html">
+<meta property="og:title" content="图片隐写-everlasting_night">
+<meta property="og:url" content="http://example.com/2022/05/30/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99-everlasting-night/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="主办方环境出bug了">
+<meta property="og:description" content="题目给了一张图片，看起来平平无奇的。  用 binwalk 看下，里面似乎藏了个压缩包。  用16进制编辑器打开看下，在文件的尾端有一串奇怪的HEX。  先记下来，之后再看下。 1FB 3E FC E4 CE AC 2F 54 45 C7 AE 17 E3 E9 69 AB 再用 stegsolve 看看，注意到右下角有竖立的奇怪的黑色斑块，故用列模式查看。  又是一串奇怪的乱码，同样记下来。 1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-29T11:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-29T11:59:39.971Z">
+<meta property="article:published_time" content="2022-05-30T14:11:35.000Z">
+<meta property="article:modified_time" content="2022-05-30T14:11:53.032Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="ctf">
-<meta property="article:tag" content="crypto">
-<meta property="article:tag" content="web">
-<meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>第十五届ciscn捉虫题-基于挑战码的双向认证12 - Hexo</title>
+  <title>图片隐写-everlasting_night - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -191,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="第十五届ciscn捉虫题-基于挑战码的双向认证12">
+            <span class="h2" id="subtitle" title="图片隐写-everlasting_night">
               
             </span>
 
@@ -201,8 +197,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-29 19:00" pubdate>
-        2022年5月29日 晚上
+      <time datetime="2022-05-30 22:11" pubdate>
+        2022年5月30日 晚上
       </time>
     </span>
   
@@ -212,7 +208,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      118 字
+      448 字
     </span>
   
 
@@ -221,7 +217,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      4 分钟
     </span>
   
 
@@ -250,47 +246,46 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">第十五届ciscn捉虫题-基于挑战码的双向认证12</h1>
+            <h1 style="display: none">图片隐写-everlasting_night</h1>
             
             <div class="markdown-body">
-              <p>这原本这是一道密码学的题目，然而因为主办方的骚操作，变成了送分题目，先按照题目给的登陆ssh。</p>
+              <p>题目给了一张图片，看起来平平无奇的。</p>
 <p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-190647.png" srcset="/img/loading.gif" lazyload /></p>
-<p>切换目录后发现了一个拥有权限的脚本，用 vim 打开并编辑。</p>
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-191800.png" srcset="/img/loading.gif" lazyload /></p>
+<p>用 binwalk 看下，里面似乎藏了个压缩包。</p>
 <p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-190915.png" srcset="/img/loading.gif" lazyload /></p>
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-191951.png" srcset="/img/loading.gif" lazyload /></p>
+<p>用16进制编辑器打开看下，在文件的尾端有一串奇怪的HEX。</p>
 <p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-190839.png" srcset="/img/loading.gif" lazyload /></p>
-<p>执行后就爆出了一堆数据，复制到编辑器中搜索 flag{ 作为关键字。</p>
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-192346.png" srcset="/img/loading.gif" lazyload /></p>
+<p>先记下来，之后再看下。</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">FB</span> <span class="hljs-number">3</span>E FC E4 CE AC <span class="hljs-number">2</span>F <span class="hljs-number">54</span> <span class="hljs-number">45</span> C7 AE <span class="hljs-number">17</span> E3 E9 <span class="hljs-number">69</span> AB<br></code></pre></div></td></tr></table></figure>
+<p>再用 stegsolve
+看看，注意到右下角有竖立的奇怪的黑色斑块，故用列模式查看。</p>
 <p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-191047.png" srcset="/img/loading.gif" lazyload /></p>
-<p>然后就拿到了flag。</p>
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-193003.png" srcset="/img/loading.gif" lazyload /></p>
+<p>又是一串奇怪的乱码，同样记下来。</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">f78dcd383f1b574b<br></code></pre></div></td></tr></table></figure>
+<p>由于题目提供的格式为png，所以有可能是通过lsb技术在像素上写入了额外的信息。</p>
+<p>所以使用 python 将其解码并使用 binwalk 查看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">python2 lsb.py extract everlasting_night.png out.txt f78dcd383f1b574b<br>binwalk out.txt <br></code></pre></div></td></tr></table></figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-194023.png" srcset="/img/loading.gif" lazyload /></p>
+<p>是个压缩包，改后缀尝试解压，然而不知道密码是啥。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-194522.png" srcset="/img/loading.gif" lazyload /></p>
+<p>联想到之前的奇怪HEX码，这有可能是压缩包密码的md5，在线搜索一个反查md5的网站并搜索。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-195222.png" srcset="/img/loading.gif" lazyload /></p>
+<p>再次尝试解压，是一张有点问题的jpg图片，扔给了队友处理，多番尝试下发现能用gimp打开。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-195804.png" srcset="/img/loading.gif" lazyload /></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/ctf/">ctf</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
-                    
-                      <a class="hover-with-bg" href="/tags/crypto/">crypto</a>
-                    
-                      <a class="hover-with-bg" href="/tags/web/">web</a>
-                    
-                      <a class="hover-with-bg" href="/tags/writeup/">writeup</a>
-                    
-                  </div>
                 
               </div>
               
@@ -305,18 +300,12 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-19104
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/30/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99-everlasting-night/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">图片隐写-everlasting_night</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E7%AD%BE%E5%88%B0%E9%A2%98%E9%A2%98%E8%A7%A3/">
-                        <span class="hidden-mobile">第十五届ciscn签到题题解</span>
+                      <a href="/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E6%8D%89%E8%99%AB%E9%A2%98-%E5%9F%BA%E4%BA%8E%E6%8C%91%E6%88%98%E7%A0%81%E7%9A%84%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%8112/">
+                        <span class="hidden-mobile">第十五届ciscn捉虫题-基于挑战码的双向认证12</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -341,7 +330,7 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-19104
         var options = Object.assign(
           {"clientID":"488f11dbd386faf0ac9c","clientSecret":"8025b8b8ab8aba93feb8154fa0c16300c5dc4ff6","repo":"OOJ2003.github.io","owner":"OOJ2003","admin":["OOJ2003"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '26c794cef3d5cf5173f0285d276025f9'
+            id: 'eee1c7fed9885c41ee8653762caedc97'
           }
         )
         var gitalk = new Gitalk(options);

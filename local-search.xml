@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>图片隐写-everlasting_night</title>
+    <link href="/2022/05/30/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99-everlasting-night/"/>
+    <url>/2022/05/30/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99-everlasting-night/</url>
+    
+    <content type="html"><![CDATA[<p>题目给了一张图片，看起来平平无奇的。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-191800.png" /></p><p>用 binwalk 看下，里面似乎藏了个压缩包。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-191951.png" /></p><p>用16进制编辑器打开看下，在文件的尾端有一串奇怪的HEX。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-192346.png" /></p><p>先记下来，之后再看下。</p><figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">FB</span> <span class="hljs-number">3</span>E FC E4 CE AC <span class="hljs-number">2</span>F <span class="hljs-number">54</span> <span class="hljs-number">45</span> C7 AE <span class="hljs-number">17</span> E3 E9 <span class="hljs-number">69</span> AB<br></code></pre></div></td></tr></table></figure><p>再用 stegsolve看看，注意到右下角有竖立的奇怪的黑色斑块，故用列模式查看。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-193003.png" /></p><p>又是一串奇怪的乱码，同样记下来。</p><figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">f78dcd383f1b574b<br></code></pre></div></td></tr></table></figure><p>由于题目提供的格式为png，所以有可能是通过lsb技术在像素上写入了额外的信息。</p><p>所以使用 python 将其解码并使用 binwalk 查看。</p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">python2 lsb.py extract everlasting_night.png out.txt f78dcd383f1b574b<br>binwalk out.txt <br></code></pre></div></td></tr></table></figure><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-194023.png" /></p><p>是个压缩包，改后缀尝试解压，然而不知道密码是啥。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-194522.png" /></p><p>联想到之前的奇怪HEX码，这有可能是压缩包密码的md5，在线搜索一个反查md5的网站并搜索。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-195222.png" /></p><p>再次尝试解压，是一张有点问题的jpg图片，扔给了队友处理，多番尝试下发现能用gimp打开。</p><p><imgsrc="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-195804.png" /></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第十五届ciscn捉虫题-基于挑战码的双向认证12</title>
     <link href="/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E6%8D%89%E8%99%AB%E9%A2%98-%E5%9F%BA%E4%BA%8E%E6%8C%91%E6%88%98%E7%A0%81%E7%9A%84%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%8112/"/>
     <url>/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E6%8D%89%E8%99%AB%E9%A2%98-%E5%9F%BA%E4%BA%8E%E6%8C%91%E6%88%98%E7%A0%81%E7%9A%84%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%8112/</url>
