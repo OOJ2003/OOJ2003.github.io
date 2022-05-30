@@ -24,7 +24,7 @@
 <meta property="og:description" content="实现简单链表的第一步">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-20T09:47:13.000Z">
-<meta property="article:modified_time" content="2022-05-03T08:11:08.007Z">
+<meta property="article:modified_time" content="2022-05-30T08:04:04.688Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="rust">
 <meta property="article:tag" content="数据结构">
@@ -210,7 +210,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.1k 字
+      4.6k 字
     </span>
   
 
@@ -219,7 +219,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      43 分钟
+      38 分钟
     </span>
   
 
@@ -281,16 +281,6 @@ cargo check,来看看编译器在抱怨什么。</p>
 <p>标准库中的 replace() 就是专为这种情形而生的。</p>
 <p>以下下是标准库内 replace() 的函数签名。</p>
 <figure class="highlight rust"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">replace</span>&lt;T&gt;(dest: &amp;<span class="hljs-keyword">mut</span> T, src: T) <span class="hljs-punctuation">-&gt;</span> T<br></code></pre></div></td></tr></table></figure>
-<p>xxxxxxxxxx cargo test                                                
-        Finished test [unoptimized + debuginfo] target(s) in 0.00s    
-Running unittests (target/debug/deps/stack-25350f587195d617)​running 3
-teststest tests::push_num ... oktest tests::many_str ... oktest
-tests::many_nums ... ok​test result: ok. 3 passed; 0 failed; 0 ignored; 0
-measured; 0 filtered out; finished in 1.80s​   Doc-tests stack​running 0
-tests​test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0
-filtered out; finished in 0.00scargo</p>
-<p>“Replaces the value at a mutable location with a new one, returning
-the old value, without deinitializing either one.”</p>
 <p>大致意思是其接受一个可变引用，并用 src 去替换并返回其所有物。</p>
 <p>在我们的 push() 方法的实现中，我们用 None 替换了头结点的
 head字段，并将这个字段的内容转移给了我们新节点的next字段，最后将
