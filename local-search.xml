@@ -22,7 +22,7 @@
       
       <tag>ctf</tag>
       
-      <tag>crypto</tag>
+      <tag>misc</tag>
       
       <tag>web</tag>
       
@@ -53,11 +53,11 @@
       
       <tag>ctf</tag>
       
-      <tag>crypto</tag>
-      
       <tag>web</tag>
       
       <tag>writeup</tag>
+      
+      <tag>crypto</tag>
       
     </tags>
     
@@ -84,11 +84,11 @@
       
       <tag>ctf</tag>
       
-      <tag>crypto</tag>
-      
       <tag>web</tag>
       
       <tag>writeup</tag>
+      
+      <tag>crypto</tag>
       
     </tags>
     
