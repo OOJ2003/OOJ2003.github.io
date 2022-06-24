@@ -4,13 +4,25 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2022/06/01/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E9%9A%90%E5%86%99%E9%A2%98-everlasting-night/"/>
-    <url>/2022/06/01/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E9%9A%90%E5%86%99%E9%A2%98-everlasting-night/</url>
+    <title>算法课设</title>
+    <link href="/2022/06/24/%E7%AE%97%E6%B3%95%E8%AF%BE%E8%AE%BE/"/>
+    <url>/2022/06/24/%E7%AE%97%E6%B3%95%E8%AF%BE%E8%AE%BE/</url>
     
-    <content type="html"><![CDATA[<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mln_core.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mln_alloc.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mln_log.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> *ptr;<br>    <span class="hljs-type">mln_alloc_t</span> *pool;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">mln_core_attr</span> cattr;<br><br>    cattr.argc = argc;<br>    cattr.argv = argv;<br>    cattr.global_init = <span class="hljs-literal">NULL</span>;<br>    cattr.master_process = <span class="hljs-literal">NULL</span>;<br>    cattr.worker_process = <span class="hljs-literal">NULL</span>;<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">mln_core_init</span>(&amp;cattr) &lt; <span class="hljs-number">0</span>) &#123;<br>       <span class="hljs-built_in">fprintf</span>(stderr, <span class="hljs-string">&quot;Melon init failed.\n&quot;</span>);<br>       <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    pool = <span class="hljs-built_in">mln_alloc_init</span>();<br><br>    ptr = <span class="hljs-built_in">mln_alloc_m</span>(pool, <span class="hljs-number">1024</span>);<br>    <span class="hljs-built_in">mln_log</span>(debug, <span class="hljs-string">&quot;%X\n&quot;</span>, ptr);<br>    <span class="hljs-built_in">mln_alloc_free</span>(ptr);<br><br>    <span class="hljs-built_in">mln_alloc_destroy</span>(pool);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="圈乘运算问题">圈乘运算问题</h1><h2 id="问题描述">问题描述</h2><p>定义 <span class="math inline">\((X@Y)\)</span> = 十进制整数 <spanclass="math inline">\(X\)</span> 的各位数字之和 * 十进制整数 <spanclass="math inline">\(Y\)</span> 的而最大数字 + <spanclass="math inline">\(Y\)</span> 的最小数字</p><p>对于给定的 <span class="math inline">\(X, K\)</span> ，计算出由 <spanclass="math inline">\(X, @\)</span> 组成的表达式值为 <spanclass="math inline">\(K\)</span> 的表达式最少需要多少个 <spanclass="math inline">\(@\)</span> 运算</p><h2 id="算法设计">算法设计</h2><p>容易得放缩式 <span class="math display">\[X@Y \le 81 \times N + 9\\ where：\  N -1 &lt; lg(X) \le N\]</span> 此式是容易证明的</p><p>注意到 <span class="math inline">\(N\)</span> 代表着 <spanclass="math inline">\(X\)</span> 的位数，则显然有十进制整数 <spanclass="math inline">\(X\)</span> 的各位数字之和小于 <spanclass="math inline">\(9N\)</span> ，又十进制中每一位最大值为 <spanclass="math inline">\(9\)</span> ，故上式得证。</p>]]></content>
     
     
+    <categories>
+      
+      <category>课设</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
     
   </entry>
   

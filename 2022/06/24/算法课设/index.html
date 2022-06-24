@@ -16,20 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12345678910111213141516171819202122232425262728293031#include &lt;stdio.h&gt;#include &quot;mln_core.h&quot;#include &quot;mln_alloc.h&quot;#include &lt;mln_log.h&gt;int main(int argc, char *argv[])&amp;#">
+    <meta name="description" content="圈乘运算问题 问题描述 定义 \((X@Y)\) &#x3D; 十进制整数 \(X\) 的各位数字之和 * 十进制整数 \(Y\) 的而最大数字 + \(Y\) 的最小数字 对于给定的 \(X, K\) ，计算出由 \(X, @\) 组成的表达式值为 \(K\) 的表达式最少需要多少个 \(@\) 运算 算法设计 容易得放缩式 \[ X@Y \le 81 \times N + 9\\ where：\  N">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2022/06/01/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E9%9A%90%E5%86%99%E9%A2%98-everlasting-night/index.html">
+<meta property="og:title" content="算法课设">
+<meta property="og:url" content="http://example.com/2022/06/24/%E7%AE%97%E6%B3%95%E8%AF%BE%E8%AE%BE/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031#include &lt;stdio.h&gt;#include &quot;mln_core.h&quot;#include &quot;mln_alloc.h&quot;#include &lt;mln_log.h&gt;int main(int argc, char *argv[])&amp;#">
+<meta property="og:description" content="圈乘运算问题 问题描述 定义 \((X@Y)\) &#x3D; 十进制整数 \(X\) 的各位数字之和 * 十进制整数 \(Y\) 的而最大数字 + \(Y\) 的最小数字 对于给定的 \(X, K\) ，计算出由 \(X, @\) 组成的表达式值为 \(K\) 的表达式最少需要多少个 \(@\) 运算 算法设计 容易得放缩式 \[ X@Y \le 81 \times N + 9\\ where：\  N">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-31T16:05:51.823Z">
-<meta property="article:modified_time" content="2022-05-31T16:05:51.824Z">
+<meta property="article:published_time" content="2022-06-24T06:50:47.000Z">
+<meta property="article:modified_time" content="2022-06-24T07:34:46.785Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>Hexo</title>
+  <title>算法课设 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -187,7 +188,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="算法课设">
               
             </span>
 
@@ -197,8 +198,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-06-01 00:05" pubdate>
-        2022年6月1日 凌晨
+      <time datetime="2022-06-24 14:50" pubdate>
+        2022年6月24日 下午
       </time>
     </span>
   
@@ -208,7 +209,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      599 字
+      260 字
     </span>
   
 
@@ -217,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      3 分钟
     </span>
   
 
@@ -246,16 +247,48 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">算法课设</h1>
             
             <div class="markdown-body">
-              <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mln_core.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mln_alloc.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mln_log.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> *ptr;<br>    <span class="hljs-type">mln_alloc_t</span> *pool;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">mln_core_attr</span> cattr;<br><br>    cattr.argc = argc;<br>    cattr.argv = argv;<br>    cattr.global_init = <span class="hljs-literal">NULL</span>;<br>    cattr.master_process = <span class="hljs-literal">NULL</span>;<br>    cattr.worker_process = <span class="hljs-literal">NULL</span>;<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">mln_core_init</span>(&amp;cattr) &lt; <span class="hljs-number">0</span>) &#123;<br>       <span class="hljs-built_in">fprintf</span>(stderr, <span class="hljs-string">&quot;Melon init failed.\n&quot;</span>);<br>       <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    pool = <span class="hljs-built_in">mln_alloc_init</span>();<br><br>    ptr = <span class="hljs-built_in">mln_alloc_m</span>(pool, <span class="hljs-number">1024</span>);<br>    <span class="hljs-built_in">mln_log</span>(debug, <span class="hljs-string">&quot;%X\n&quot;</span>, ptr);<br>    <span class="hljs-built_in">mln_alloc_free</span>(ptr);<br><br>    <span class="hljs-built_in">mln_alloc_destroy</span>(pool);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+              <h1 id="圈乘运算问题">圈乘运算问题</h1>
+<h2 id="问题描述">问题描述</h2>
+<p>定义 <span class="math inline">\((X@Y)\)</span> = 十进制整数 <span
+class="math inline">\(X\)</span> 的各位数字之和 * 十进制整数 <span
+class="math inline">\(Y\)</span> 的而最大数字 + <span
+class="math inline">\(Y\)</span> 的最小数字</p>
+<p>对于给定的 <span class="math inline">\(X, K\)</span> ，计算出由 <span
+class="math inline">\(X, @\)</span> 组成的表达式值为 <span
+class="math inline">\(K\)</span> 的表达式最少需要多少个 <span
+class="math inline">\(@\)</span> 运算</p>
+<h2 id="算法设计">算法设计</h2>
+<p>容易得放缩式 <span class="math display">\[
+X@Y \le 81 \times N + 9\\ where：\  N -1 &lt; lg(X) \le N
+\]</span> 此式是容易证明的</p>
+<p>注意到 <span class="math inline">\(N\)</span> 代表着 <span
+class="math inline">\(X\)</span> 的位数，则显然有十进制整数 <span
+class="math inline">\(X\)</span> 的各位数字之和小于 <span
+class="math inline">\(9N\)</span> ，又十进制中每一位最大值为 <span
+class="math inline">\(9\)</span> ，故上式得证。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BE%E8%AE%BE/">课设</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
                 
               </div>
               
@@ -300,7 +333,7 @@
         var options = Object.assign(
           {"clientID":"488f11dbd386faf0ac9c","clientSecret":"8025b8b8ab8aba93feb8154fa0c16300c5dc4ff6","repo":"OOJ2003.github.io","owner":"OOJ2003","admin":["OOJ2003"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: 'e119046b00177e4f4f9779ede11220f3'
+            id: '6fd45fe7082b936dbe38f4e11cf7b779'
           }
         )
         var gitalk = new Gitalk(options);
