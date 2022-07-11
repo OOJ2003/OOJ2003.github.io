@@ -16,25 +16,23 @@
   <meta name="author" content="OOJ2003">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简单的签到题">
+    <meta name="description" content="打卡贴，记录摆烂的日常">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第十五届ciscn签到题题解">
-<meta property="og:url" content="http://example.com/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E7%AD%BE%E5%88%B0%E9%A2%98%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="摆烂的日常">
+<meta property="og:url" content="http://example.com/2022/07/11/%E6%91%86%E7%83%82%E7%9A%84%E6%97%A5%E5%B8%B8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="简单的签到题">
+<meta property="og:description" content="打卡贴，记录摆烂的日常">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-29T06:21:09.000Z">
-<meta property="article:modified_time" content="2022-05-29T11:00:51.328Z">
+<meta property="article:published_time" content="2022-07-11T15:37:52.000Z">
+<meta property="article:modified_time" content="2022-07-11T15:54:56.288Z">
 <meta property="article:author" content="OOJ2003">
-<meta property="article:tag" content="ctf">
-<meta property="article:tag" content="web">
-<meta property="article:tag" content="writeup">
-<meta property="article:tag" content="crypto">
+<meta property="article:tag" content="日常">
+<meta property="article:tag" content="生活">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>第十五届ciscn签到题题解 - Hexo</title>
+  <title>摆烂的日常 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -211,7 +209,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第十五届ciscn签到题题解"></span>
+            <span id="subtitle" data-typed-text="摆烂的日常"></span>
           
         </div>
 
@@ -222,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-29 14:21" pubdate>
-          2022年5月29日 下午
+        <time datetime="2022-07-11 23:37" pubdate>
+          2022年7月11日 晚上
         </time>
       </span>
     
@@ -235,7 +233,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          202 字
         
       </span>
     
@@ -247,7 +245,7 @@
         
         
           <!-- compatible with older versions-->
-          10 分钟
+          2 分钟
         
       </span>
     
@@ -285,46 +283,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">第十五届ciscn签到题题解</h1>
+            <h1 style="display: none">摆烂的日常</h1>
             
             
               <div class="markdown-body">
                 
-                <p>根据题目描述，我们应该需要用“电报机”发送一段莫斯电码即可获得题解，但是手动输入实在太慢了，用
-<strong>burp</strong> 抓下包看下。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-142853.png" srcset="/img/loading.gif" lazyload /></p>
-<p>貌似发送的电报的内容跟在 /send?msg=
-后面，根据页面提示，将其内容替换为 s 试试。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-143308.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-143317.png" srcset="/img/loading.gif" lazyload /></p>
-<p>可以发现确实启动了电报机，我们的猜想是正确的，接下来只要构造出来需要发送的密文即可。</p>
-<p>到这里思路就有点脱线了，怎么构造密文呢。。。题目上说可以关注公众号获取提示，那就搞一波。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-144246.jpeg" srcset="/img/loading.gif" lazyload /></p>
-<p>这提示给的很足，我们来看下。</p>
-<p>首先是题目附带的密码本</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-144438.png" srcset="/img/loading.gif" lazyload /></p>
-<p>幸好题目很和善的还提供了纯数字形式，按照提示内容，这里只需要截取前 28
-位即可，参考 <strong>Python</strong> 脚本如下。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">data = <span class="hljs-string">&quot;834685648904867613192673099158666557417553051522197326843480079548094074854764&quot;</span> \<br>       <span class="hljs-string">&quot;095047630000191153794197926361233736842472609828318082651439775355635663788013209&quot;</span> \<br>       <span class="hljs-string">&quot;25197425819452264702325443888920796415984073398294910727986125227947279765077202712&quot;</span> \<br>       <span class="hljs-string">&quot;6232829303975039778738498565689820634982168970069248569722529016689899816187765139477&quot;</span> \<br>       <span class="hljs-string">&quot;2472903500097506233876971292747251029017554573542354309201988176266150040395581176749534&quot;</span> \<br>       <span class="hljs-string">&quot;7399695531808357741572461296215239426044448640545307459932331102609691986455648348242316032&quot;</span> \<br>       <span class="hljs-string">&quot;47594332524713466289315&quot;</span><br><br>b = [<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> data]<br>t1 = b[<span class="hljs-number">0</span>:<span class="hljs-number">28</span>]<br></code></pre></td></tr></table></figure>
-<p>类似的，将提供的 7 个电码也转换为 <strong>Python</strong>
-数组（已经去除了空格）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">s = <span class="hljs-string">&quot;1732251413440356045166710055&quot;</span><br>t2 = [<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> s]<br></code></pre></td></tr></table></figure>
-<p>然后再将 t1 和 t2 数组中的每一位相加模 10 后拼接起来，最后输出</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">ans = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">28</span>):<br>    ans.append((t1[i] + t2[i]) % <span class="hljs-number">10</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ans:<br>    <span class="hljs-built_in">print</span>(i, end=<span class="hljs-string">&quot;&quot;</span>)<br></code></pre></td></tr></table></figure>
-<p>运行结果如下</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-145625.png" srcset="/img/loading.gif" lazyload /></p>
-<p>在 <strong>burp</strong> 中抓包并修改。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-145821.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-145837.png" srcset="/img/loading.gif" lazyload /></p>
-<p>然后就获得了 flag 。</p>
+                <h2 id="day1-2022.07.11">day1 2022.07.11</h2>
+<ol type="1">
+<li><p>抢课，结果帐号密码出错了还得让老师重置，折腾半圈后体育没了。</p></li>
+<li><p>看了下react和vite的文档，整了个小的demo项目用来学习react。jsx到是挺有意思的，函数式和类组件也很好玩。看看之后学完react大致用法后能不能再融合进去一个ts。</p></li>
+<li><p>晚上去健身房跑了2公里，做了几组我也不知道怎么称呼的貌似是练胸和背的动作。</p></li>
+</ol>
+<p>总结：暑假前一周和好友激情线下三国杀，摆烂到现在才回过神。。。</p>
 
                 
               </div>
@@ -343,7 +313,7 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-14583
     
       <span class="category-chain">
         
-  <a href="/categories/ctf/" class="category-chain-item">ctf</a>
+  <a href="/categories/%E9%9A%8F%E7%AC%94/" class="category-chain-item">随笔</a>
   
   
 
@@ -358,13 +328,9 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-14583
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ctf/">#ctf</a>
+        <a href="/tags/%E6%97%A5%E5%B8%B8/">#日常</a>
       
-        <a href="/tags/web/">#web</a>
-      
-        <a href="/tags/writeup/">#writeup</a>
-      
-        <a href="/tags/crypto/">#crypto</a>
+        <a href="/tags/%E7%94%9F%E6%B4%BB/">#生活</a>
       
     </div>
   
@@ -376,8 +342,8 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-14583
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第十五届ciscn签到题题解</div>
-      <div>http://example.com/2022/05/29/第十五届ciscn签到题题解/</div>
+      <div>摆烂的日常</div>
+      <div>http://example.com/2022/07/11/摆烂的日常/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +355,7 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-14583
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月29日</div>
+          <div>2022年7月11日</div>
         </div>
       
       
@@ -425,18 +391,12 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-14583
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/29/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8Aciscn%E6%8D%89%E8%99%AB%E9%A2%98-%E5%9F%BA%E4%BA%8E%E6%8C%91%E6%88%98%E7%A0%81%E7%9A%84%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%8112/" title="第十五届ciscn捉虫题-基于挑战码的双向认证12">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第十五届ciscn捉虫题-基于挑战码的双向认证12</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/17/shell%E7%BC%96%E7%A8%8B1/" title="shell编程1">
-                        <span class="hidden-mobile">shell编程1</span>
+                      <a href="/2022/06/24/%E7%AE%97%E6%B3%95%E8%AF%BE%E8%AE%BE/" title="算法课设">
+                        <span class="hidden-mobile">算法课设</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -457,7 +417,7 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-14583
         var options = Object.assign(
           {"clientID":"488f11dbd386faf0ac9c","clientSecret":"8025b8b8ab8aba93feb8154fa0c16300c5dc4ff6","repo":"OOJ2003.github.io","owner":"OOJ2003","admin":["OOJ2003"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '6916ccdc44d972daefe359547a9f8dd5'
+            id: 'd985a0be883ec8e27bce170189d3e29e'
           }
         )
         var gitalk = new Gitalk(options);
