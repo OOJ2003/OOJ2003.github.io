@@ -44,6 +44,8 @@
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
 
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
 
 
@@ -235,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          448 字
+          444 字
         
       </span>
     
@@ -300,16 +302,17 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-19195
 <p><img
 src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-192346.png" srcset="/img/loading.gif" lazyload /></p>
 <p>先记下来，之后再看下。</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">FB</span> <span class="hljs-number">3</span>E FC E4 CE AC <span class="hljs-number">2</span>F <span class="hljs-number">54</span> <span class="hljs-number">45</span> C7 AE <span class="hljs-number">17</span> E3 E9 <span class="hljs-number">69</span> AB<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">FB 3E FC E4 CE AC 2F 54 45 C7 AE 17 E3 E9 69 AB</code></pre></div></figure>
 <p>再用 stegsolve
 看看，注意到右下角有竖立的奇怪的黑色斑块，故用列模式查看。</p>
 <p><img
 src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-193003.png" srcset="/img/loading.gif" lazyload /></p>
 <p>又是一串奇怪的乱码，同样记下来。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">f78dcd383f1b574b<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">f78dcd383f1b574b</code></pre></div></figure>
 <p>由于题目提供的格式为png，所以有可能是通过lsb技术在像素上写入了额外的信息。</p>
 <p>所以使用 python 将其解码并使用 binwalk 查看。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python2 lsb.py extract everlasting_night.png out.txt f78dcd383f1b574b<br>binwalk out.txt <br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python2 lsb.py extract everlasting_night.png out.txt f78dcd383f1b574b
+binwalk out.txt </code></pre></div></figure>
 <p><img
 src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-194023.png" srcset="/img/loading.gif" lazyload /></p>
 <p>是个压缩包，改后缀尝试解压，然而不知道密码是啥。</p>
@@ -388,6 +391,11 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-19580
           <div>2022年5月30日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年5月30日</div>
+        </div>
       
       <div class="license-meta-item">
         <div>许可协议</div>
@@ -651,6 +659,12 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/05/29/20220529-19580
   });
 </script>
 
+
+  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+
+  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
 
   <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
 

@@ -42,6 +42,8 @@
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
 
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
 
 
@@ -233,7 +235,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k 字
+          2.1k 字
         
       </span>
     
@@ -245,7 +247,7 @@
         
         
           <!-- compatible with older versions-->
-          19 分钟
+          18 分钟
         
       </span>
     
@@ -290,10 +292,20 @@
                 
                 <p>rust 里面的 for 循环实际上是个迭代器的语法糖。</p>
 <p>比如常见的</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>..<span class="hljs-number">100</span> &#123;<br>    todo!();<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">for i in 1..100 &#123;
+    todo!();
+&#125;</code></pre></div></figure>
 <p>这里我们用 let 绑定一个变量到 1..100 上，利用标准库里的
 type_name::<T>() 查看类型信息。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">type_of</span>&lt;T&gt;(_: &amp;T) <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>&#123;<br>    std::any::type_name::&lt;T&gt;()<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">i</span> = <span class="hljs-number">1</span>..<span class="hljs-number">10</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, <span class="hljs-title function_ invoke__">type_of</span>(&amp;i));<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">fn type_of&lt;T&gt;(_: &amp;T) -&gt; &amp;&#39;static str&#123;
+    std::any::type_name::&lt;T&gt;()
+&#125;
+
+fn main() &#123;
+    let i &#x3D; 1..10;
+    println!(&quot;&#123;&#125;&quot;, type_of(&amp;i));
+&#125;
+</code></pre></div></figure>
 <p>编译运行终端的输出为</p>
 <p><img
 src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/04/24/20220424-165212.png" srcset="/img/loading.gif" lazyload /></p>
@@ -305,7 +317,20 @@ src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/2022/04/25/20220425-14140
 trait ， 就可以遍历其所有子元素并进行操作。</p>
 <p>首先我们来为我们的链表的 <strong>IntoIter</strong> 结构体实现
 <strong>Iterator</strong> trait</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">IntoIter</span>&lt;T&gt;(List&lt;T&gt;);<br><br><span class="hljs-keyword">impl</span>&lt;T&gt; List&lt;T&gt; &#123;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">into_iter</span>(<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> IntoIter&lt;T&gt; &#123;<br>        <span class="hljs-title function_ invoke__">IntoIter</span>(<span class="hljs-keyword">self</span>)<br>     &#125;<br>&#125;<br><br><span class="hljs-keyword">impl</span>&lt;T&gt; <span class="hljs-built_in">Iterator</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">IntoIter</span>&lt;T&gt; &#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = T;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;<span class="hljs-keyword">Self</span>::Item&gt; &#123;<br>            <span class="hljs-keyword">self</span>.<span class="hljs-number">0</span>.<span class="hljs-title function_ invoke__">pop</span>()<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">pub struct IntoIter&lt;T&gt;(List&lt;T&gt;);
+
+impl&lt;T&gt; List&lt;T&gt; &#123;
+    pub fn into_iter(self) -&gt; IntoIter&lt;T&gt; &#123;
+        IntoIter(self)
+     &#125;
+&#125;
+
+impl&lt;T&gt; Iterator for IntoIter&lt;T&gt; &#123;
+    type Item &#x3D; T;
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; &#123;
+            self.0.pop()
+    &#125;
+&#125;</code></pre></div></figure>
 <p>这里我们首先实现了一个元组结构体 <strong>IntoIter</strong>
 ，这是一个泛型的结构体，其泛型参数与我们的链表保持一致，然后我们对其实现了
 <strong>Iterator</strong> trait 。这个 trait 里面除了
@@ -318,7 +343,20 @@ target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch19-03-adva
 方法，注意此方法会消费所有权，绝大多数情况下这种并不常见。</p>
 <p>接下来我们为我们的链表实现不获取所有权的 <strong>Iter</strong>
 结构体和对应的 <strong>Iterator</strong> trait 。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Iter</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>        next: <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-symbol">&#x27;a</span> Node&lt;T&gt;&gt;,<br>    &#125;<br><br><span class="hljs-keyword">impl</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; <span class="hljs-built_in">Iterator</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Iter</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>	<span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = &amp;<span class="hljs-symbol">&#x27;a</span> T;<br><br>	<span class="hljs-keyword">fn</span> <span class="hljs-title function_">next</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;<span class="hljs-keyword">Self</span>::Item&gt; &#123;<br>		<span class="hljs-keyword">self</span>.next.<span class="hljs-title function_ invoke__">map</span>(|node| &#123;<br>			<span class="hljs-keyword">self</span>.next = node.after.<span class="hljs-title function_ invoke__">as_deref</span>();<br>			&amp;node.elem<br>		&#125;)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">pub struct Iter&lt;&#39;a, T&gt; &#123;
+        next: Option&lt;&amp;&#39;a Node&lt;T&gt;&gt;,
+    &#125;
+
+impl&lt;&#39;a, T&gt; Iterator for Iter&lt;&#39;a, T&gt; &#123;
+	type Item &#x3D; &amp;&#39;a T;
+
+	fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; &#123;
+		self.next.map(|node| &#123;
+			self.next &#x3D; node.after.as_deref();
+			&amp;node.elem
+		&#125;)
+    &#125;
+&#125;</code></pre></div></figure>
 <p>由于涉及到数据的借用，这里需要显示的标注出结构体的生命周期，这里满足生命周期省略原则，所以尽管
 <strong>impl</strong> 块上标注了生命周期 <strong>'a</strong> ，但是
 <strong>next()</strong> 方法并没有标出。</p>
@@ -326,15 +364,32 @@ target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch19-03-adva
 <strong>'a</strong>，其长短取决于返回借用实际存活的生命周期 。</p>
 <p>类似的，返回拥有可变借用的 <strong>IterMut</strong> 结构体和
 <strong>Iterator</strong> trait也是类似的设计。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">IterMut</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>    next: <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-keyword">mut</span> Node&lt;T&gt;&gt;,<br>&#125;<br><br><span class="hljs-keyword">impl</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; <span class="hljs-built_in">Iterator</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">IterMut</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-keyword">mut</span> T;<br><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;<span class="hljs-keyword">Self</span>::Item&gt; &#123;<br>        <span class="hljs-keyword">self</span>.next.<span class="hljs-title function_ invoke__">take</span>().<span class="hljs-title function_ invoke__">map</span>(|node| &#123;<br>            <span class="hljs-keyword">self</span>.next = node.after.<span class="hljs-title function_ invoke__">as_deref_mut</span>();<br>            &amp;<span class="hljs-keyword">mut</span> node.elem<br>        &#125;)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">pub struct IterMut&lt;&#39;a, T&gt; &#123;
+    next: Option&lt;&amp;&#39;a mut Node&lt;T&gt;&gt;,
+&#125;
+
+impl&lt;&#39;a, T&gt; Iterator for IterMut&lt;&#39;a, T&gt; &#123;
+    type Item &#x3D; &amp;&#39;a mut T;
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; &#123;
+        self.next.take().map(|node| &#123;
+            self.next &#x3D; node.after.as_deref_mut();
+            &amp;mut node.elem
+        &#125;)
+    &#125;
+&#125;</code></pre></div></figure>
 <p>在剩下的两种迭代器的设计中，我们的代码用到了
 <strong>as_deref()</strong> 和 <strong>as_deref_mut()</strong>
 方法。</p>
 <p>这两个方法的目的是将 <strong>Option<T></strong>
 或其（可变）借用映射成用 <strong>Option</strong>
 包装的包装物，以下为其对应的函数签名。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">as_deref</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;&amp;T::Target&gt;<br><span class="hljs-keyword">where</span><br>    T: Deref,<br></code></pre></td></tr></table></figure>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">as_deref_mut</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-keyword">mut</span> T::Target&gt;<br><span class="hljs-keyword">where</span><br>    T: DerefMut,<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">pub const fn as_deref(&amp;self) -&gt; Option&lt;&amp;T::Target&gt;
+where
+    T: Deref,</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">pub const fn as_deref_mut(&amp;mut self) -&gt; Option&lt;&amp;mut T::Target&gt;
+where
+    T: DerefMut,</code></pre></div></figure>
 
                 
               </div>
@@ -398,6 +453,11 @@ target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch19-03-adva
           <div>2022年4月2日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年5月27日</div>
+        </div>
       
       <div class="license-meta-item">
         <div>许可协议</div>
@@ -661,6 +721,12 @@ target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch19-03-adva
   });
 </script>
 
+
+  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+
+  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
 
   <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
 
