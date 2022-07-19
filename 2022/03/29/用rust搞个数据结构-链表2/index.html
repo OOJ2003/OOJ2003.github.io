@@ -235,7 +235,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          4.5k 字
+          4k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
           <!-- compatible with older versions-->
-          38 分钟
+          34 分钟
         
       </span>
     
@@ -295,210 +295,210 @@
 main.rs 文件里，所以这次我们所有的代码都将放在一个新的 crate 里。</p>
 <p>在 rust 里创建库是很简单的，只要在使用 cargo 时额外添加上 --lib
 选项即可。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cargo new --lib stack</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cargo new --lib stack<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>好的，我们现在移步到我们名为 stack 的 lib crate 里。</p>
 <p>首先还是来看下我们要定义的的结构体。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">mod stack &#123;
-    pub struct Node&lt;T&gt; &#123;
-        elem: T,
-        after: Option&lt;Box&lt;T&gt;&gt;
-    &#125;
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">mod</span> <span class="token module-declaration namespace">stack</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">,</span>
+        after<span class="token punctuation">:</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">Box</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">>></span>
+    <span class="token punctuation">&#125;</span>
 
 
-    pub struct List&lt;T&gt; &#123;
-        head: Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;
-    &#125;
-&#125;</code></pre></div></figure>
+    <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        head<span class="token punctuation">:</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">Box</span><span class="token operator">&lt;</span><span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">>></span><span class="token operator">></span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>引入泛型后又多了一重尖括号，这实在太难看了。。。</p>
 <p>还好 rust 支持类型别名，所以我们可以稍微简化一下代码。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">mod stack &#123;
-    type Next&lt;T&gt; &#x3D; Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt; ;
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">mod</span> <span class="token module-declaration namespace">stack</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">type</span> <span class="token type-definition class-name">Next</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">Box</span><span class="token operator">&lt;</span><span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">;</span>
 
-    pub struct Node&lt;T&gt; &#123;
-        elem: T,
-        after: Next&lt;T&gt;
-    &#125;
+    <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">,</span>
+        after<span class="token punctuation">:</span> <span class="token class-name">Next</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span>
+    <span class="token punctuation">&#125;</span>
     
-    pub struct List&lt;T&gt; &#123;
-        head: Next&lt;T&gt;
-    &#125;
-&#125;</code></pre></div></figure>
+    <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        head<span class="token punctuation">:</span> <span class="token class-name">Next</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>这样看起来就相对好些了。</p>
 <p>因为我们实现的结构体的字段都是拥有所有权的类型，所以转换成泛型版本也是轻松无比，只要把原先的具体类型全部替换成泛型参数就可以了。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">impl&lt;T&gt; Node&lt;T&gt; &#123;
-        pub fn new(elem: T) -&gt; Self &#123;
-            Node &#123;
-                elem: elem,
-                after: None,
-            &#125;
-        &#125;
-    &#125;
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">impl</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">new</span><span class="token punctuation">(</span>elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">Self</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
+                elem<span class="token punctuation">:</span> elem<span class="token punctuation">,</span>
+                after<span class="token punctuation">:</span> <span class="token class-name">None</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
 
-    impl&lt;T&gt; List&lt;T&gt; &#123;
-        pub fn new(elem: T) -&gt; Self &#123;
-            List &#123;
-                head: Some(Box::new(Node &#123;
-                    elem: elem,
-                    after: None,
-                &#125;)),
-            &#125;
-        &#125;
+    <span class="token keyword">impl</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">new</span><span class="token punctuation">(</span>elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">Self</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">List</span> <span class="token punctuation">&#123;</span>
+                head<span class="token punctuation">:</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token class-name">Box</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
+                    elem<span class="token punctuation">:</span> elem<span class="token punctuation">,</span>
+                    after<span class="token punctuation">:</span> <span class="token class-name">None</span><span class="token punctuation">,</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
 
-        pub fn push(&amp;mut self, elem: T) &#123;
-            let mut new_node &#x3D; Box::new(Node::new(elem));
-            new_node.after &#x3D; std::mem::replace(&amp;mut self.head, None);
-            self.head &#x3D; Some(new_node);
-        &#125;
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">,</span> elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">let</span> <span class="token keyword">mut</span> new_node <span class="token operator">=</span> <span class="token class-name">Box</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token class-name">Node</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            new_node<span class="token punctuation">.</span>after <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">.</span>head<span class="token punctuation">,</span> <span class="token class-name">None</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">self</span><span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token class-name">Some</span><span class="token punctuation">(</span>new_node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        pub fn pop(&amp;mut self) -&gt; Option&lt;T&gt; &#123;
-            match std::mem::replace(&amp;mut self.head, None) &#123;
-                Some(x) &#x3D;&gt; &#123;
-                    self.head &#x3D; x.after;
-                    Some(x.elem)
-                &#125;
-                None &#x3D;&gt; None,
-            &#125;
-        &#125;
-    &#125;
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">match</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">.</span>head<span class="token punctuation">,</span> <span class="token class-name">None</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">Some</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">self</span><span class="token punctuation">.</span>head <span class="token operator">=</span> x<span class="token punctuation">.</span>after<span class="token punctuation">;</span>
+                    <span class="token class-name">Some</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>elem<span class="token punctuation">)</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token class-name">None</span> <span class="token operator">=></span> <span class="token class-name">None</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
 
-    impl&lt;T&gt; Drop for List&lt;T&gt; &#123;
-        fn drop(&amp;mut self) &#123;
-            let mut a &#x3D; std::mem::replace(&amp;mut self.head, None);
-            loop &#123;
-                match a &#123;
-                    None &#x3D;&gt; return,
-                    Some(mut x) &#x3D;&gt; a &#x3D; std::mem::replace(&amp;mut x.after, None),
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-</code></pre></div></figure>
+    <span class="token keyword">impl</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token class-name">Drop</span> <span class="token keyword">for</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">fn</span> <span class="token function-definition function">drop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">let</span> <span class="token keyword">mut</span> a <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">.</span>head<span class="token punctuation">,</span> <span class="token class-name">None</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">loop</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">match</span> a <span class="token punctuation">&#123;</span>
+                    <span class="token class-name">None</span> <span class="token operator">=></span> <span class="token keyword">return</span><span class="token punctuation">,</span>
+                    <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token keyword">mut</span> x<span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> x<span class="token punctuation">.</span>after<span class="token punctuation">,</span> <span class="token class-name">None</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>另外就是，在标准库里，已经有很多 Option<T>
 预先实现好的方法了，利用这些方法可以更进一步简化代码，比如 take()
 ，这是对 mem::replace() 的一个封装，下面是 take() 方法的函数签名。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">pub fn take(&amp;mut self) -&gt; Option&lt;T&gt;</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">take</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>此外就是我们原先的代码中有模式匹配的部分只在匹配 Some(_)
 时执行，而忽略了其他模式，此时我们可以用 if let
 语法糖进一步简化我们的代码。</p>
 <p>修改完成后完整代码如下。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">#![allow(unused)]
-#[cfg(test)]
-mod tests &#123;
-    #[test]
-    fn it_works() &#123;
-        let result &#x3D; 2 + 2;
-        assert_eq!(result, 4);
-    &#125;
-&#125;
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#![allow(unused)]</span>
+<span class="token attribute attr-name">#[cfg(test)]</span>
+<span class="token keyword">mod</span> <span class="token module-declaration namespace">tests</span> <span class="token punctuation">&#123;</span>
+    <span class="token attribute attr-name">#[test]</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">it_works</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-mod stack &#123;
-    type Next&lt;T&gt; &#x3D; Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;;
+<span class="token keyword">mod</span> <span class="token module-declaration namespace">stack</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">type</span> <span class="token type-definition class-name">Next</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">Box</span><span class="token operator">&lt;</span><span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">>></span><span class="token operator">></span><span class="token punctuation">;</span>
 
-    pub struct Node&lt;T&gt; &#123;
-        elem: T,
-        after: Next&lt;T&gt;,
-    &#125;
+    <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">,</span>
+        after<span class="token punctuation">:</span> <span class="token class-name">Next</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span>
 
-    pub struct List&lt;T&gt; &#123;
-        head: Next&lt;T&gt;,
-    &#125;
+    <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        head<span class="token punctuation">:</span> <span class="token class-name">Next</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span>
 
-    impl&lt;T&gt; Node&lt;T&gt; &#123;
-        pub fn new(elem: T) -&gt; Self &#123;
-            Node &#123;
-                elem: elem,
-                after: None,
-            &#125;
-        &#125;
-    &#125;
+    <span class="token keyword">impl</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">new</span><span class="token punctuation">(</span>elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">Self</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
+                elem<span class="token punctuation">:</span> elem<span class="token punctuation">,</span>
+                after<span class="token punctuation">:</span> <span class="token class-name">None</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
 
-    impl&lt;T&gt; List&lt;T&gt; &#123;
-        pub fn new(elem: T) -&gt; Self &#123;
-            List &#123;
-                head: Some(Box::new(Node &#123;
-                    elem: elem,
-                    after: None,
-                &#125;)),
-            &#125;
-        &#125;
+    <span class="token keyword">impl</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">new</span><span class="token punctuation">(</span>elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">Self</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">List</span> <span class="token punctuation">&#123;</span>
+                head<span class="token punctuation">:</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token class-name">Box</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
+                    elem<span class="token punctuation">:</span> elem<span class="token punctuation">,</span>
+                    after<span class="token punctuation">:</span> <span class="token class-name">None</span><span class="token punctuation">,</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
 
-        pub fn push(&amp;mut self, elem: T) &#123;
-            let mut new_node &#x3D; Box::new(Node::new(elem));
-            new_node.after &#x3D; self.head.take();
-            self.head &#x3D; Some(new_node);
-        &#125;
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">,</span> elem<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">let</span> <span class="token keyword">mut</span> new_node <span class="token operator">=</span> <span class="token class-name">Box</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token class-name">Node</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            new_node<span class="token punctuation">.</span>after <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">self</span><span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token class-name">Some</span><span class="token punctuation">(</span>new_node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        pub fn pop(&amp;mut self) -&gt; Option&lt;T&gt; &#123;
-            &#x2F;&#x2F; match std::mem::replace(&amp;mut self.head, None) &#123;
-            &#x2F;&#x2F;     Some(x) &#x3D;&gt; &#123;
-            &#x2F;&#x2F;         self.head &#x3D; x.after;
-            &#x2F;&#x2F;         Some(x.elem)
-            &#x2F;&#x2F;     &#125;
-            &#x2F;&#x2F;     None &#x3D;&gt; None,
-            &#x2F;&#x2F; &#125;
+        <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// match std::mem::replace(&amp;mut self.head, None) &#123;</span>
+            <span class="token comment">//     Some(x) => &#123;</span>
+            <span class="token comment">//         self.head = x.after;</span>
+            <span class="token comment">//         Some(x.elem)</span>
+            <span class="token comment">//     &#125;</span>
+            <span class="token comment">//     None => None,</span>
+            <span class="token comment">// &#125;</span>
 
-            if let Some(x) &#x3D; self.head.take() &#123;
-                self.head &#x3D; x.after;
-                Some(x.elem)
-            &#125; else &#123;
-                None
-            &#125;
-        &#125;
-    &#125;
+            <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token class-name">Some</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">self</span><span class="token punctuation">.</span>head <span class="token operator">=</span> x<span class="token punctuation">.</span>after<span class="token punctuation">;</span>
+                <span class="token class-name">Some</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>elem<span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">None</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
 
-    impl&lt;T&gt; Drop for List&lt;T&gt; &#123;
-        fn drop(&amp;mut self) &#123;
-            &#x2F;&#x2F; let mut a &#x3D; std::mem::replace(&amp;mut self.head, None);
-            &#x2F;&#x2F; loop &#123;
-            &#x2F;&#x2F;     match a &#123;
-            &#x2F;&#x2F;         None &#x3D;&gt; return,
-            &#x2F;&#x2F;         Some(mut x) &#x3D;&gt; a &#x3D; std::mem::replace(&amp;mut x.after, None),
-            &#x2F;&#x2F;     &#125;
-            &#x2F;&#x2F; &#125;
+    <span class="token keyword">impl</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token class-name">Drop</span> <span class="token keyword">for</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">fn</span> <span class="token function-definition function">drop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// let mut a = std::mem::replace(&amp;mut self.head, None);</span>
+            <span class="token comment">// loop &#123;</span>
+            <span class="token comment">//     match a &#123;</span>
+            <span class="token comment">//         None => return,</span>
+            <span class="token comment">//         Some(mut x) => a = std::mem::replace(&amp;mut x.after, None),</span>
+            <span class="token comment">//     &#125;</span>
+            <span class="token comment">// &#125;</span>
 
-            let mut a &#x3D; self.head.take();
-            loop &#123;
-                match a &#123;
-                    None &#x3D;&gt; break,
-                    Some(mut x) &#x3D;&gt; a &#x3D; x.after.take(),
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre></div></figure>
+            <span class="token keyword">let</span> <span class="token keyword">mut</span> a <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">loop</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">match</span> a <span class="token punctuation">&#123;</span>
+                    <span class="token class-name">None</span> <span class="token operator">=></span> <span class="token keyword">break</span><span class="token punctuation">,</span>
+                    <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token keyword">mut</span> x<span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">=</span> x<span class="token punctuation">.</span>after<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>OK，
 我们的二进制库的大部分工作都完成了，现在来做写个单元测试来测试下我们的单向链表（链栈）。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust">mod tests &#123;
-    use crate::stack;
+<figure><div class="code-wrapper"><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">mod</span> <span class="token module-declaration namespace">tests</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">use</span> <span class="token keyword">crate</span><span class="token module-declaration namespace"><span class="token punctuation">::</span>stack</span><span class="token punctuation">;</span>
 
-    #[test]
-    fn push_num() &#123;
-        let mut my_stack &#x3D; stack::List::new(1);
-        my_stack.push(2);
-        my_stack.push(3);
-        assert_eq!(my_stack.pop(), Some(3));
-        assert_eq!(my_stack.pop(), Some(2));
-        assert_eq!(my_stack.pop(), Some(1));
-        assert_eq!(my_stack.pop(), None);
-    &#125;
+    <span class="token attribute attr-name">#[test]</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">push_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> my_stack <span class="token operator">=</span> <span class="token namespace">stack<span class="token punctuation">::</span></span><span class="token class-name">List</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        my_stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        my_stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>my_stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>my_stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>my_stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>my_stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">None</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    #[test]
-    fn many_str() &#123;
-        let mut my_stack &#x3D; stack::List::new(String::from(&quot;hello&quot;));
-        for i in 1..10000 &#123;
-            my_stack.push(String::from(format!(&quot;&#123;&#125;&quot;, &amp;i)));
-        &#125;
-    &#125;
+    <span class="token attribute attr-name">#[test]</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">many_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> my_stack <span class="token operator">=</span> <span class="token namespace">stack<span class="token punctuation">::</span></span><span class="token class-name">List</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">..</span><span class="token number">10000</span> <span class="token punctuation">&#123;</span>
+            my_stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
 
-    #[test]
-    fn many_nums() &#123;
-        let mut my_stack &#x3D; stack::List::new(0);
-        for i in 1..10000000 &#123;
-            my_stack.push(i);
-        &#125;
-    &#125;
-&#125;</code></pre></div></figure>
+    <span class="token attribute attr-name">#[test]</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">many_nums</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> my_stack <span class="token operator">=</span> <span class="token namespace">stack<span class="token punctuation">::</span></span><span class="token class-name">List</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">..</span><span class="token number">10000000</span> <span class="token punctuation">&#123;</span>
+            my_stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>调用 cargo 来 test 下看看。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-cargo" data-language="cargo"><code class="language-cargo">cargo test                                                       
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
@@ -515,7 +515,7 @@ test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 0 tests
 
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s</code></pre></div></figure>
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -847,10 +847,6 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
   });
 </script>
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
-
-  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
 
