@@ -24,7 +24,7 @@
 <meta property="og:description" content="记录下学习react的内容">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-17T08:48:15.000Z">
-<meta property="article:modified_time" content="2022-07-19T08:27:44.132Z">
+<meta property="article:modified_time" content="2022-07-29T06:33:41.592Z">
 <meta property="article:author" content="OOJ2003">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary_large_image">
@@ -234,7 +234,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          3.3k 字
+          4.7k 字
         
       </span>
     
@@ -246,7 +246,7 @@
         
         
           <!-- compatible with older versions-->
-          28 分钟
+          39 分钟
         
       </span>
     
@@ -296,10 +296,14 @@
 <p>工欲善其事，必先利其器</p>
 <p>​ -《论语·卫灵公》</p>
 </blockquote>
-<p>毕竟现在已经是0202年了，项目开发一般都会有专门的脚手架来配置，这里我就采用了
-pnpm + vite 的配置。</p>
-<p>pnpm是个新的类似与npm的包管理，但是它有很多的创新之处，比如节省空间和快之类的。vite也是一样的道理，这个新的打包工具构建速度非常的快，比webpack快到不知道哪里去了🤓。</p>
-<p>编辑器我选择的是vscode，以下为需要安装的插件</p>
+<p>毕竟现在已经是 2202
+年了，项目开发一般都会有专门的脚手架来配置，这里我就采用了 pnpm + vite
+的配置。</p>
+<p>pnpm
+是个新的类似与npm的包管理，但是它有很多的创新之处，比如节省空间和快之类的。vite
+也是一样的道理，这个新的打包工具构建速度非常的快，比 webpack
+快到不知道哪里去了🤓。</p>
+<p>编辑器我选择的是 vscode，以下为需要安装的插件</p>
 <ol type="1">
 <li><a
 target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets">ES7+
@@ -339,9 +343,9 @@ alt="vscode中的预览" />
 <figcaption aria-hidden="true">vscode中的预览</figcaption>
 </figure>
 <h2 id="组件和jsx">组件和jsx</h2>
-<p>jsx 是react 最有趣的特性之一，通过 jsx
+<p>jsx 是 react 最有趣的特性之一，通过 jsx
 ,可以很轻松的将视图和逻辑绑定到一起。换言之，就是不用再去单独处理 html
-和 css 了，所有的东西都可以扔到 jsx 里面来写。</p>
+和 css 了，基本上所有的东西都可以扔到 jsx 里面来写。</p>
 <h3 id="根节点和实际的dom树">根节点和实际的dom树</h3>
 <p>当我们通过react去创建组件时，实例化的组件必定会在 dom
 树上有所体现。比如一个 button 组件可能就是一个套着 div
@@ -416,8 +420,8 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">cre
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> App
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-<p>而在 App.jsx 中，则是通过 App
-函数，返回了一段jsx，这里面就是实际上描述页面的内容。</p>
+<p>而在 App.jsx 中，则是通过 App 函数，返回了一段
+jsx，这里面就是实际上描述页面的内容。</p>
 <p>这里稍微岔开下话题，React中通过首字母是否为大写来判断一个函数是组件还是普通函数，所以这里的
 App() 函数首字母是大写的。</p>
 <h3 id="一切的开始第一个组件-hello-world">一切的开始，第一个组件
@@ -483,6 +487,91 @@ alt="简单组件" />
 </figure>
 <p>这里有个有趣的地方，当我们创建了一个组件并想要在其他地方的 jsx
 里面使用的时候，既可以写成自闭合标签，也可以写成普通的标签。</p>
+<p>也就是说，既可以写成 &lt;Hello&gt;&lt;/Hello&gt;, 也可以写成
+&lt;hello/&gt; 。</p>
+<h3 id="组件传参顺带渲染点别的">组件传参，顺带渲染点别的</h3>
+<p>一个只能渲染 "Hello, World!"
+的组件是没有前途的。至少得让他渲染点别的，至少得让他根据我们传入的参数渲染点什么出来。</p>
+<p>这里整个简单的例子，就让我们的组件渲染一段根据参数拼接的文字，就在传入的参数（字符串）尾部加上
+“，我好喜欢你啊”，比如给我们的 &lt;Love/&gt; 组件传入一个参数 “嘉然”
+，就会渲染成 “嘉然，我好喜欢你啊”。</p>
+<p>参考完整代码如下。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>App<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Love</span></span> <span class="token attr-name">love</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">&#123;</span><span class="token string">"嘉然"</span><span class="token punctuation">&#125;</span></span><span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span class="token keyword">function</span> <span class="token function">Love</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">&#123;</span>props<span class="token punctuation">.</span>love <span class="token operator">+</span> <span class="token string">",我好喜欢你啊"</span><span class="token punctuation">&#125;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> App<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>这里又引入了几个新语法，比如这个大括号，看起来很奇怪还显得很多余，难道就不能把它省略掉吗？</p>
+<p>事实上，这里的大括号表示的是表达式的意思，大括号框住的内容是一个需要计算的表达式，如果省略掉大括号，div
+标签内的内容则会直接被转义成字符串。</p>
+<p>也就是说如果我们写成下面的形式，渲染的内容就根本不会是我们想要的。</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/%E9%94%99%E8%AF%AF%E7%9A%84%E6%B8%B2%E6%9F%93.png" srcset="/img/loading.gif" lazyload
+alt="错误的渲染" />
+<figcaption aria-hidden="true">错误的渲染</figcaption>
+</figure>
+<p>...就像图片里演示的那样。</p>
+<p>加上大括号后，结果就正常了，我们甚至还能多整几行。</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%B8%B2%E6%9F%93.png" srcset="/img/loading.gif" lazyload
+alt="正确的渲染" />
+<figcaption aria-hidden="true">正确的渲染</figcaption>
+</figure>
+<p>另一个奇怪的语法是这个 props ，很显然我们的参数传递都是通过 props
+实现的。这个词是 properties
+的缩写，意思就是属性，怎么感觉说了和没说的一样。。</p>
+<p>总之如果要传递不可变的参数给组件，在 jsx
+里面写标签的时候直接在标签里写上 " 参数名={参数值} "
+就可以了，至于为什么是不可变的参数，这是个大坑，之后到类组件和 hocks
+的时候再细聊。</p>
+<p>这种写法看起来挺酷炫的，但是捏，当组件需要的参数变的多起来且参数名称变的越来越长的时候就有点蛋疼了，因为憨憨的编辑器压根不提示！而且如果写了错误的参数名称，也不会报错，实际渲染时候那个
+prop 的值则会变成 undefined
+。这挺蠢的。。因为这种错误不必要非得在运行时才能发现。至于解决方式，后面我们在把
+react
+基础的一些玩意儿搞定后就会介绍一个屌炸天的新玩意儿，typescript，通过类型约束就可以很好的解决这种问题，甚至编辑器的提示也更有劲了，自动补全一口气能上三楼了。</p>
+<p>可是现在学 ts
+还是有点太远了，所以这里有一种简单的技巧也可以让编辑器提供更好的自动补全，即使用
+es6 中新增加的<a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">解构赋值语法</a>。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>App<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      &lt;ABC name=</span><span class="token punctuation">&#123;</span><span class="token string">"我"</span><span class="token punctuation">&#125;</span><span class="token plain-text"> birthday =</span><span class="token punctuation">&#123;</span><span class="token string">"我的生日"</span><span class="token punctuation">&#125;</span><span class="token plain-text"> />
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token constant">ABC</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">&#123;</span>name<span class="token punctuation">,</span> birthday<span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">&#123;</span>name <span class="token operator">+</span> <span class="token string">"的生日是"</span> <span class="token operator">+</span> birthday<span class="token punctuation">&#125;</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/data/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC.png" srcset="/img/loading.gif" lazyload
+alt="解构赋值" />
+<figcaption aria-hidden="true">解构赋值</figcaption>
+</figure>
+<p>虽然是一段废话代码，但是这个技巧确实还不错。</p>
 
                 
               </div>
@@ -547,7 +636,7 @@ alt="简单组件" />
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年7月19日</div>
+          <div>2022年7月29日</div>
         </div>
       
       <div class="license-meta-item">
@@ -582,9 +671,9 @@ alt="简单组件" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/20/%E8%8B%A6%E9%9A%BE%E4%B9%8B%E8%B7%AF-arch%E4%BD%BF%E7%94%A8%E6%BC%AB%E8%B0%88/" title="苦难之路-arch使用漫谈">
+                      <a href="/2022/07/20/%E8%8B%A6%E9%9A%BE%E4%B9%8B%E8%B7%AF-arch%E4%BD%BF%E7%94%A8%E6%BC%AB%E8%B0%88/" title="苦难之路-Arch使用漫谈">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">苦难之路-arch使用漫谈</span>
+                        <span class="hidden-mobile">苦难之路-Arch使用漫谈</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
