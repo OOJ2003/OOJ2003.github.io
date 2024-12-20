@@ -1,0 +1,1522 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cheems.png">
+  <link rel="icon" href="/img/cheems.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="OOJ2003">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="记录下微（汇）机（编）原（语）理（言）的学习过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微机原理学习笔记">
+<meta property="og:url" content="https://ooj2003.github.io/2023/03/14/%E7%AC%94%E8%AE%B0/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="OOJ&#39;s Blog">
+<meta property="og:description" content="记录下微（汇）机（编）原（语）理（言）的学习过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-10-20.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-15-40.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-22-03.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-22-24.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/20230317093317.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/%E5%AF%84%E5%AD%98%E5%99%A8.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305201859366.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305202025716.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305202125358.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305202126358.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305211048133.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212223541.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212240227.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212249488.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212255626.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220018720.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220024070.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220025695.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220026533.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220019434.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220030792.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220030167.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220034451.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220050176.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220100668.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220111360.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220112996.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220112749.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220113833.png">
+<meta property="article:published_time" content="2023-03-14T15:41:43.000Z">
+<meta property="article:modified_time" content="2023-09-17T17:39:00.000Z">
+<meta property="article:author" content="OOJ2003">
+<meta property="article:tag" content="微机原理">
+<meta property="article:tag" content="汇编语言">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-10-20.png">
+  
+  
+  
+  <title>微机原理学习笔记 - OOJ&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ooj2003.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>OOJ&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="微机原理学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-14 15:41" pubdate>
+          2023年3月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          91 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">微机原理学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="开始之前">开始之前</h1>
+<p>好吧，不太清楚究竟是怎么回事，但是貌似我们学校的《微机原理》改名成了《汇编与接口》。汇编这玩意儿还是有点意思的，就是写起来对人来说太不友好了（ 不过除了非常底层的优化外，貌似手撸汇编在现在的意义没那么大（？</p>
+<h2 id="实验环境搭建">实验环境搭建</h2>
+<p>环境搭建也算是老生常谈的话题了。。基本上每学一门新语言都要经历这个步骤。</p>
+<p>注意这次我们所需的是 32 位的 <code>masm</code> 环境，所以我们需要 <code>visual studio</code> 来提供 <code>msvc</code> 工具链。</p>
+<p>由于部分用于代码高亮和自动补全的的插件仍然没有适配 <code>vs2022</code>，所以我们需要安装 <code>vs2019</code>。</p>
+<p>这是<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/vs/older-downloads/">下载链接</a>，注意，你得注册一个微软账户才能在上面下载，简单来说就是去注册一个 outlook 邮箱。</p>
+<p>如图所示，在安装时勾选"使用c++的桌面开发"即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-10-20.png" srcset="/img/loading.gif" lazyload /></p>
+<p>在安装后打开 <code>vs</code>，进入项目后点击顶栏的拓展-管理拓展，然后搜索 <code>asmdude</code> 并点击安装，然后关闭并重新进入 <code>vs</code> 即可启用拓展 。 <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-15-40.png" srcset="/img/loading.gif" lazyload /></p>
+<p>接下来新建一个空项目然后按照下图操作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-22-03.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/Snipaste_2023-03-17_09-22-24.png" srcset="/img/loading.gif" lazyload /></p>
+<p>...并点击确定。 右键右侧的源文件并新建一个 <code>main.asm</code>，当然命名是无所谓的。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.386</span>    <br><span class="hljs-meta">.model</span> flat, c<br><span class="hljs-meta">option</span> casemap :none<br><br>includelib libcmt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br><span class="hljs-meta">EXTERN</span> printf :PROC <span class="hljs-comment">; declare printf</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>    HelloWorld <span class="hljs-built_in">db</span> <span class="hljs-string">&quot;Hello World!:-)&quot;</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br>    <span class="hljs-keyword">push</span> offset HelloWorld<br>    <span class="hljs-keyword">call</span> printf<br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">4</span><br>    <span class="hljs-keyword">ret</span><br>main ENDP<br>END<br></code></pre></td></tr></table></figure>
+<p>注意我们现在是在编写32位的汇编，所以请确保在 <code>x86</code> 的 <code>Debug</code> 模式下编译和调试，然后点击顶栏的绿色三角。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/images/20230317093317.png" srcset="/img/loading.gif" lazyload /></p>
+<p>到此就完成了环境的搭建。</p>
+<h1 id="零碎小玩意儿">零碎小玩意儿</h1>
+<p>基本上这节就是些小知识点，因为编排问题没有加进正文里，所以统一放这儿了。</p>
+<h2 id="ia-32中的数据单位">IA-32中的数据单位</h2>
+<table>
+<thead>
+<tr class="header">
+<th>大小（Bits）</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>比特 (Bit)</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>半字节 (Nibble)</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>字节 (Byte)</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>字 (Word)</td>
+</tr>
+<tr class="odd">
+<td>32</td>
+<td>双字 (Double Word)</td>
+</tr>
+<tr class="even">
+<td>64</td>
+<td>四字 (Quad Word)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stdcall-调用约定">stdcall 调用约定</h2>
+<p><code>stdcall</code> 是一种常见的调用约定，其中函数的参数通过栈传递，函数的参数是从右到左依次推送到栈上，而栈上的每个参数占据4字节的空间。</p>
+<h2 id="琐碎的指令们">琐碎的指令们</h2>
+<h3 id="跳转指令">跳转指令</h3>
+<table>
+<thead>
+<tr class="header">
+<th>跳转指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jmp</td>
+<td>unconditional jump</td>
+</tr>
+<tr class="even">
+<td>je</td>
+<td>jump if equal</td>
+</tr>
+<tr class="odd">
+<td>jne</td>
+<td>jump if not equal</td>
+</tr>
+<tr class="even">
+<td>jl</td>
+<td>jump if less</td>
+</tr>
+<tr class="odd">
+<td>jg</td>
+<td>jump if greater</td>
+</tr>
+<tr class="even">
+<td>jle</td>
+<td>jump if less or equal</td>
+</tr>
+<tr class="odd">
+<td>jge</td>
+<td>jump if greater or equal</td>
+</tr>
+<tr class="even">
+<td>jo</td>
+<td>jump if overflow</td>
+</tr>
+<tr class="odd">
+<td>jno</td>
+<td>jump if not overflow</td>
+</tr>
+<tr class="even">
+<td>js</td>
+<td>jump if sign (比较结果为负数)</td>
+</tr>
+<tr class="odd">
+<td>jns</td>
+<td>jump if not sign</td>
+</tr>
+<tr class="even">
+<td>jc</td>
+<td>jump if carry (产生进位)</td>
+</tr>
+<tr class="odd">
+<td>jnc</td>
+<td>jump if not carry</td>
+</tr>
+</tbody>
+</table>
+<p>值得注意的是，有符号数使用 <code>jg</code> 和 <code>jl</code>，而无符号数使用 <code>ja</code> 和 <code>jb</code></p>
+<h3 id="除法指令-div">除法指令 div</h3>
+<p>这一节为语言模型生成内容，参考 <code>promt</code> 如下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prompt">请介绍 IA-32 masm 中的 div 指令并举一个用其判断奇偶数的例子<br></code></pre></td></tr></table></figure></p>
+<p><code>div</code>指令是IA-32汇编语言中的除法指令，用于将一个32位的无符号整数除以一个操作数，并将商存储在EDX:EAX寄存器对中的EAX寄存器中，余数存储在EDX寄存器中。</p>
+<p><code>div</code>指令的基本语法如下：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">div</span> operand<br></code></pre></td></tr></table></figure>
+<p>其中，<code>operand</code>表示除数。</p>
+<p>为了判断一个数是奇数还是偶数，可以使用<code>div</code>指令来计算除以2的余数。如果余数为0，则说明被除数是偶数；如果余数为1，则说明被除数是奇数。</p>
+<p>下面是一个使用<code>div</code>指令判断奇偶数的示例：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">13</span> <span class="hljs-comment">; 被除数，例如，我们判断13是奇数还是偶数</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span>  <span class="hljs-comment">; 清零EDX寄存器，用于存储余数</span><br><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">2</span>  <span class="hljs-comment">; 除数，即2</span><br><span class="hljs-keyword">div</span> <span class="hljs-built_in">ecx</span>     <span class="hljs-comment">; 将eax中的值除以ecx，商存储在eax，余数存储在edx</span><br><br><span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span>  <span class="hljs-comment">; 比较余数和0</span><br><span class="hljs-keyword">jne</span> odd     <span class="hljs-comment">; 如果余数不等于0，跳转到odd标签</span><br><span class="hljs-comment">; 偶数的处理</span><br><span class="hljs-comment">; 偶数的代码逻辑</span><br><span class="hljs-keyword">jmp</span> done    <span class="hljs-comment">; 跳转到done标签结束</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">odd:</span>        <span class="hljs-comment">; odd标签</span><br><span class="hljs-comment">; 奇数的处理</span><br><span class="hljs-comment">; 奇数的代码逻辑</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">done:</span>       <span class="hljs-comment">; done标签</span><br></code></pre></td></tr></table></figure>
+<p>在上述示例中，我们将13存储在<code>eax</code>寄存器中作为被除数，将2存储在<code>ecx</code>寄存器中作为除数。然后使用<code>div ecx</code>指令进行除法运算，商存储在<code>eax</code>寄存器中，余数存储在<code>edx</code>寄存器中。接下来，我们通过比较余数和0的值来判断奇偶性，如果余数不等于0，则跳转到<code>odd</code>标签，执行奇数的处理逻辑；如果余数等于0，则跳转到<code>done</code>标签，执行偶数的处理逻辑。</p>
+<p>这是一个简单的例子，演示了如何使用<code>div</code>指令来判断一个数的奇偶性。根据实际需求，您可以根据<code>eax</code>寄存器的值进行不同的处理。</p>
+<h3 id="交换指令-xchg">交换指令 xchg</h3>
+<p>此节为语言模型生成内容，参考 <code>prompt</code> 如下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prompt">介绍 IA-32 masm 中的 xchg 指令并举一个用其交换数据的例子<br></code></pre></td></tr></table></figure></p>
+<p><code>xchg</code>指令是IA-32汇编语言中的交换指令，用于交换两个操作数的值。它可以用于交换寄存器、内存和寄存器之间的数据。</p>
+<p><code>xchg</code>指令的基本语法如下：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">xchg</span> destination, source<br></code></pre></td></tr></table></figure>
+<p>其中，<code>destination</code>和<code>source</code>表示要交换值的操作数。</p>
+<p>下面是一个使用<code>xchg</code>指令交换两个变量值的示例：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">10</span>  <span class="hljs-comment">; 变量A的初始值为10</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">20</span>  <span class="hljs-comment">; 变量B的初始值为20</span><br><br><span class="hljs-keyword">xchg</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span>  <span class="hljs-comment">; 交换变量A和变量B的值</span><br><br><span class="hljs-comment">; 现在eax中存储的是交换后的变量B的值，ebx中存储的是交换后的变量A的值</span><br></code></pre></td></tr></table></figure>
+<p>在上述示例中，我们使用<code>mov</code>指令将变量A的初始值10存储在<code>eax</code>寄存器中，将变量B的初始值20存储在<code>ebx</code>寄存器中。然后使用<code>xchg</code>指令交换<code>eax</code>和<code>ebx</code>的值。交换后，<code>eax</code>寄存器中存储的是变量B的值20，<code>ebx</code>寄存器中存储的是变量A的值10。</p>
+<p>通过<code>xchg</code>指令，我们可以方便地交换两个变量的值，而不需要借助额外的寄存器或内存位置。这在某些算法或数据处理任务中可能会有用。</p>
+<h3 id="逻辑与指令-test">逻辑与指令 test</h3>
+<p><strong>此节使用语言模型生成，prompt 格式同前节</strong></p>
+<p><code>test</code>指令是IA-32汇编语言中的逻辑与（AND）操作指令。它执行两个操作数之间的位逻辑与运算，并根据结果设置标志寄存器的状态。</p>
+<p><code>test</code>指令的基本语法如下：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">test</span> destination, source<br></code></pre></td></tr></table></figure>
+<p>其中，<code>destination</code>和<code>source</code>表示要进行逻辑与运算的操作数。</p>
+<p><code>test</code>指令执行以下操作：</p>
+<ol type="1">
+<li>将<code>destination</code>和<code>source</code>进行逻辑与运算，将结果存储在临时位置中。</li>
+<li>根据结果设置标志寄存器的状态，特别是设置零标志位（ZF）和进位标志位（CF）。</li>
+</ol>
+<p><code>test</code>指令常用于条件判断、位掩码和清零操作等。</p>
+<p>下面是一些<code>test</code>指令的使用示例：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">10</span><br><span class="hljs-keyword">test</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">eax</span>  <span class="hljs-comment">; 检查eax寄存器是否为零</span><br><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">0xFF</span><br><span class="hljs-keyword">test</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">0x0F</span> <span class="hljs-comment">; 检查ebx寄存器的低4位是否都为1</span><br><br><span class="hljs-keyword">test</span> <span class="hljs-built_in">edx</span>, <span class="hljs-built_in">edx</span>  <span class="hljs-comment">; 检查edx寄存器是否为零</span><br><span class="hljs-keyword">jz</span> <span class="hljs-meta">zero</span>        <span class="hljs-comment">; 如果为零，跳转到zero标签处</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">zero:</span><br>    <span class="hljs-comment">; 执行一些操作</span><br></code></pre></td></tr></table></figure>
+<p>在第一个示例中，将常数10存储在<code>eax</code>寄存器中，然后对<code>eax</code>寄存器和自身执行逻辑与运算。这将检查<code>eax</code>寄存器的值是否为零，并根据结果设置标志寄存器的状态。</p>
+<p>在第二个示例中，将常数0xFF存储在<code>ebx</code>寄存器中，然后对<code>ebx</code>寄存器和常数0x0F执行逻辑与运算。这将检查<code>ebx</code>寄存器的低4位是否都为1，并根据结果设置标志寄存器的状态。</p>
+<p>在第三个示例中，将<code>edx</code>寄存器与自身执行逻辑与运算。这将检查<code>edx</code>寄存器的值是否为零，并根据结果设置标志寄存器的状态。如果<code>edx</code>寄存器为零，将会发生跳转到<code>zero</code>标签处执行相应的操作。</p>
+<p>通过<code>test</code>指令，我们可以执行逻辑与运算并根据结果设置标志寄存器的状态，以便进行条件判断和控制程序的流程。</p>
+<h1 id="处理器结构">处理器结构</h1>
+<h2 id="基本结构">基本结构</h2>
+<ol type="1">
+<li>算术逻辑单元 (<code>ALU</code>)</li>
+<li>寄存器</li>
+<li>指令处理单元</li>
+</ol>
+<h2 id="寄存器">寄存器</h2>
+<p>寄存器就是 <code>CPU</code> 暂时存取数据的地方，在 <code>IA-32</code> 基本执行环境中包括8个32位通用寄存器，6个12位段寄存器，以及32位标志寄存器和指令指针。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/%E5%AF%84%E5%AD%98%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="常用寄存器" /><figcaption aria-hidden="true">常用寄存器</figcaption>
+</figure>
+<h3 id="通用寄存器">通用寄存器</h3>
+<p>通用寄存器一般是指处理器中最长使用的整数存取寄存器，可以用于保存整型数据和地址等。</p>
+<p>在上图的寄存器展示中，这些32位寄存器也可以当作16位寄存器使用，只需要去除寄存器名前的 "E" 即可，例如 <code>AX</code>, <code>BX</code>, <code>SI</code>, <code>DI</code> 等等。</p>
+<p>甚至可以将寄存器的低16位拆成2个8位寄存器使用，例如图中 <code>EAX</code> 的 <code>D15</code>-<code>D8</code> 就对应着 <code>AH</code> ，而低八位的 <code>D7</code>-<code>D0</code> 则对应着 <code>AL</code> 寄存器。</p>
+<h4 id="通用寄存器的常用用途">通用寄存器的常用用途</h4>
+<ol type="1">
+<li><code>EAX</code>: 最常用的寄存器，函数调用传参，作为累加器，算数运算和外设传送信息等</li>
+<li><code>EBX</code>: 基址寄存器，长用来存放存储器地址</li>
+<li><code>ECX</code>: 计数器</li>
+<li><code>EDX</code>: 数据寄存器，可用来存放数据</li>
+<li><code>ESI</code>: 源变址寄存器，用于指向字符串或数组的源操作数。源操作数是指保存传送结果或运算结果的寄存器。</li>
+<li><code>EDI</code>: 目的变址寄存器，用于指向字符串或数组的目的操作数，目的操作数是指保存传送结果或者运算结果的操作数。</li>
+<li><code>EBP</code>: 基址指针寄存器，默认指向程序堆栈区域的数据，主要用于在子程序中访问通过堆栈传递的参数和局部变量。</li>
+<li><code>ESP</code>: 堆栈指令寄存器，<em>专门</em>用于指向程序堆栈区域顶部的数据，在涉及堆栈操作时会自动变化。</li>
+</ol>
+<h3 id="标志寄存器">标志寄存器</h3>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305201859366.png" srcset="/img/loading.gif" lazyload alt="标志寄存器" /><figcaption aria-hidden="true">标志寄存器</figcaption>
+</figure>
+<p><code>OF</code> 溢出标志、<code>SF</code> 符号标志、<code>ZF</code> 零标志、<code>PF</code> 奇偶标志、<code>CF</code> 进位标志、<code>AF</code>调整标志</p>
+<h3 id="专用寄存器">专用寄存器</h3>
+<ol type="1">
+<li>指令寄存器 <code>EIP</code>: 保存将要执行指令的地址</li>
+<li>段寄存器: <code>CS</code> <code>DS</code> <code>SS</code> <code>ES</code> <code>FS</code> <code>GS</code></li>
+<li>浮点寄存器、向量寄存器、媒体寄存器、系统寄存器等。</li>
+</ol>
+<h2 id="存储器组织">存储器组织</h2>
+<h3 id="存储器模型">存储器模型</h3>
+<ol type="1">
+<li>平展存储模型：存储器是连续的地址空间，每个存储单元存储一个字节并拥有一个线性地址，<code>IA-32</code> 处理器最大支持 <span class="math inline">\(2^{32} - 1\)</span> (4GB) 的地址空间。</li>
+<li>段式存储模型: 存储器由一组独立的地址空间（段）组成，代码、数据、堆栈位于分开的段中，程序利用逻辑地址寻址段中的字节，<code>IA-32</code> 支持 <span class="math inline">\(2^{14}\)</span> 个大小类型各异的段，段的最大容量与平展存储相同，均为 4GB 。</li>
+<li>实地址存储模型: 8086 的存储模型，是段式存储的特例，线性地址空间最大位 1MB ，由最大为 64KB 的多个段组成。</li>
+</ol>
+<h3 id="工作方式">工作方式</h3>
+<h4 id="保护方式protected-mode">保护方式（Protected Mode）</h4>
+<ol type="1">
+<li><code>IA-32</code>处理器固有的工作状态</li>
+<li>具有强大的段页式存储管理和特权与保护能力</li>
+<li>使用全部32条地址总线，可寻址4GB物理存储器</li>
+<li>使用平展或段式存储模型</li>
+<li>利用虚拟8086方式支持实地址8086软件</li>
+</ol>
+<h4 id="实地址方式real-address-mode">实地址方式（Real Address Mode）</h4>
+<ol type="1">
+<li>可以进行32位处理的快速8086</li>
+<li>只能寻址1MB物理存储器空间，每个段不超过64KB</li>
+<li>可以使用32位寄存器、32位操作数和32位寻址方式</li>
+<li>只能支持实地址存储模型</li>
+</ol>
+<h4 id="系统管理方式system-management-mode-smm">系统管理方式（System Management Mode, SMM）</h4>
+<ol type="1">
+<li>用于实现节能和系统安全管理</li>
+<li>保存当前任务后切换到分开的地址空间</li>
+</ol>
+<h3 id="逻辑地址">逻辑地址</h3>
+<p>逻辑地址是程序设计和处理器中使用的相对地址，逻辑地址 = 段基地址:偏移地址，编程使用的逻辑地址会被处理器映射为线性地址，在输出前转换为物理地址。</p>
+<h4 id="基本段">基本段</h4>
+<ol type="1">
+<li>代码段: 存放指令代码</li>
+<li>数据段: 存放数据</li>
+<li>堆栈段: 堆栈数据</li>
+</ol>
+<h5 id="基本段的逻辑地址">基本段的逻辑地址</h5>
+<ol type="1">
+<li>代码段: <code>CS</code>:<code>EIP</code></li>
+<li>数据段: <code>DS</code>/<code>FS</code>/<code>GS</code>:取决于寻址方式，由存储器计算得出</li>
+<li>堆栈段: <code>SS</code>:<code>ESP</code></li>
+</ol>
+<h4 id="段选择器">段选择器</h4>
+<p>逻辑地址的段基地址部分由16位的段寄存器确定。段寄存器保存16位的段选择器，段选择器是一种特殊的指针，指向段描述符，段描述符包括段基地址，由段基地址就可以指明存储器中的一个段。</p>
+<p>根据存储模型不同，段寄存器的具体内容也有所不同。</p>
+<h5 id="平展存储模型">平展存储模型</h5>
+<ol type="1">
+<li>6个段寄存器均指向线性地址空间的0地址</li>
+<li>程序设置2个重叠的段，一个用于代码，一个用于数据和堆栈，CS段寄存器指向代码，其他段寄存器指向数据和堆栈段。</li>
+</ol>
+<h5 id="段式存储模型">段式存储模型</h5>
+<p>段寄存器保存不同的段选择器，指向线性地址空间不同的段，例如下图所示，程序最多可以访问6个段，CS指向代码段，SS指向堆栈段，DS和其余4个段寄存器指向的数据段。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305202025716.png" srcset="/img/loading.gif" lazyload alt="image.png" /><figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<h5 id="实地址存储模型">实地址存储模型</h5>
+<p>实地址存储的主存只有 1MB（<span class="math inline">\(2^{20}\)</span>字节），仅使用地址总线的低20位，物理地址范围为 00000H-FFFFFH。实地址存储模型也进行分段处理，但是存在2个限制:</p>
+<ol type="1">
+<li>每个段最大64KB</li>
+<li>段只能开始于低4位地址全为0的物理地址处，因此实地址的段寄存器可以保存段基地址的高16位</li>
+</ol>
+<h4 id="地址转换">地址转换</h4>
+<h5 id="保护方式的地址转换">保护方式的地址转换</h5>
+<table>
+<thead>
+<tr class="header">
+<th>存储模型</th>
+<th>转换方式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>平整存储模型</td>
+<td>段基地址为0，偏移地址等于线性地址</td>
+</tr>
+<tr class="even">
+<td>段式存储模型</td>
+<td>段基地址和偏移地址均为32位</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>端基加上线性偏移等于线性地址</td>
+</tr>
+</tbody>
+</table>
+<p>此外，在不使用分页机制时，线性地址与物理地址一一对应，使用分页时，线性地址空间被分成大小一致的块（页），构成虚拟存储器并转换到物理地址空间。</p>
+<h5 id="实地址方式的地址转换">实地址方式的地址转换</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305202125358.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305202126358.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="汇编语言实验混合">汇编语言/实验混合</h1>
+<p>这块照搬书或者 PPT 就有点太无聊了，所以决定混合着上机实验一块复习了。</p>
+<h2 id="masm-模板">masm 模板</h2>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span> <span class="hljs-comment">;该行指令设置使用 586 或更高版本的指令集</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall <span class="hljs-comment">;该行指令设置使用 flat 模型和 stdcall 调用约定</span><br><br><span class="hljs-comment">;这些行指令将相关的库文件包含到程序中，以便使用库中定义的函数和符号。</span><br>includelib kernel32<span class="hljs-number">.</span>lib<br>includelib ucrt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br><span class="hljs-comment">;下面5行指令声明了一些常用的函数原型</span><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>	<br>printf proto C: vararg<br>scanf PROTO C : vararg<br><br>_getch    PROTO C : vararg         <br>_kbhit    PROTO C : vararg<br><br><span class="hljs-comment">;include temp.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>	<span class="hljs-comment">;在此处可以声明一些变量，类似于高级语言中的 static</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br><span class="hljs-comment">;main:</span><br>	<span class="hljs-comment">;此处编写主程序</span><br>	<br>	<span class="hljs-keyword">push</span> <span class="hljs-number">0</span><span class="hljs-comment">;将0压栈</span><br>	<span class="hljs-keyword">call</span> ExitProcess；对应return <span class="hljs-number">0</span><br>main ENDP<br>end main<br><br></code></pre></td></tr></table></figure>
+<h2 id="实验二简单分支程序设计">实验二：简单分支程序设计</h2>
+<p>实验目的:</p>
+<ol type="1">
+<li>掌握算术运算指令</li>
+<li>掌握 <code>cmp</code>, <code>test</code> 以及各类转移指令</li>
+<li>掌握 c 语言关系表达式和逻辑表达式对应的汇编实现</li>
+<li>掌握分支程序设计</li>
+</ol>
+<h3 id="判断输入">1. 判断输入</h3>
+<p>将下面C语言程序的代码片段转换为功能等价的汇编语言代码片段；编写一完整的汇编语言程序验证转换的正确性，其中sinteger（输入的整数） 与sign（输出的信息）均为双字变量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span>  (sinteger == <span class="hljs-number">0</span>)<br>	sign = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( siteger &gt; <span class="hljs-number">0</span>)	 <br>	sign = <span class="hljs-number">1</span>;  <br><span class="hljs-keyword">else</span>	 <br>    sign = －<span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+<h4 id="参考代码">参考代码</h4>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib kernel32<span class="hljs-number">.</span>lib<br>includelib ucrt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf PROTO C : vararg<br><br>_getch    PROTO C : vararg         <br>_kbhit    PROTO C : vararg<br><span class="hljs-comment">;include temp.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>	sinteger <span class="hljs-built_in">dd</span> <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>	sign <span class="hljs-built_in">dd</span> <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>	string <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;%d&#x27;</span>, <span class="hljs-number">0</span><span class="hljs-comment">;</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br><span class="hljs-comment">;main:</span><br>	<span class="hljs-keyword">push</span> offset sinteger<br>	<span class="hljs-keyword">push</span> offset string<br>	<span class="hljs-keyword">call</span> scanf<br>	<span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br><br>	<span class="hljs-keyword">cmp</span> sinteger, <span class="hljs-number">0</span><br>	<span class="hljs-keyword">je</span>	<span class="hljs-meta">zero</span><br>	<span class="hljs-keyword">jl</span> negtive<br>	<span class="hljs-comment">;postive:</span><br>		<span class="hljs-keyword">mov</span> sign, <span class="hljs-number">1</span><br>		<span class="hljs-keyword">jmp</span> print<br><span class="hljs-symbol">	zero:</span><br>		<span class="hljs-keyword">mov</span> sign, <span class="hljs-number">0</span><br>		<span class="hljs-keyword">jmp</span>	print<br><span class="hljs-symbol">	negtive:</span><br>		<span class="hljs-keyword">mov</span> sign, -<span class="hljs-number">1</span><br><span class="hljs-symbol">	print:</span><br>		<span class="hljs-keyword">push</span> sign<br>		<span class="hljs-keyword">push</span> offset string<br>		<span class="hljs-keyword">call</span> printf<br>		<span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br>	<br>	<span class="hljs-keyword">push</span> <span class="hljs-number">0</span><br>	<span class="hljs-keyword">call</span> ExitProcess<br>main ENDP<br>end main<br></code></pre></td></tr></table></figure>
+<p>感觉这个语法和 <code>SHENZHENG/IO</code> 里面限制20行的汇编也差不多（</p>
+<p>不过里面用来判断的关键词是 <code>teq</code>/<code>tgt</code>/<code>tlt</code>/<code>tcp</code></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305211048133.png" srcset="/img/loading.gif" lazyload alt="游戏截图" /><figcaption aria-hidden="true">游戏截图</figcaption>
+</figure>
+<p>稍微解释一下在这个实验中用到的 <code>IA-32</code> <code>masm</code> 指令的用法</p>
+<p>在 <code>.data</code> 数据段我们声明了两个初始化0的用于存储输入数字的双字变量，以及一个存入了格式化字符串的byte数组。</p>
+<p>在代码段，使用 <code>offset/addr</code> 关键字获取偏移并压栈，并使用 call 关键字调用 <code>scanf</code> 函数读入，由于使用 <code>stdcall</code> 调用约定，所以栈指针 esp 上移 <span class="math inline">\(2 \times 4 = 8\)</span> 个字节。</p>
+<p>此处一种更简单的写法是使用 <code>invoke</code> 宏来处理，这个宏的用法会在之后的实验中介绍。</p>
+<p>完成读入后使用 <code>cmp</code> 指令判断其与0的大小关系，并使用条件跳转指令 <code>je</code>(jump if equal), <code>jl</code>(jump if less) 与标签跳转至对应的分支。</p>
+<p>并处理完对应分支的操作后重新跳转回主控制流，对应 <code>jmp print</code> 。</p>
+<p>由于读入和输出的格式化字符串一致，所以此处就复用了，接下来的操作流程和开始读入时一致，故此处就不详细介绍了。</p>
+<h3 id="转换ascii大小写">2.转换ASCII大小写</h3>
+<p>将下面C语言程序的代码片段转换为功能等价的汇编语言代码片段，其中 <code>ch1</code> （输入的字符）与 <code>caps</code> （输出的信息）均为字节变量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (ch1&gt; =’a’ &amp;&amp; ch1&lt; =’z’)<br>    caps=<span class="hljs-number">0</span>; ch1=upper(ch1);<br><span class="hljs-keyword">if</span> (ch1&gt; =’A’ &amp;&amp; ch1&lt; =’Z’)<br>    caps=<span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+<p>提示：小写字母与大写字母的 <code>ASCII</code> 码的差值为 <code>20H</code>，也可以用 <code>ch1 = ch1&amp;0x5f</code></p>
+<h4 id="参考代码-1">参考代码</h4>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib kernel32<span class="hljs-number">.</span>lib<br>includelib ucrt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf PROTO C : vararg<br><br>_getch    PROTO C : vararg         <br>_kbhit    PROTO C : vararg<br><span class="hljs-comment">;include temp.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>	ch1 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;a&#x27;</span><br>	cha <span class="hljs-built_in">byte</span> <span class="hljs-number">95</span><br>	caps <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;0&#x27;</span><br>	infstring <span class="hljs-built_in">db</span> <span class="hljs-string">&quot;%c&quot;</span>, <span class="hljs-number">0</span><br>	outfstring <span class="hljs-built_in">db</span> <span class="hljs-string">&quot;cha=&#x27;%c&#x27; cap=&#x27;%c&#x27;&quot;</span>, <span class="hljs-number">0</span><br>	errfstring <span class="hljs-built_in">db</span> <span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br><span class="hljs-comment">;main:</span><br>	invoke scanf, addr infstring, addr ch1<br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>, ch1<br><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">al</span>, <span class="hljs-string">&#x27;a&#x27;</span><br>	<span class="hljs-keyword">jb</span> captial<br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">al</span>, <span class="hljs-string">&#x27;z&#x27;</span><br>	<span class="hljs-keyword">ja</span> captial<br>	<span class="hljs-comment">;small:</span><br><br>	<span class="hljs-keyword">and</span> <span class="hljs-built_in">al</span>, cha<br>	<span class="hljs-keyword">mov</span> ch1, <span class="hljs-built_in">al</span><br>	<span class="hljs-keyword">jmp</span> print<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">	captial:</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">al</span>, <span class="hljs-string">&#x27;A&#x27;</span><br>	<span class="hljs-keyword">jb</span> error<br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">al</span>, <span class="hljs-string">&#x27;Z&#x27;</span><br>	<span class="hljs-keyword">ja</span> error<br>	<br>	<span class="hljs-keyword">mov</span> caps, <span class="hljs-string">&#x27;1&#x27;</span><br><span class="hljs-symbol">	print:</span><br>	invoke printf,addr outfstring , ch1, caps<br>	<span class="hljs-keyword">ret</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">	error:</span><br>	invoke printf,addr errfstring<br>	<span class="hljs-keyword">ret</span><br>main ENDP<br>end main<br></code></pre></td></tr></table></figure>
+<p>这一段代码中使用 invoke 宏来简化手动管理堆栈平衡的操作，并且使用了 ret 来返回控制权，同时为了处理输入字符可能存在的非法情况，加入了错误处理部分。</p>
+<h3 id="以内的偶数求和">3. 100以内的偶数求和</h3>
+<p>将下面C语言程序的代码片段转换为功能等价的汇编语言代码片段；编写一完整的汇编语言程序验证转换的正确性，其中 <code>sum</code> 与 <code>i</code> 均为双字变量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">sum=<span class="hljs-number">0</span>; <br><span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span>; i&lt;=<span class="hljs-number">100</span>; i++)    <br>    <span class="hljs-keyword">if</span>(i%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)	<br>        sum=sum+i;<br></code></pre></td></tr></table></figure>
+<p>提示：可采用 <code>div</code> 指令求余数</p>
+<h4 id="参考代码-2">参考代码</h4>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib kernel32<span class="hljs-number">.</span>lib<br>includelib ucrt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf PROTO C : vararg<br>_getch    PROTO C : vararg         <br>_kbhit    PROTO C : vararg<br><span class="hljs-comment">;include temp.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>	fstr <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;sum = %d&#x27;</span>,<span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br><span class="hljs-comment">;main:</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">1</span><span class="hljs-comment">;i</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">0</span><span class="hljs-comment">;sum</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">0</span><span class="hljs-comment">;temp</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">	_loop:</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-built_in">eax</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">100</span><br>	<span class="hljs-keyword">ja</span> _end<br><br>	<span class="hljs-keyword">and</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">1</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">0</span><br>	<span class="hljs-keyword">jnz</span> _no_add<br>	<span class="hljs-keyword">add</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">eax</span><br><span class="hljs-symbol">	_no_add:</span><br><br>	<span class="hljs-keyword">add</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">1</span><br>	<span class="hljs-keyword">jmp</span> _<span class="hljs-keyword">loop</span><br><span class="hljs-symbol">	_end:</span><br>	<br>	invoke printf, addr fstr, <span class="hljs-built_in">ebx</span><br>	<span class="hljs-keyword">ret</span><br>main ENDP<br>end main<br></code></pre></td></tr></table></figure>
+<p>此处采用了一个 trick 来判断奇偶性，对于一个二进制原码整数来说，其奇偶性取决于其 0 位是否为 0，即结尾是 0 的必然是偶数，否则为奇数。</p>
+<p>所以 <code>and ecx, 1</code> 如果此时 <code>ecx</code> 中结果为 1，说明其必然为奇数，不需要相加。</p>
+<h3 id="以内的正数求和">4. 100以内的正数求和</h3>
+<p>采用无条件 <code>jmp</code> 和条件转移 <code>jcc</code> 指令构造 <code>while</code> 或 <code>do while</code> 循环结构（不得使用 <code>loop</code> 指令），完成下面的求和任务并输出 <code>sum</code> 和 <code>n</code> (变量为双字) （实际上是条件控制的循环） <span class="math display">\[
+sum=\sum_{i=1}^{100}i 
+\]</span> 思考题：假设 <code>sum</code> 为双字无符号整数，在 <code>sum</code> 不溢出的情况下求出 <code>n</code> 的最大值；并输出此时的 <code>sum</code> 和 <code>n</code> 的值。</p>
+<h4 id="参考代码-3">参考代码</h4>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">﻿.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib kernel32<span class="hljs-number">.</span>lib<br>includelib ucrt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf PROTO C : vararg<br>_getch    PROTO C : vararg         <br>_kbhit    PROTO C : vararg<br><span class="hljs-comment">;include temp.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>	fstr <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;sum = %d&#x27;</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br><span class="hljs-comment">;main:</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">1</span> <span class="hljs-comment">; i</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">0</span> <span class="hljs-comment">; sum</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">	_loop:</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">100</span><br>	<span class="hljs-keyword">ja</span> _end<br>	<span class="hljs-keyword">add</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">eax</span><br>	<span class="hljs-keyword">add</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">1</span><br>	<span class="hljs-keyword">jmp</span> _<span class="hljs-keyword">loop</span><br><span class="hljs-symbol">	_end:</span><br><br>	invoke	printf, addr fstr, <span class="hljs-built_in">ebx</span><br>	<span class="hljs-keyword">ret</span><br>main ENDP<br>end main<br></code></pre></td></tr></table></figure>
+<h4 id="思考题回答">思考题回答</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> max = <span class="hljs-number">2</span>**<span class="hljs-number">32</span> -<span class="hljs-number">1</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">f</span> = (<span class="hljs-params">n</span>) =&gt; (n * (n+<span class="hljs-number">1</span>)) /<span class="hljs-number">2.0</span><br><span class="hljs-keyword">let</span> n = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">while</span>(n++)&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_">f</span>(n) &gt; max) &#123;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;n = &quot;</span>, n)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;sum = &quot;</span>, <span class="hljs-title function_">f</span>(n))<br></code></pre></td></tr></table></figure>
+<p>使用 <code>node</code> 或者浏览器控制台运行即可，答案是 <code>n = 92682, sum = 4295022903</code></p>
+<h3 id="三数排序">5. 三数排序</h3>
+<p>从键盘上输入3个有符号的双字整数，编写一完整的程序按照又大到小的顺序输出这3个数。</p>
+<p>提示：采用 <code>xchg</code> 指令交换两个变量的值。</p>
+<h4 id="参考代码-4">参考代码</h4>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib kernel32<span class="hljs-number">.</span>lib<br>includelib ucrt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf PROTO C : vararg<br>_getch    PROTO C : vararg         <br>_kbhit    PROTO C : vararg<br><span class="hljs-comment">;include temp.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>	format <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;%d %d %d&#x27;</span>, <span class="hljs-number">0</span><br>	_a <span class="hljs-built_in">dd</span> <span class="hljs-number">0</span><br>	_b <span class="hljs-built_in">dd</span> <span class="hljs-number">0</span><br>	_c <span class="hljs-built_in">dd</span> <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br><span class="hljs-comment">;main:</span><br>	invoke scanf, offset format, addr _a, addr _b, addr _c<br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, _a<br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, _b<br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, _c<br><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br>	<span class="hljs-keyword">jnl</span> l1<br>	<span class="hljs-keyword">xchg</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br><span class="hljs-symbol">	l1:</span><br>	<br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br>	<span class="hljs-keyword">jnl</span> l2<br>	<span class="hljs-keyword">xchg</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br><span class="hljs-symbol">	l2:</span><br><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">ecx</span><br>	<span class="hljs-keyword">jnl</span> l3<br>	<span class="hljs-keyword">xchg</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">ecx</span><br><span class="hljs-symbol">	l3:</span><br><br>	invoke printf, offset format, <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">ecx</span><br>	invoke ExitProcess,<span class="hljs-number">0</span><br>main ENDP<br>end main<br></code></pre></td></tr></table></figure>
+<h3 id="判断闰年">6. 判断闰年</h3>
+<p>输入年份并判断其是否是闰年，闰年需要满足以下条件中的一个：</p>
+<ol type="1">
+<li>该年份能被 4 整除同时不能被 100 整除；</li>
+<li>该年份能被400整除。</li>
+</ol>
+<p>提示：可采用 <code>div</code> 指令求余数</p>
+<h4 id="参考代码-5">参考代码</h4>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib kernel32<span class="hljs-number">.</span>lib<br>includelib ucrt<span class="hljs-number">.</span>lib<br>includelib legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf PROTO C : vararg<br>_getch    PROTO C : vararg         <br>_kbhit    PROTO C : vararg<br><span class="hljs-comment">;include temp.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>	fistr <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;%d&#x27;</span>, <span class="hljs-number">0</span><br>	fostr1 <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;is leep year&#x27;</span>,<span class="hljs-number">0</span><br>	fostr2 <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;is not leep year&#x27;</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main PROC<br><span class="hljs-comment">;main:</span><br>	<span class="hljs-keyword">push</span> <span class="hljs-built_in">ebp</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebp</span>, <span class="hljs-built_in">esp</span><br><br>	<span class="hljs-keyword">sub</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span>], <span class="hljs-number">0</span><span class="hljs-comment">;栈上分配int, 初始化为0</span><br>	<span class="hljs-keyword">lea</span>	<span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">ebp</span>-<span class="hljs-number">8</span>]<br><br>	invoke scanf, addr fistr, <span class="hljs-built_in">eax</span><br>	<span class="hljs-keyword">mov</span>	<span class="hljs-built_in">ecx</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span>-<span class="hljs-number">8</span>]<br><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">400</span><br>	<span class="hljs-keyword">cdq</span><br>	<span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br>	<span class="hljs-keyword">jz</span> is_leap<span class="hljs-comment">;year mod 400 == 0</span><br><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">4</span><br>	<span class="hljs-keyword">cdq</span><br>	<span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br>	<span class="hljs-keyword">jne</span> not_leap<span class="hljs-comment">;year mod 4 == 0</span><br><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">100</span><br>	<span class="hljs-keyword">cdq</span><br>	<span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br>	<span class="hljs-keyword">jne</span> is_leap<span class="hljs-comment">;year mod 100 != 0</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">	not_leap:</span><br>	invoke printf,addr fostr2<br>	<span class="hljs-keyword">jmp</span> _end<br><span class="hljs-symbol">	</span><br><span class="hljs-symbol">	is_leap:</span><br>	invoke printf,addr fostr1<br><span class="hljs-symbol">	</span><br><span class="hljs-symbol">	_end:</span><br>	<span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">esp</span>, <span class="hljs-built_in">ebp</span><br>	<span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebp</span><br><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">0</span><br>	<span class="hljs-keyword">ret</span><br>main ENDP<br>end main<br></code></pre></td></tr></table></figure>
+<p>此处代码的分析使用语言模型生成，参考 <code>prompt</code> 如下 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm">逐行分析下列 IA-<span class="hljs-number">32</span> masm 代码中 <span class="hljs-meta">.code</span> 段的意图<br><span class="hljs-comment">// 代码省略</span><br></code></pre></td></tr></table></figure></p>
+<h5 id="分析">分析</h5>
+<p>该汇编代码段中的<code>.code</code>段是用于定义程序的主要代码逻辑和流程。下面逐行分析该代码段的意图：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.code</span><br>main PROC<br></code></pre></td></tr></table></figure>
+<p>开始定义一个名为<code>main</code>的过程（Procedure）。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">push</span> <span class="hljs-built_in">ebp</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebp</span>, <span class="hljs-built_in">esp</span><br></code></pre></td></tr></table></figure>
+<p>保存旧的基址寄存器值并将当前栈指针赋值给基址寄存器，创建一个新的堆栈帧。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">sub</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span>], <span class="hljs-number">0</span><br><span class="hljs-keyword">lea</span> <span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">ebp</span>-<span class="hljs-number">8</span>]<br></code></pre></td></tr></table></figure>
+<p>在堆栈上分配8字节的空间，并将该空间的第一个双字（32位整数）初始化为0。然后，将<code>eax</code>寄存器设置为指向这个双字的地址。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">invoke scanf, addr fistr, <span class="hljs-built_in">eax</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span>-<span class="hljs-number">8</span>]<br></code></pre></td></tr></table></figure>
+<p>调用<code>scanf</code>函数，从用户输入中读取一个整数，并将其存储到之前分配的空间中。然后，将<code>ecx</code>寄存器设置为该整数的值。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">400</span><br><span class="hljs-keyword">cdq</span><br><span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br><span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br><span class="hljs-keyword">jz</span> is_leap<br></code></pre></td></tr></table></figure>
+<p>将<code>eax</code>寄存器设置为<code>ecx</code>的值，然后将<code>ebx</code>寄存器设置为400，执行带符号除法指令<code>idiv</code>，将<code>eax</code>寄存器中的值除以<code>ebx</code>寄存器中的值。将得到的余数存储在<code>edx</code>寄存器中，然后将<code>edx</code>与0进行比较。如果相等（余数为0），则跳转到<code>is_leap</code>标签处。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">4</span><br><span class="hljs-keyword">cdq</span><br><span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br><span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br><span class="hljs-keyword">jne</span> not_leap<br></code></pre></td></tr></table></figure>
+<p>将<code>eax</code>寄存器设置为<code>ecx</code>的值，然后将<code>ebx</code>寄存器设置为4，执行带符号除法指令<code>idiv</code>，将<code>eax</code>寄存器中的值除以<code>ebx</code>寄存器中的值。将得到的余数存储在<code>edx</code>寄存器中，然后将<code>edx</code>与0进行比较。如果不相等（余数不为0），则跳转到<code>not_leap</code>标签处。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ecx</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">100</span><br><span class="hljs-keyword">cdq</span><br><span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br><span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br><span class="hljs-keyword">jne</span> is_leap<br></code></pre></td></tr></table></figure>
+<p>将<code>eax</code>寄存器设置为<code>ecx</code>的值，然后将<code>ebx</code>寄存器设置为100，执行带符号除法指令<code>idiv</code>，将<code>eax</code>寄存器中的值除以<code>ebx</code>寄存器中的值。将得到的余数存储在<code>edx</code>寄存器中，然后将<code>edx</code>与0进行比较。如果不相等（余数不为0），则跳转到<code>is_leap</code>标签处</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-symbol">not_leap:</span><br>invoke printf, addr fostr2<br><span class="hljs-keyword">jmp</span> _end<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">is_leap:</span><br>invoke printf, addr fostr1<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">_end:</span><br><span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">esp</span>, <span class="hljs-built_in">ebp</span><br><span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebp</span><br><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">0</span><br><span class="hljs-keyword">ret</span><br></code></pre></td></tr></table></figure>
+<p>在<code>not_leap</code>标签处，调用<code>printf</code>函数，打印字符串<code>fostr2</code>。然后跳转到<code>_end</code>标签处。在<code>is_leap</code>标签处，调用<code>printf</code>函数，打印字符串<code>fostr1</code>。然后继续执行到<code>_end</code>标签处。</p>
+<p>在<code>_end</code>标签处，释放在堆栈上分配的8字节空间，恢复堆栈指针，并将旧的基址寄存器值恢复。最后，将<code>eax</code>寄存器设置为0并返回。</p>
+<p>整个代码段的目的是读取用户输入的一个整数，然后判断该整数是否为闰年，并根据判断结果打印相应的字符串。</p>
+<h3 id="实验三循环程序设计实验">实验三：循环程序设计实验</h3>
+<h4 id="的闰年数量">1. 2012-2100的闰年数量</h4>
+<h5 id="参考代码-6">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib	msvcrt<span class="hljs-number">.</span>lib<br><br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf  proto C: vararg<br><br><span class="hljs-comment">;include vcIO.inc</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>Lyear <span class="hljs-built_in">dword</span> <span class="hljs-number">25</span> dup(<span class="hljs-number">0</span>) <span class="hljs-comment">;结果数组</span><br>msg <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;Leap year is follow:&#x27;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">0</span><br>format <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;%d&#x27;</span>,<span class="hljs-number">9</span>,<span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main Proc<br>	<span class="hljs-keyword">xor</span> <span class="hljs-built_in">ecx</span>,<span class="hljs-built_in">ecx</span> <span class="hljs-comment">;将寄存器ECX清零，用于计数闰年的个数</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>,<span class="hljs-number">2012</span> <span class="hljs-comment">;将寄存器ESI的值设置为2012，即开始年份</span><br>	<span class="hljs-keyword">jmp</span> testing<br><span class="hljs-symbol">body:</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">esi</span> <span class="hljs-comment">;将寄存器EAX的值设置为ESI，即当前年份</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>,<span class="hljs-number">4</span> <span class="hljs-comment">;将寄存器EBX的值设置为4，用于进行除法运算</span><br>	<span class="hljs-keyword">cdq</span> <br>	<span class="hljs-keyword">div</span> <span class="hljs-built_in">ebx</span><br>	<br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>,<span class="hljs-number">0</span><br>	<span class="hljs-keyword">jne</span> next <span class="hljs-comment">;如果 year % 4 != 0，则跳转到标签`next`处</span><br>    <span class="hljs-comment">;此处已满足被4整除</span><br>    <br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">esi</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>,<span class="hljs-number">100</span><br>	<span class="hljs-keyword">cdq</span><br>	<span class="hljs-keyword">div</span> <span class="hljs-built_in">ebx</span><br>	<br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>,<span class="hljs-number">0</span><br>	<span class="hljs-keyword">je</span> next <span class="hljs-comment">;如果 year % 4 == 100，则跳转至标签`next`处</span><br><br>    <span class="hljs-comment">;此处已满足被4整除且不被100整除</span><br>	<br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> Lyear[<span class="hljs-built_in">ecx</span>*<span class="hljs-number">4</span>],<span class="hljs-built_in">esi</span> <br>	<span class="hljs-comment">;保存结果，乘4因为32位整数四字节大小</span><br>	<br>	<span class="hljs-keyword">inc</span> <span class="hljs-built_in">ecx</span> <span class="hljs-comment">;增加计数</span><br>	<span class="hljs-keyword">jmp</span> over<br><span class="hljs-symbol">	</span><br><span class="hljs-symbol">next:</span> <span class="hljs-comment">;此处判断是否被400整除</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">esi</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>,<span class="hljs-number">400</span><br>	<span class="hljs-keyword">cdq</span><br>	<span class="hljs-keyword">div</span> <span class="hljs-built_in">ebx</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>,<span class="hljs-number">0</span><br>	<span class="hljs-keyword">jne</span> over<br>	<br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> Lyear[<span class="hljs-built_in">ecx</span>*<span class="hljs-number">4</span>],<span class="hljs-built_in">esi</span><br>	<span class="hljs-keyword">inc</span> <span class="hljs-built_in">ecx</span><br><span class="hljs-symbol">over:</span><br>	<span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span> <span class="hljs-comment">;增加年份计数</span><br><span class="hljs-symbol">testing:</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">esi</span>,<span class="hljs-number">2100</span><br>	<span class="hljs-keyword">jl</span> body<br>	<br>	<span class="hljs-keyword">pushad</span> <span class="hljs-comment">;保护寄存器现场</span><br>	invoke printf,offset msg<br>	<span class="hljs-keyword">popad</span><br>	<br>	<span class="hljs-keyword">xor</span> <span class="hljs-built_in">esi</span>,<span class="hljs-built_in">esi</span><br><span class="hljs-symbol">again:</span><br>	<span class="hljs-keyword">pushad</span><br>	invoke printf,offset format,<span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> Lyear[<span class="hljs-built_in">esi</span>*<span class="hljs-number">4</span>]<br>	<span class="hljs-keyword">popad</span><br>	<span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span><br>	<span class="hljs-keyword">loop</span> again<br><br>	invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br>end main<br></code></pre></td></tr></table></figure>
+<h4 id="回文串判断">2. 回文串判断</h4>
+<p>“回文串”是一个正读和反读都一样的字符串，比如“eye”、“level”、“noon”等。请写一个程序测试一字符串是否是“回文”， 是“回文”则显示“Y”。</p>
+<p>提示：</p>
+<ol type="1">
+<li>合理分配寄存器: <code>left = esi, right = edi, flag = al = 'Y'</code></li>
+<li>采用相对寻址处理数组。</li>
+</ol>
+<h5 id="参考代码-7">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><span class="hljs-meta"> </span><br><span class="hljs-meta">.386</span><br><span class="hljs-meta">.model</span> flat,stdcall<br> <br>ExitProcess PROTO,<br><span class="hljs-symbol">dwExitCode:</span><span class="hljs-built_in">DWORD</span><br> <br>printf    PROTO C : <span class="hljs-built_in">dword</span>,:vararg<br>scanf    PROTO C : <span class="hljs-built_in">dword</span>,:vararg<br><br><span class="hljs-comment">;INCLUDE vcIO.inc</span><br><span class="hljs-meta">.data</span><br>    array <span class="hljs-built_in">BYTE</span> <span class="hljs-string">&quot;lwasdffdsawl&quot;</span>,<span class="hljs-number">0</span><br>    str_error <span class="hljs-built_in">BYTE</span> <span class="hljs-string">&quot;该字符串不是回文串&quot;</span>,<span class="hljs-number">0ah</span>,<span class="hljs-number">0</span><br>    str_ok <span class="hljs-built_in">BYTE</span> <span class="hljs-string">&quot;该字符串是回文串&quot;</span>,<span class="hljs-number">0ah</span>,<span class="hljs-number">0</span><br><span class="hljs-meta">.code</span><br>main PROC<br>    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">esi</span>, <span class="hljs-built_in">esi</span> <span class="hljs-comment">;esi为头指针</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">edi</span>, LENGTHOF array - <span class="hljs-number">2</span> <span class="hljs-comment">;edi为尾指针</span><br>    <span class="hljs-comment">;数组索引从0 ~ array-1，其中最后一位为 &#x27;\0&#x27;</span><br>    <span class="hljs-comment">;故实际最后一位的索引为 array-2</span><br>    <br>    <span class="hljs-keyword">jmp</span> TESTING<br><span class="hljs-symbol">FORLOOP:</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>,array[<span class="hljs-built_in">esi</span>*<span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">bl</span>,array[<span class="hljs-built_in">edi</span>*<span class="hljs-number">1</span>]<br>    <br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">al</span>,<span class="hljs-built_in">bl</span><br>    <span class="hljs-keyword">jne</span> EXIT <span class="hljs-comment">;如果头尾指针元素不同则不是回文串</span><br>    <br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span><br>    <span class="hljs-keyword">dec</span> <span class="hljs-built_in">edi</span> <br>    <span class="hljs-keyword">jmp</span> TESTING<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">EXIT:</span><br>    invoke printf, OFFSET str_error<br>    <span class="hljs-keyword">jmp</span> ENDLOOP<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">TESTING:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">esi</span>,<span class="hljs-built_in">edi</span><br>    <span class="hljs-keyword">jbe</span> FORLOOP <span class="hljs-comment">;esi&lt;=edi 时继续循环</span><br><br>    invoke printf, OFFSET str_ok<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">ENDLOOP:</span><br>    invoke ExitProcess, <span class="hljs-number">0</span><br>main ENDP<br>END main<br></code></pre></td></tr></table></figure>
+<h4 id="字符统计">3. 字符统计</h4>
+<p>编程写一个完整的程序统计字符串msg中的空格的个数与小写字母的个数，并分别将它们存入space单元与char单元中并输出。</p>
+<h5 id="参考代码-8">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat, stdcall<br><br>includelib msvcrt<span class="hljs-number">.</span>lib<br><br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span> <span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf proto C: vararg<br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>    msg <span class="hljs-built_in">byte</span> <span class="hljs-string">&quot;hello, m a s m!&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span><br>    space <span class="hljs-built_in">dword</span> ?<br>    lowercase <span class="hljs-built_in">dword</span> ?<br>    frmStr <span class="hljs-built_in">byte</span> <span class="hljs-string">&quot;space num = %d, lowercase num = %d&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main proc<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, lengthof msg   <br>    <span class="hljs-comment">; 将字符串 msg 的长度存储在 ECX 寄存器中</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, offset msg     <br>    <span class="hljs-comment">; 将字符串 msg 的起始地址存储在 ESI 寄存器中</span><br>    <span class="hljs-keyword">sub</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">eax</span>            <br>    <span class="hljs-comment">; 将 EAX 寄存器清零，用于计数空格字符的数量</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">eax</span>            <br>    <span class="hljs-comment">; 将 EBX 寄存器清零，用于计数小写字母的数量</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">again:</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">dl</span>, [<span class="hljs-built_in">esi</span>]           <span class="hljs-comment">; 将当前字符读取到 DL 寄存器中</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">dl</span>, <span class="hljs-string">&#x27; &#x27;</span>             <span class="hljs-comment">; 比较当前字符与空格字符 &#x27; &#x27; 是否相等</span><br>    <span class="hljs-keyword">jnz</span> letter              <span class="hljs-comment">; 如果不相等，跳转到 letter 标签继续执行</span><br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">eax</span>                 <span class="hljs-comment">; 空格字符计数器加 1</span><br><span class="hljs-symbol">letter:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">dl</span>, <span class="hljs-string">&#x27;a&#x27;</span>             <span class="hljs-comment">; 比较当前字符与小写字母 &#x27;a&#x27; 是否相等</span><br>    <span class="hljs-keyword">jb</span> next                 <span class="hljs-comment">; 如果当前字符小于 &#x27;a&#x27;，跳转到 next 标签</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">dl</span>, <span class="hljs-string">&#x27;z&#x27;</span>             <span class="hljs-comment">; 比较当前字符与小写字母 &#x27;z&#x27; 是否相等</span><br>    <span class="hljs-keyword">jg</span> next                 <span class="hljs-comment">; 如果当前字符大于 &#x27;z&#x27;，跳转到 next 标签</span><br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">ebx</span>                 <span class="hljs-comment">; 小写字母计数器加 1</span><br><span class="hljs-symbol">next:</span><br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span>                 <span class="hljs-comment">; 字符串指针增加 1</span><br>    <span class="hljs-keyword">loop</span> again              <span class="hljs-comment">; 继续循环，直到 ECX 寄存器减为零</span><br><br>    <span class="hljs-keyword">pushad</span>                  <span class="hljs-comment">; 保存所有通用寄存器的值</span><br>    invoke printf, offset frmStr, <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span> <br>    <span class="hljs-comment">; 调用 printf 函数，输出格式化字符串，并传递计数器的值</span><br>    <br>    <span class="hljs-keyword">popad</span>                   <span class="hljs-comment">; 恢复之前保存的通用寄存器的值</span><br>    invoke ExitProcess, <span class="hljs-number">0</span>   <br>main endp<br>end main<br></code></pre></td></tr></table></figure>
+<h4 id="求数组最大值与最小值">4. 求数组最大值与最小值</h4>
+<p>编程写一个完整的程序,求数组 <code>array[12, 4, 168, 122, -33, 56, 78, 99, 345, 66, -5]</code> 中的最大值与最小值，并将它们分别存入 <code>max</code> 和 <code>min</code> 单元中。</p>
+<h5 id="参考代码-9">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat, stdcall<br><br>includelib msvcrt<span class="hljs-number">.</span>lib<br><br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode: <span class="hljs-built_in">DWORD</span>     <span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf proto C: vararg<br><br><span class="hljs-comment">; include vcIO.inc</span><br>_getch PROTO C: <span class="hljs-built_in">DWORD</span>, : vararg<br><span class="hljs-meta">.data</span><br>    array <span class="hljs-built_in">dword</span> <span class="hljs-number">12</span>, <span class="hljs-number">4</span>, <span class="hljs-number">168</span>, <span class="hljs-number">122</span>, -<span class="hljs-number">33</span>, <span class="hljs-number">56</span>, <span class="hljs-number">78</span>, <span class="hljs-number">99</span>, <span class="hljs-number">345</span>, <span class="hljs-number">66</span>, -<span class="hljs-number">5</span><br>    fstr1 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;min=%d&#x27;</span>, <span class="hljs-number">0ah</span>, <span class="hljs-number">0</span><br>    fstr2 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;max=%d&#x27;</span>, <span class="hljs-number">0ah</span>, <span class="hljs-number">0</span><br><span class="hljs-meta">.code</span><br>main proc<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">edx</span>, offset array <span class="hljs-comment">;索引</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, lengthof array <span class="hljs-comment">;计数器</span><br><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">edx</span>] <span class="hljs-comment">;min</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, [<span class="hljs-built_in">edx</span>] <span class="hljs-comment">;max</span><br>    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">esi</span>, <span class="hljs-built_in">esi</span> <span class="hljs-comment">;temp变量</span><br><span class="hljs-symbol">    </span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    _loop:</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, [<span class="hljs-built_in">edx</span>]<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    check_min:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">esi</span><br>    <span class="hljs-keyword">jle</span> check_max<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">esi</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    check_max:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">esi</span><br>    <span class="hljs-keyword">jge</span> check_end<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">esi</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    check_end:</span><br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">4</span><br>    <span class="hljs-keyword">loop</span> _<span class="hljs-keyword">loop</span><br><br><br>    invoke printf, addr fstr1, <span class="hljs-built_in">eax</span><br>    invoke printf, addr fstr2, <span class="hljs-built_in">ebx</span><br><br>    invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br>end main<br><br></code></pre></td></tr></table></figure>
+<h4 id="寻找回文数">5. 寻找回文数</h4>
+<p>求10到10000之间所有回文数并输出。要求每行输出10个数。</p>
+<h5 id="参考代码-10">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat,stdcall<br><br>includelib	msvcrt<span class="hljs-number">.</span>lib<br><br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span>		<span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf  proto C: vararg<br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>msg1 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;%d&#x27;</span>,<span class="hljs-number">9</span>,<span class="hljs-number">0</span><br>msg2 <span class="hljs-built_in">byte</span> <span class="hljs-number">10</span>,<span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main Proc<br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>,<span class="hljs-number">10</span> <span class="hljs-comment">; esi 为起始检查值</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">edi</span>,<span class="hljs-number">0</span><span class="hljs-comment">; edi 为输出个数计数器</span><br><span class="hljs-symbol">	</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">body:</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>,<span class="hljs-number">0</span> <span class="hljs-comment">; ecx 存放反转后的当前 esi</span><br>	<span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">esi</span> <br><span class="hljs-symbol"></span><br><span class="hljs-symbol">	reverse:</span><br>		<span class="hljs-keyword">imul</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">10</span><br>		<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-number">10</span><br>		<span class="hljs-keyword">cdq</span><br>		<span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br>		<span class="hljs-keyword">add</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-built_in">edx</span><br><br>		<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">0</span><br>		<span class="hljs-keyword">jne</span> reverse<br><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-built_in">esi</span> <br>	<span class="hljs-keyword">jne</span> loop_check<br><br>	invoke printf,addr msg1, <span class="hljs-built_in">ecx</span> <span class="hljs-comment">;打印回文数</span><br><br>	<span class="hljs-keyword">inc</span> <span class="hljs-built_in">edi</span><br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edi</span>, <span class="hljs-number">10</span><br>	<span class="hljs-keyword">jne</span> loop_check<br><br>	invoke printf, addr msg2 <span class="hljs-comment">;打印换行符</span><br>	<span class="hljs-keyword">xor</span> <span class="hljs-built_in">edi</span>, <span class="hljs-built_in">edi</span> <span class="hljs-comment">;edi 置0</span><br><span class="hljs-symbol">	</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">loop_check:</span><br>	<span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span> <br>	<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">esi</span>,<span class="hljs-number">10000</span> <br>	<span class="hljs-keyword">jl</span> body <br><br>	invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br>end main<br></code></pre></td></tr></table></figure>
+<h4 id="剔除空格">6. 剔除空格</h4>
+<p>有一个首地址为 <code>string</code> 的字符串，剔除 <code>string</code>中所有的空格字符。请从字符串最后一个字符开始逐个向前判断、并进行处理。</p>
+<h5 id="参考代码-11">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat, stdcall<br><br>includelib msvcrt<span class="hljs-number">.</span>lib<br><br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><span class="hljs-meta"></span><br><span class="hljs-meta">.386</span><br><span class="hljs-meta">.model</span> flat, stdcall<br><br>ExitProcess PROTO,<br><span class="hljs-symbol">dwExitCode:</span> <span class="hljs-built_in">DWORD</span><br><br>printf PROTO C: <span class="hljs-built_in">DWORD</span>, : vararg<br>scanf PROTO C: <span class="hljs-built_in">DWORD</span>, : vararg<br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>    string <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;Dubi Dubi Duba Dubi Dubi Duba Perry&#x27;</span>, <span class="hljs-number">0</span><br>    format <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;%s&#x27;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main Proc<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, lengthof string - <span class="hljs-number">1</span> <span class="hljs-comment">; esi == scanP</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">edi</span>, <span class="hljs-built_in">esi</span> <span class="hljs-comment">; edi == tailP</span><br>    <span class="hljs-keyword">jmp</span> body_check<br><span class="hljs-symbol">body:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> string[<span class="hljs-built_in">esi</span>], <span class="hljs-string">&#x27; &#x27;</span><br>    <span class="hljs-keyword">jne</span> _continue<br><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">esi</span> <span class="hljs-comment">; ebx == moveP</span><br>    <span class="hljs-keyword">jmp</span> move_check<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">_move:</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>, <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> string[<span class="hljs-built_in">ebx</span> + <span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> string[<span class="hljs-built_in">ebx</span>], <span class="hljs-built_in">al</span><br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">ebx</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">move_check:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">edi</span><br>    <span class="hljs-keyword">jl</span> _move<br><br>    <span class="hljs-keyword">dec</span> <span class="hljs-built_in">edi</span><br><span class="hljs-symbol">_continue:</span><br>    <span class="hljs-keyword">dec</span> <span class="hljs-built_in">esi</span><br><span class="hljs-symbol">body_check:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">0</span><br>    <span class="hljs-keyword">jge</span> body<br><br>    invoke printf, offset format, offset string<br><br>    invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br>end main<br><br></code></pre></td></tr></table></figure>
+<p>这段代码简单来说就是从后往前寻找空白字符，如果找到了，将后续所有往前移动一步然后接着找空白字符，直至找到字符串的头部。</p>
+<h4 id="素数筛">7. 素数筛</h4>
+<p>求出2～1000之间的所有素数，并将它们存入 <code>Prime</code> 数组中，素数的个数存入变量 <code>Pcounter</code> 中。要求每行输出10个数。</p>
+<h5 id="参考代码-12">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat, stdcall<br><br>includelib msvcrt<span class="hljs-number">.</span>lib<br><br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode: <span class="hljs-built_in">DWORD</span> <span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf proto C: vararg<br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>    fstr1 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;%d &#x27;</span>, <span class="hljs-number">0</span><br>    fstr2 <span class="hljs-built_in">byte</span> <span class="hljs-number">10</span>, <span class="hljs-number">0</span><br>    fstr3 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;prime number count: %d&#x27;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span><br>    prime <span class="hljs-built_in">dword</span> <span class="hljs-number">2</span>, <span class="hljs-number">3</span> , <span class="hljs-number">0</span> dup(<span class="hljs-number">1000</span>)<br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main Proc<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">4</span> <span class="hljs-comment">;start number</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">2</span> <span class="hljs-comment">;prime counter</span><br>    <span class="hljs-keyword">jmp</span> body_check<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    body:</span><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">edi</span>, <span class="hljs-number">0</span> <span class="hljs-comment">;素数筛索引</span><br><span class="hljs-symbol">  </span><br><span class="hljs-symbol">    sieve:</span><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">esi</span><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> prime[<span class="hljs-built_in">edi</span>*<span class="hljs-number">4</span>]<br>        <span class="hljs-keyword">cdq</span><br>        <span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br>        <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">jz</span> _continue <span class="hljs-comment">;可被整除，跳至_continue</span><br><br>        <br>        <span class="hljs-keyword">inc</span> <span class="hljs-built_in">edi</span><br>        <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">edi</span>, <span class="hljs-built_in">ecx</span><br>        <span class="hljs-keyword">jl</span> sieve<br><br>        <span class="hljs-comment">; 未被筛除，将其加入素数筛中</span><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> prime[<span class="hljs-built_in">ecx</span>*<span class="hljs-number">4</span>], <span class="hljs-built_in">esi</span><br>        <span class="hljs-keyword">inc</span> <span class="hljs-built_in">ecx</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    _continue:</span><br>        <span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span> <span class="hljs-comment">;移动至下一个待筛数字</span><br><span class="hljs-symbol">    body_check:</span><br>        <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">1000</span><br>        <span class="hljs-keyword">jl</span> body<br><br>    <br>    <br>    <br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">0</span> <span class="hljs-comment">;prime计数器</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">0</span> <span class="hljs-comment">;格式化计数器</span><br><span class="hljs-symbol">    print:</span><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> prime[<span class="hljs-built_in">eax</span>*<span class="hljs-number">4</span>]<br><br>        <span class="hljs-keyword">pushad</span><br>        invoke printf, addr fstr1, <span class="hljs-built_in">ebx</span><br>        <span class="hljs-keyword">popad</span><br><br>        <span class="hljs-keyword">inc</span> <span class="hljs-built_in">eax</span><br>        <span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span><br>        <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">10</span><br><br>        <span class="hljs-keyword">jne</span> _continue_print<br><br>        <span class="hljs-keyword">pushad</span><br>        invoke printf, addr fstr2<br>        <span class="hljs-keyword">popad</span><br>        <br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">0</span><br><span class="hljs-symbol">        _continue_print:</span><br>    <span class="hljs-keyword">loop</span> print<br><br>    invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br>end main<br><br></code></pre></td></tr></table></figure>
+<h3 id="实验四子程序与操作系统功能调用">实验四：子程序与操作系统功能调用</h3>
+<h4 id="递归阶乘">1. 递归阶乘</h4>
+<p>编写一个求 <span class="math inline">\(n!\)</span> 的子程序，利用它求 <span class="math inline">\(1!+2! +3! +4! +5! +6! +7! +8!\)</span> 的和（46233）并输出。</p>
+<h5 id="参考代码-13">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><span class="hljs-meta"></span><br><span class="hljs-meta">.386</span><br><span class="hljs-meta">.model</span> flat, stdcall<br><br>ExitProcess PROTO,<br><span class="hljs-symbol">dwExitCode:</span> <span class="hljs-built_in">DWORD</span><br><br>printf PROTO C: <span class="hljs-built_in">DWORD</span>, : VARARG<br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>    msg1 <span class="hljs-built_in">byte</span> <span class="hljs-string">&quot;f(x)=x!&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">0</span><br>    msg2 <span class="hljs-built_in">byte</span> <span class="hljs-string">&quot;f(%d)=%d&quot;</span>,<span class="hljs-number">10</span>, <span class="hljs-number">0</span><br>    msg3 <span class="hljs-built_in">byte</span> <span class="hljs-string">&quot;sum=%d&quot;</span>, <span class="hljs-number">10</span>,<span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br><br>main PROC<br>    invoke printf, addr msg1<br><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">edx</span>, <span class="hljs-number">0</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    fac:</span><br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ecx</span><br>    <span class="hljs-keyword">call</span> Factorial<br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">4</span><br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">edx</span>, <span class="hljs-built_in">eax</span><br><br>    <span class="hljs-keyword">pushad</span><br>    invoke printf, addr msg2, <span class="hljs-built_in">ecx</span>, <span class="hljs-built_in">eax</span><br>    <span class="hljs-keyword">popad</span><br><br><br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">ecx</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">8</span><br>    <span class="hljs-keyword">jle</span> fac<br><br>    invoke printf, addr msg3, <span class="hljs-built_in">edx</span><br><br>    invoke ExitProcess, <span class="hljs-number">0</span><br>main ENDP<br><br>Factorial PROC<br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebp</span>, <span class="hljs-built_in">esp</span><br>    <span class="hljs-keyword">sub</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">4</span>     <span class="hljs-comment">; 为局部变量分配4字节的栈空间</span><br><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">8</span>] <span class="hljs-comment">; 获取参数n的值</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">jbe</span> Return      <span class="hljs-comment">; 如果n小于等于1，直接返回1</span><br><br>    <span class="hljs-keyword">dec</span> <span class="hljs-built_in">eax</span>         <span class="hljs-comment">; 将n减1</span><br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">eax</span>        <span class="hljs-comment">; 将n-1作为参数压入栈中</span><br>    <span class="hljs-keyword">call</span> Factorial  <span class="hljs-comment">; 递归调用阶乘子过程</span><br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">4</span>      <span class="hljs-comment">; 清除栈中的参数</span><br><br>    <span class="hljs-keyword">imul</span> <span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">8</span>] <span class="hljs-comment">; 将结果乘以n，存储在eax中</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">Return:</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esp</span>, <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">ret</span> <span class="hljs-number">4</span>           <span class="hljs-comment">; 从过程返回并清除栈中的参数</span><br>Factorial ENDP<br><br>END main<br></code></pre></td></tr></table></figure>
+<h4 id="斐波那契数列">2. 斐波那契数列</h4>
+<p>Fibonacci numbers的定义： <span class="math display">\[
+f_1=1,\ f_2=1,\ f_n = f_{n-1}+f_{n-2}\ when \ n\ge3 
+\]</span> 编程输出 Fibonacci numbers 的前20项。 思考题：在不产生溢出的情况下 <span class="math inline">\(n\)</span> 的最大值是多少？</p>
+<h5 id="参考代码-14">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><span class="hljs-meta"></span><br><span class="hljs-meta">.386</span><br><span class="hljs-meta">.model</span> flat, stdcall<br><br>ExitProcess PROTO,<br><span class="hljs-symbol">    dwExitCode:</span><span class="hljs-built_in">DWORD</span><br><br>printf PROTO C : <span class="hljs-built_in">dword</span>, :vararg<br>scanf PROTO C : <span class="hljs-built_in">dword</span>, :vararg<br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>    array <span class="hljs-built_in">dword</span> <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">18</span> dup(<span class="hljs-number">0</span>)<br>    format <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;%d&#x27;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main Proc<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">2</span><br>    <span class="hljs-keyword">jmp</span> check<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">body:</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> array[<span class="hljs-built_in">esi</span>*<span class="hljs-number">4</span> - <span class="hljs-number">4</span>]<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> array[<span class="hljs-built_in">esi</span>*<span class="hljs-number">4</span> - <span class="hljs-number">8</span>]<br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> array[<span class="hljs-built_in">esi</span>*<span class="hljs-number">4</span>], <span class="hljs-built_in">eax</span><br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">check:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">20</span><br>    <span class="hljs-keyword">jl</span> body<br><br><br><span class="hljs-keyword">xor</span> <span class="hljs-built_in">esi</span>, <span class="hljs-built_in">esi</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-number">20</span><br><span class="hljs-symbol">print:</span><br>    <span class="hljs-keyword">pushad</span><br>    invoke printf, offset format, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> array[<span class="hljs-built_in">esi</span>]<br>    <span class="hljs-keyword">popad</span><br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">4</span>    <br><span class="hljs-keyword">loop</span> print<br><br>invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br>end main<br><br></code></pre></td></tr></table></figure>
+<h5 id="思考题答案">思考题答案</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> max = <span class="hljs-number">2</span>**<span class="hljs-number">32</span> - <span class="hljs-number">1</span><br><span class="hljs-keyword">let</span> s = <span class="hljs-title class_">Array</span>(<span class="hljs-number">100</span>).<span class="hljs-title function_">fill</span>(<span class="hljs-number">1</span>)<br>s[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">3</span>;;i++)&#123;<br>    s[i]=s[i-<span class="hljs-number">1</span>]+s[i-<span class="hljs-number">2</span>]<br>    <span class="hljs-keyword">if</span>(s[i] &gt; max) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;i=&quot;</span>, i - <span class="hljs-number">1</span>)<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;max=&quot;</span>, s[i -<span class="hljs-number">1</span>])<br>        <span class="hljs-keyword">break</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[i = 47,
+max = 2971215073\]</span></p>
+<h4 id="欧几里得算法">3. 欧几里得算法</h4>
+<p>编程写一个名为 <code>Gcd</code> 的求两个数最大公约数子程序，主子程序间的参数传递通过堆栈完成。调用 <code>Gcd</code> 子程序求出三个双自变量：<code>dvar1</code>、<code>dvar2</code> 与 <code>dvar3</code> 的最大公约数并输出。</p>
+<p>提示：<span class="math inline">\(result=gcd(gcd(dvar1,dvar2), dvar3)\)</span></p>
+<h5 id="参考代码-15">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.586</span><br><span class="hljs-meta">.MODEL</span> flat, stdcall<br><br>includelib msvcrt<span class="hljs-number">.</span>lib<br><br>INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><br>ExitProcess PROTO, dwExitCode:<span class="hljs-built_in">DWORD</span> <span class="hljs-comment">; return code</span><br>printf proto C: vararg<br>scanf proto C: vararg<br><br><span class="hljs-comment">;include vcIO.inc</span><br><span class="hljs-meta">.data</span><br>    prompt <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;请输入三个整数（以空格分隔）：&#x27;</span>, <span class="hljs-number">0</span><br>    fmt1 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;%d %d %d&#x27;</span>, <span class="hljs-number">0</span><br>    fmt2 <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;最大公约数：%d&#x27;</span>, <span class="hljs-number">13</span>, <span class="hljs-number">10</span>, <span class="hljs-number">13</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span><br>    dvar1 <span class="hljs-built_in">dword</span> ?<br>    dvar2 <span class="hljs-built_in">dword</span> ?<br>    dvar3 <span class="hljs-built_in">dword</span> ?<br>    res <span class="hljs-built_in">dword</span> ?<br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br>main proc<br><br>    <br>    invoke printf, offset prompt<br>    invoke scanf, offset fmt1, offset dvar1, offset dvar2, offset dvar3<br>    <br>    <span class="hljs-keyword">push</span> dvar1<br>    <span class="hljs-keyword">push</span> dvar2<br>    <span class="hljs-keyword">call</span> gcd <span class="hljs-comment">; 堆栈传参，结果保存在 EAX</span><br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">eax</span><br>    <span class="hljs-keyword">push</span> dvar3<br>    <span class="hljs-keyword">call</span> gcd<br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">esp</span>, <span class="hljs-number">8</span><br>    <span class="hljs-keyword">mov</span> res, <span class="hljs-built_in">eax</span><br>    <span class="hljs-keyword">pushad</span><br>    invoke printf, offset fmt2, res<br>    <span class="hljs-keyword">popad</span><br>    <br>    invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br><br>gcd proc<br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebp</span>, <span class="hljs-built_in">esp</span> <span class="hljs-comment">; 保存旧栈帧，建立新栈帧</span><br><br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ebx</span> <br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">edx</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">8</span>]<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">12</span>]<br><span class="hljs-meta"></span><br><span class="hljs-meta">    .if</span> <span class="hljs-built_in">eax</span> &lt; <span class="hljs-built_in">ebx</span><br>        <span class="hljs-keyword">xchg</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br><span class="hljs-meta">    .endif</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">    .while</span> <span class="hljs-built_in">ebx</span> != <span class="hljs-number">0</span><br>        <span class="hljs-keyword">xor</span> <span class="hljs-built_in">edx</span>, <span class="hljs-built_in">edx</span><br>        <span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">edx</span><br>        <span class="hljs-keyword">xchg</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br><span class="hljs-meta">    .endw</span><br><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">edx</span><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebx</span><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">ret</span><br>gcd endp<br>end main<br><br></code></pre></td></tr></table></figure>
+<h5 id="代码解释">代码解释</h5>
+<p>在提供的代码中，欧几里得算法的实现部分位于<code>gcd proc</code>和<code>gcd endp</code>之间的代码块中。让我们逐行详细解释这部分代码的实现过程：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">gcd proc<br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebp</span>, <span class="hljs-built_in">esp</span> <span class="hljs-comment">; 保存旧栈帧，建立新栈帧</span><br><br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ebx</span> <br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">edx</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">8</span>]<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">12</span>]<br></code></pre></td></tr></table></figure>
+<p>首先，过程开始时，保存旧的栈帧指针（ebp）并将当前栈帧指针（esp）赋给ebp，以建立新的栈帧。然后，将ebx和edx寄存器的值入栈保存。接下来，将第一个参数（dvar1）的值加载到eax寄存器，将第二个参数（dvar2）的值加载到ebx寄存器。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.if</span> <span class="hljs-built_in">eax</span> &lt; <span class="hljs-built_in">ebx</span><br>    <span class="hljs-keyword">xchg</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br><span class="hljs-meta">.endif</span><br></code></pre></td></tr></table></figure>
+<p>通过使用xchg指令，将eax和ebx的值交换，以确保eax中存储的值始终大于等于ebx中存储的值。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-meta">.while</span> <span class="hljs-built_in">ebx</span> != <span class="hljs-number">0</span><br>    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">edx</span>, <span class="hljs-built_in">edx</span><br>    <span class="hljs-keyword">idiv</span> <span class="hljs-built_in">ebx</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">edx</span><br>    <span class="hljs-keyword">xchg</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br><span class="hljs-meta">.endw</span><br></code></pre></td></tr></table></figure>
+<p>接下来，使用循环来执行欧几里得算法的主要部分。使用while循环，条件是ebx不等于0。</p>
+<ul>
+<li><p>首先，通过使用xor指令将edx寄存器清零，以准备执行idiv（除法）操作。</p></li>
+<li><p>然后，使用idiv指令将eax寄存器的值除以ebx寄存器的值。idiv指令执行有符号除法，并将商存储在eax中，余数存储在edx中。</p></li>
+<li><p>将edx的值移动到eax寄存器，更新eax的值为余数。</p></li>
+<li><p>最后，再次使用xchg指令交换eax和ebx的值。</p></li>
+</ul>
+<p>这个循环将一直执行，直到ebx等于0为止，此时最大公约数存储在eax寄存器中。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">edx</span><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebx</span><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">ret</span><br>gcd endp<br></code></pre></td></tr></table></figure>
+<p>最后，恢复先前保存的ebx和edx的值，然后恢复旧的栈帧指针ebp。通过ret指令，从gcd过程返回到调用它的位置。</p>
+<p>在主过程中，使用<code>call gcd</code>的方式调用gcd过程，将两个整数作为参数传递给它。然后，使用<code>push eax</code>将最大公约数的值压入堆栈，以便后续处理。</p>
+<p>这样，在主过程中调用两次gcd过程，分别计算了dvar1和dvar2、dvar3和之前计算得到的最大公约数的最大公约数。最后，将最终的最大公约数（res）存储在变量中，并使用printf函数将其输出到控制台。</p>
+<h4 id="冒泡排序">4. 冒泡排序</h4>
+<p>编程写一个名为 <code>Bubble</code> 的冒泡排序子程序，主子程序间的参数传递通过堆栈完成；并写主程序验证它（array dword 10,1,8,7,5,3,4,6,2,9）。</p>
+<h5 id="参考代码-16">参考代码</h5>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">INCLUDELIB kernel32<span class="hljs-number">.</span>lib<br>INCLUDELIB ucrt<span class="hljs-number">.</span>lib<br>INCLUDELIB legacy_stdio_definitions<span class="hljs-number">.</span>lib<br><span class="hljs-meta"></span><br><span class="hljs-meta">.386</span><br><span class="hljs-meta">.model</span> flat, stdcall<br><br>ExitProcess PROTO,<br><span class="hljs-symbol">    dwExitCode:</span> <span class="hljs-built_in">DWORD</span><br><br>printf PROTO C: <span class="hljs-built_in">DWORD</span>, :vararg<br>scanf PROTO C: <span class="hljs-built_in">DWORD</span>, :vararg<br><span class="hljs-meta"></span><br><span class="hljs-meta">.data</span><br>array <span class="hljs-built_in">dword</span> <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">9</span><br>msg <span class="hljs-built_in">byte</span> <span class="hljs-string">&#x27;%d &#x27;</span>, <span class="hljs-number">0</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">.code</span><br><br>main Proc<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, lengthof array - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, offset array<br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ecx</span><br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">esi</span><br>    <span class="hljs-keyword">call</span> BubbleSort<br><br>    <br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, lengthof array<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">esi</span>, <span class="hljs-number">0</span><br><span class="hljs-symbol">    print:</span><br>        <span class="hljs-keyword">pushad</span><br>        invoke printf, offset msg, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> array[<span class="hljs-built_in">esi</span> * <span class="hljs-number">4</span>]<br>        <span class="hljs-keyword">popad</span><br>        <span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span><br>    <span class="hljs-keyword">loop</span> print<br><br>    invoke ExitProcess, <span class="hljs-number">0</span><br>main endp<br><br>BubbleSort proc<br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ebp</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebp</span>, <span class="hljs-built_in">esp</span> <span class="hljs-comment">;建立栈帧</span><br><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">edx</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">8</span>] <span class="hljs-comment">;数组地址</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ecx</span>, <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span> + <span class="hljs-number">12</span>] <span class="hljs-comment">;数组末位元素索引</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">_out:</span> <span class="hljs-comment">;外层循环</span><br>    <span class="hljs-keyword">push</span> <span class="hljs-built_in">ecx</span><br>    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">esi</span>, <span class="hljs-built_in">esi</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    _in:</span><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, [<span class="hljs-built_in">edx</span> + <span class="hljs-built_in">esi</span> * <span class="hljs-number">4</span>]<br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ebx</span>, [<span class="hljs-built_in">edx</span> + <span class="hljs-built_in">esi</span> * <span class="hljs-number">4</span> + <span class="hljs-number">4</span>]<br>        <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-built_in">ebx</span><br><br>        <span class="hljs-keyword">jle</span> _continue<br>        <span class="hljs-keyword">mov</span> [<span class="hljs-built_in">edx</span> + <span class="hljs-built_in">esi</span> * <span class="hljs-number">4</span>], <span class="hljs-built_in">ebx</span><br>        <span class="hljs-keyword">mov</span> [<span class="hljs-built_in">edx</span> + <span class="hljs-built_in">esi</span> * <span class="hljs-number">4</span> + <span class="hljs-number">4</span>], <span class="hljs-built_in">eax</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    _continue:</span><br>        <span class="hljs-keyword">inc</span> <span class="hljs-built_in">esi</span><br>        <span class="hljs-keyword">loop</span> _<span class="hljs-keyword">in</span><br><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ecx</span> <span class="hljs-comment">;保护 ecx，使得外层循环必定执行 ecx 次</span><br><span class="hljs-keyword">loop</span> _<span class="hljs-keyword">out</span><br><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ebp</span> <span class="hljs-comment">;还原栈帧</span><br>    <span class="hljs-keyword">ret</span> <span class="hljs-number">8</span><br>BubbleSort endp<br>end main<br></code></pre></td></tr></table></figure>
+<h1 id="微机总线">微机总线</h1>
+<p>总线是微机系统中用于传输信息的公共通道，部件通过总线相互连接实现数据传输，部件之间需要遵守共同的总线规范。</p>
+<h2 id="总线技术">总线技术</h2>
+<h3 id="总线类型">总线类型</h3>
+<h4 id="芯片总线">芯片总线</h4>
+<ol type="1">
+<li>集成电路芯片内部，芯片级互联，或者系统中各种不同的器件连接起来的总线。</li>
+<li>局部总线，微处理器的引脚信号。</li>
+<li>片内总线，大规模集成电路内部连接。</li>
+</ol>
+<h4 id="内总线">内总线</h4>
+<ol type="1">
+<li>模块级互联，主机内部功能单元互连的总线。</li>
+<li>板级总线、母板总线，或系统总线</li>
+<li>系统总线（System Bus）是微机系统的主要总线</li>
+<li>内部总线从一条变为多条，形成多总线结构</li>
+</ol>
+<h4 id="外总线external-bus">外总线（External Bus）</h4>
+<ol type="1">
+<li>设备级互连，微机与其外设或微机之间连接的总线</li>
+<li>过去，指通信总线</li>
+<li>现在，常延伸为外设总线</li>
+</ol>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212223541.png" srcset="/img/loading.gif" lazyload alt="微机总线层次结构" /><figcaption aria-hidden="true">微机总线层次结构</figcaption>
+</figure>
+<h3 id="总线的数据传输">总线的数据传输</h3>
+<p>主设备（Master）：控制总线完成数据传输 从设备（Slave）：被动完成数据交换</p>
+<p>同一时刻最多一个主设备控制总线，从设备无限制 同一时刻最多一设备通过总线发送数据，接受设备数量无限制</p>
+<h3 id="总线的操作">总线的操作</h3>
+<h4 id="请求和仲裁bus-request-arbitration">请求和仲裁（Bus request &amp; Arbitration）</h4>
+<ol type="1">
+<li>使用总线的主模块提出申请</li>
+<li>仲裁机制把总线分配给请求设备</li>
+</ol>
+<h4 id="寻址addressing">寻址（Addressing）</h4>
+<p>主模块发出访问的从模块地址信息以及有关命令，启动从模块。</p>
+<h4 id="数据传送-data-transfer">数据传送 （Data Transfer）</h4>
+<p>源模块通过数据总线向目标模块发送信息。</p>
+<h4 id="结束ending">结束（Ending）</h4>
+<p>数据、地址、状态、命令信息均从总线上撤除，让出总线</p>
+<h3 id="仲裁">仲裁</h3>
+<p>总线仲裁：决定当前控制总线的主设备</p>
+<h4 id="集中仲裁">集中仲裁</h4>
+<ol type="1">
+<li>系统具有中央仲裁器（控制器）</li>
+<li>负责主模块的总线请求和分配总线的使用</li>
+<li>主模块有两条信号线：总线请求和总线响应</li>
+</ol>
+<h4 id="分布仲裁">分布仲裁</h4>
+<ol type="1">
+<li>各个主模块都有自己的仲裁器和唯一的仲裁号</li>
+<li>主模块请求总线时，发送其仲裁号</li>
+<li>比较各个主设备仲裁号决定</li>
+</ol>
+<h3 id="同步方式">同步方式</h3>
+<h4 id="同步时序">同步时序</h4>
+<ol type="1">
+<li>总线操作过程由共用的总线时钟信号控制</li>
+<li>适合速度相当的器件互连总线，否则需要准备好信号让快速器件等待慢速器件（半同步）</li>
+<li>半同步时序需要增加READY等状态信号</li>
+<li>处理器控制的总线时序采用同步时序</li>
+</ol>
+<h4 id="异步时序">异步时序</h4>
+<ol type="1">
+<li>总线操作需要握手联络（应答）信号控制</li>
+<li>传输的开始伴随有启动（选通或读写）信号</li>
+<li>传输的结束有一个确认信号，进行应答</li>
+<li>操作周期可变、可以混合慢速和快速器件</li>
+</ol>
+<h3 id="传输类型">传输类型</h3>
+<h4 id="猝发传送数据块传送">猝发传送（数据块传送）</h4>
+<p>给出起始地址，将固定块长的数据，一个就一个的从相邻地址读入或写出</p>
+<h4 id="写后读read-after-write">写后读（Read-After-Write）</h4>
+<p>先写后读，适用于校验。</p>
+<h4 id="读修改写-read-modify-write">读修改写 （Read-Modify-Write）</h4>
+<p>先读后写同一个地址单元，适用共享数据保护</p>
+<h4 id="广播-broadcast">广播 （Broadcast）</h4>
+<p>一个主设备对多个从设备的写入操作</p>
+<h3 id="性能指标">性能指标</h3>
+<h4 id="总线宽度8163264位">总线宽度(8,16,32,64位)</h4>
+<p>总线能够同时传送的数据位数 位数越多，一次能够传送的数据量越大</p>
+<h4 id="总线频率hz">总线频率Hz</h4>
+<p>总线信号的时钟频率 时钟频率越高，工作速度越快</p>
+<h4 id="总线带宽bandwidth">总线带宽（Bandwidth）</h4>
+<p>单位时间传输的数据量MB/s 总线带宽越大，总线性能越高</p>
+<p><span class="math inline">\(总线带宽=总线传输速率=吞吐率=传输的数据量\div所需时间\)</span></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212240227.png" srcset="/img/loading.gif" lazyload alt="计算例子" /><figcaption aria-hidden="true">计算例子</figcaption>
+</figure>
+<h3 id="总线信号和时序">总线信号和时序</h3>
+<h4 id="总线分类">总线分类</h4>
+<h5 id="地址总线">地址总线</h5>
+<ol type="1">
+<li>主从模块的地址总线输出</li>
+<li>从模块的地址总线输入</li>
+</ol>
+<h5 id="数据总线">数据总线</h5>
+<p>双向传输</p>
+<h5 id="控制总线">控制总线</h5>
+<ol type="1">
+<li>有输出也有输入信号</li>
+<li>基本功能是控制存储器及I/O读写操作</li>
+<li>还包括中断与DMA控制、总线仲裁、数据传输握手联络等</li>
+</ol>
+<h4 id="引脚信号">引脚信号</h4>
+<p>引脚信号由以下方面构成</p>
+<ol type="1">
+<li>信号的功能</li>
+<li>信号的流向</li>
+<li>有效方式</li>
+<li>三态能力</li>
+</ol>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212249488.png" srcset="/img/loading.gif" lazyload alt="引脚信号功能示意图" /><figcaption aria-hidden="true">引脚信号功能示意图</figcaption>
+</figure>
+<h4 id="总线时序">总线时序</h4>
+<p>总线时序描述了总线信号的时间变化规律和相互关系。一个时钟周期是处理器的基本工作节拍。</p>
+<h2 id="芯片">8086芯片</h2>
+<h3 id="的引脚信号">8086的引脚信号</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305212255626.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="的总线时序">8086的总线时序</h3>
+<p>8086的基本总线周期由四个时钟周期 <span class="math inline">\(T_{1-4}\)</span> 构成，存储器读和IO读，存储器写和IO写又可以分别统一到一个时序图表达。</p>
+<h4 id="写总线周期">写总线周期</h4>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220018720.png" srcset="/img/loading.gif" lazyload alt="写总线周期时序图1" /><figcaption aria-hidden="true">写总线周期时序图1</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220024070.png" srcset="/img/loading.gif" lazyload alt="写总线周期图2" /><figcaption aria-hidden="true">写总线周期图2</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220025695.png" srcset="/img/loading.gif" lazyload alt="Tw状态" /><figcaption aria-hidden="true">Tw状态</figcaption>
+</figure>
+<h4 id="读总线周期">读总线周期</h4>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220026533.png" srcset="/img/loading.gif" lazyload alt="读总线周期图1" /><figcaption aria-hidden="true">读总线周期图1</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220019434.png" srcset="/img/loading.gif" lazyload alt="读读总线周期时序图2" /><figcaption aria-hidden="true">读读总线周期时序图2</figcaption>
+</figure>
+<h3 id="中断请求和响应总线请求和响应复位时钟等信号的作用">中断请求和响应、总线请求和响应、复位、时钟等信号的作用</h3>
+<p>在8086处理器的总线系统中，以下是各个信号的作用：</p>
+<ol type="1">
+<li>中断请求和响应：
+<ul>
+<li>中断请求（INTR）：外部设备通过将INTR引脚置为低电平来请求中断。设备可以向处理器发出中断请求，以便在需要时暂停当前正在执行的程序。</li>
+<li>中断响应（INTA）：处理器在接收到中断请求后，通过将INTA引脚置为低电平来响应中断请求。这向外部设备发出确认信号，表明处理器已经准备好接收中断向量。</li>
+</ul></li>
+<li>总线请求和响应：
+<ul>
+<li>总线请求（BUSRQ）：用于暂停处理器的总线操作，例如DMA控制器请求访问系统总线。</li>
+<li>总线响应（BUSD）：用于确认处理器的总线请求，以便处理器知道其他设备已经释放了系统总线。</li>
+</ul></li>
+<li>复位信号（RESET）：
+<ul>
+<li>复位信号用于将处理器重置为初始状态。当RESET引脚被拉低时，处理器会停止执行并重新初始化其内部状态。这是一个系统级信号，用于启动系统的初始化过程。</li>
+</ul></li>
+<li>时钟信号（CLK）：
+<ul>
+<li>时钟信号提供处理器的基准时钟脉冲。它驱动处理器的内部时序和操作，并确保各个部件在正确的时间进行操作。处理器根据时钟信号的上升沿或下降沿执行指令和其他操作。</li>
+</ul></li>
+</ol>
+<p>总的来说，中断请求和响应信号用于处理外部设备的中断，使处理器能够在需要时响应外部事件。总线请求和响应信号用于处理器和其他设备之间的总线控制和共享。复位信号用于将处理器重置为初始状态，而时钟信号则提供处理器操作的基准时序。这些信号在处理器的正常操作和系统的协调中起着重要的作用。</p>
+<h3 id="总结">总结</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220030792.png" srcset="/img/loading.gif" lazyload alt="总结1" /> <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220030167.png" srcset="/img/loading.gif" lazyload alt="总结2" /></p>
+<h1 id="输入输出接口">输入输出接口</h1>
+<h2 id="io接口典型模式">IO接口典型模式</h2>
+<h3 id="内部结构">内部结构</h3>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220034451.png" srcset="/img/loading.gif" lazyload alt="IO接口典型结构图" /><figcaption aria-hidden="true">IO接口典型结构图</figcaption>
+</figure>
+<h4 id="数据寄存器">数据寄存器</h4>
+<p>保存处理器与外甥间交换的数据的寄存器。</p>
+<h4 id="状态寄存器">状态寄存器</h4>
+<p>保存外设或其接口电路当前的工作状态信息</p>
+<h4 id="控制寄存器">控制寄存器</h4>
+<p>保存控制接口电路和外设操作的有关信息。</p>
+<h3 id="基本功能">基本功能</h3>
+<ol type="1">
+<li>数据缓冲</li>
+<li>信号变换</li>
+</ol>
+<h2 id="io端口的编址">IO端口的编址</h2>
+<h3 id="端口与存储器地址独立编址">端口与存储器地址独立编址</h3>
+<p>独立两个地址空间。</p>
+<p>优点：不占用存储器空寂</p>
+<p>缺点：指令功能简单，寻址方式不如存储器指令丰富</p>
+<h3 id="统一编址">统一编址</h3>
+<p>统一编排，共享地址空间，将IO地址映射到了存储器空间。</p>
+<p>优点：不用专门设计IO指令和引脚，IO访问可复用存储器指令。</p>
+<p>缺点：IO端口占据了存储器的地址空间。</p>
+<h3 id="io地址译码">IO地址译码</h3>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220050176.png" srcset="/img/loading.gif" lazyload alt="IO地址译码" /><figcaption aria-hidden="true">IO地址译码</figcaption>
+</figure>
+<h2 id="输入输出指令">输入输出指令</h2>
+<p>输入指令 IN 和输出指令 OUT</p>
+<h3 id="io寻址方式">IO寻址方式</h3>
+<h4 id="直接寻址">直接寻址</h4>
+<p>由IO指令直接提供8位IO地址，只能寻址最低256个地址。</p>
+<p>在IO指令中，用i8表示这个地址，形式类似于立即数，但是在IO指令上就表示直接寻址的IO地址。</p>
+<h3 id="dx间接寻址">DX间接寻址</h3>
+<p>用16位寄存器DX保存IO地址。</p>
+<p>IA-32处理器的IO地址共64k，每个地址对应一个8位端口，无需分段管理，最低256个地址可直接寻址或间接寻址访问，其余地址只能通过DX间接访问。</p>
+<h3 id="数据传输量">数据传输量</h3>
+<table>
+<thead>
+<tr class="header">
+<th>数据大小</th>
+<th>寄存器</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8位</td>
+<td>AL</td>
+</tr>
+<tr class="even">
+<td>16位</td>
+<td>AX</td>
+</tr>
+<tr class="odd">
+<td>32位</td>
+<td>EAX</td>
+</tr>
+</tbody>
+</table>
+<h3 id="无条件传送和查询传送">无条件传送和查询传送</h3>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220100668.png" srcset="/img/loading.gif" lazyload alt="数据传送方式" /><figcaption aria-hidden="true">数据传送方式</figcaption>
+</figure>
+<h4 id="软件控制的数据传送">软件控制的数据传送</h4>
+<h5 id="无条件传送">无条件传送</h5>
+<p>字面意思，根据原文意思可能是指无阻塞的传送。</p>
+<p>例如数码管、按键、LED灯总是处于就绪状态的设备可采用无条件传送，数据缓冲通过三台缓冲器和锁存器实现。</p>
+<h5 id="查询传送">查询传送</h5>
+<p>询问外设工作状态并在外设准备好数据后开始数据传送。</p>
+<h6 id="特点">特点</h6>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220111360.png" srcset="/img/loading.gif" lazyload alt="流程图" /><figcaption aria-hidden="true">流程图</figcaption>
+</figure>
+<h6 id="编程">编程</h6>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220112996.png" srcset="/img/loading.gif" lazyload alt="查询输入" /><figcaption aria-hidden="true">查询输入</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220112749.png" srcset="/img/loading.gif" lazyload alt="查询输出" /><figcaption aria-hidden="true">查询输出</figcaption>
+</figure>
+<h5 id="中断传送">中断传送</h5>
+<p>外设向处理器发送请求，处理器在满足条件的情况下中断暂停当前程序并与外设进行数据传送。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img/image/202305220113833.png" srcset="/img/loading.gif" lazyload alt="工作流程图" /><figcaption aria-hidden="true">工作流程图</figcaption>
+</figure>
+<h4 id="附加硬件控制的数据传送">附加硬件控制的数据传送</h4>
+<h5 id="dma传送">DMA传送</h5>
+<p>需要大量数据传送的外设，处理器转移控制权给DMA控制器，由其控制外设与存储器的数据传送。</p>
+<h5 id="io处理器控制传送">IO处理器控制传送</h5>
+<p>专门的IO处理器管理。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="category-chain-item">课程笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/" class="print-no-link">#微机原理</a>
+      
+        <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" class="print-no-link">#汇编语言</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>微机原理学习笔记</div>
+      <div>https://ooj2003.github.io/2023/03/14/笔记/微机原理学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>OOJ2003</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月14日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年9月17日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/28/%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B0%8F%E6%8A%84%E6%9C%AC/" title="操作系统复习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统复习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/13/%E9%85%8D%E7%BD%AE/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B9%8B%E6%97%85-%E4%BB%8E%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BD%BF%E7%94%A8GithubAction/" title="博客迁移之旅-从本地部署到使用GithubAction">
+                        <span class="hidden-mobile">博客迁移之旅-从本地部署到使用GithubAction</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"OOJ2003/OOJ2003.github.io","repo-id":"R_kgDOGc8frQ","category":"Announcements","category-id":"DIC_kwDOGc8frc4CQTmF","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

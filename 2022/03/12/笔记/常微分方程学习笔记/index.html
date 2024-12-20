@@ -1,0 +1,1383 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cheems.png">
+  <link rel="icon" href="/img/cheems.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="OOJ2003">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一篇记录学习常微分方程的笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程学习笔记">
+<meta property="og:url" content="https://ooj2003.github.io/2022/03/12/%E7%AC%94%E8%AE%B0/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="OOJ&#39;s Blog">
+<meta property="og:description" content="一篇记录学习常微分方程的笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-12T20:56:33.000Z">
+<meta property="article:modified_time" content="2023-12-28T00:00:00.000Z">
+<meta property="article:author" content="OOJ2003">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="常微分方程">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>常微分方程学习笔记 - OOJ&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ooj2003.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>OOJ&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-12 20:56" pubdate>
+          2022年3月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="写在所有之前">写在所有之前</h1>
+<p>这篇是我之前复习常微分方程时写的小玩意儿，因为博客实在是太空了就拿上来充牌面了(๑•̀ㅂ•́)و✧</p>
+<h1 id="基本概念">基本概念</h1>
+<h2 id="方程的阶线性方程和非线性方程">方程的阶、线性方程和非线性方程</h2>
+<h3 id="阶数">阶数</h3>
+<p>如 <span class="math display">\[
+\frac{dy}{dx}=x^2+y^2
+\]</span></p>
+<p>就为<strong>一阶方程</strong></p>
+<blockquote>
+<p>方程的阶数为其出现的最高阶导数的阶数</p>
+</blockquote>
+<h3 id="线性">线性</h3>
+<p>但其不是一线性微分方程，因为其中包含有 <span class="math inline">\(y^2\)</span> 项</p>
+<blockquote>
+<p>线性微分方程： 若方程 <span class="math inline">\(F(x,y,\frac{dy}{dx},...,\frac{d^ny}{dx^n})=0\)</span> 中关于 <span class="math inline">\(y\)</span> 与其任意阶导数项皆为有理一次整式，则其为线性微分方程</p>
+</blockquote>
+<p>下为一个线性微分方程的例子 <span class="math display">\[
+\frac{d^2y}{dx^2}+\frac{dy}{dx}+y=3e^x
+\]</span></p>
+<h3 id="齐次性">齐次性</h3>
+<p>我们一般称 <span class="math inline">\(F(y,\dfrac{dy}{dx},\cdots,\dfrac{d^ny}{dx^n})=0\)</span> 这种类型的为齐次的</p>
+<p>则 <span class="math inline">\(F(f(x),y,\dfrac{dy}{dx},\cdots,\dfrac{d^ny}{dx^n})=0,f(x)\ne0\)</span> 则为非齐次的</p>
+<h2 id="解通解特解和初值条件">解、通解、特解和初值条件</h2>
+<h3 id="通解">通解</h3>
+<p>常微分方程的解中含有的独立任意常数的个数与方程的阶数相等</p>
+<h3 id="特解">特解</h3>
+<p>方程满足初值条件的解</p>
+<h3 id="初值问题">初值问题</h3>
+<p>诸如求解 <span class="math display">\[
+\left\{\begin{matrix}
+    \dfrac{dy}{dx}=f(x,y)\\\\
+    y|_{x=x_0}=y_0
+\end{matrix}\right.
+\]</span> 问题被称为一阶微分方程的初值问题，也被称为柯西问题</p>
+<h2 id="线性相关与判据">线性相关与判据</h2>
+<h3 id="函数的线性相关性">函数的线性相关性</h3>
+<p>设 <span class="math inline">\(y_1(x),y_2(x),\cdots,y_n(x)\)</span> 为定义在区间 <span class="math inline">\(I\)</span> 内的 <span class="math inline">\(n\)</span> 个函数，如果存在 <span class="math inline">\(n\)</span> 个不全为 <span class="math inline">\(0\)</span> 的常数 <span class="math inline">\(C_1,C_2,...,C_n\)</span>，使得对 <span class="math inline">\(\forall x \in I\)</span> 都有 <span class="math display">\[
+C_1y_1(x)+C_2y_2(x)+\cdots+C_ny_n(x)=0
+\]</span> 则称这 <span class="math inline">\(n\)</span> 个函数在区间 <span class="math inline">\(I\)</span> 上是<strong>线性相关的</strong>，否则则称它们是<strong>线性无关的</strong></p>
+<h3 id="线性相关无关的判定">线性相关（无关）的判定</h3>
+<h4 id="朗斯基行列式">朗斯基行列式</h4>
+<p>定义<strong>朗斯基行列式</strong> <span class="math display">\[
+W(x)=
+\left | \begin{matrix}
+  y_1(x)&amp; y_2(x)&amp;\cdots&amp;y_n(x)\\
+  y&#39;_1(x)&amp;y&#39;_2(x)&amp;\cdots&amp;y&#39;_n(x)\\
+  \vdots&amp;\vdots&amp;&amp;\vdots\\
+  y^{(k-1)}_1(x)&amp;y^{(k-1)}_2(x)&amp;\cdots&amp;y^{(k-1)}_n(x)
+\end{matrix} \right |
+\]</span></p>
+<p><span class="math inline">\(n\)</span> 阶<strong>齐线性方程的</strong> <span class="math inline">\(n\)</span> 个解 <span class="math inline">\(y_1(x),y_2(x),...,y_n(x)\)</span> 在其定义区间 <span class="math inline">\(I\)</span> 上<strong>线性无关</strong>的<strong>充要</strong>条件是 <span class="math display">\[
+\exists x_0 \in I \Rightarrow W(x_0) \ne 0
+\]</span></p>
+<h2 id="线性常微分方程组">线性常微分方程组</h2>
+<h3 id="矩阵函数">矩阵函数</h3>
+<p>对于一阶线性常微分方程组： <span class="math display">\[
+\left\{\begin{matrix}
+    \dfrac{dx_1}{dt}=a_{11}(t)x_1+a_{12}(t)x_2+\cdots+a_{1n}(t)x_n+f_1(t)\\\\
+    \dfrac{dx_2}{dt}=a_{21}(t)x_1+a_{22}(t)x_2+\cdots+a_{2n}(t)x_n+f_2(t)\\\\
+    .....................................................................\\\\
+    \dfrac{dx_n}{dt}=a_{n1}(t)x_1+a_{n2}(t)x_2+\cdots+a_{nn}(t)x_n+f_n(t)
+\end{matrix}\right.\tag{4-1}
+\]</span></p>
+<p>其中 <span class="math inline">\(a_{ij}(t),f_i(t)\)</span> 均是关于 <span class="math inline">\(t\)</span> 的已知函数</p>
+<p>记 <span class="math display">\[
+\pmb{A}(t)=
+\begin{bmatrix}
+    a_{11}(t)&amp;a_{12}(t)&amp;\cdots&amp;a_{1n}(t)\\
+    a_{21}(t)&amp;a_{22}(t)&amp;\cdots&amp;a_{2n}(t)\\
+    \vdots&amp;\vdots&amp; &amp;\vdots&amp;\\
+    a_{n1}(t)&amp;a_{n2}(t)&amp;\cdots&amp;a_{nn}(t)\\
+\end{bmatrix}
+\]</span></p>
+<p>和 <span class="math display">\[
+\vec{f}(t)=
+\begin{bmatrix}
+    f_1(t)\\
+    f_2(t)\\
+    \vdots\\
+    f_n(t)
+\end{bmatrix}
+\]</span></p>
+<p>和 <span class="math display">\[
+\vec{x}(t)=
+\begin{bmatrix}
+    f_1(t)\\
+    f_2(t)\\
+    \vdots\\
+    f_n(t)
+\end{bmatrix}
+\]</span></p>
+<p>和 <span class="math display">\[
+\frac{d\vec{x}}{dt}=
+\begin{bmatrix}
+    \dfrac{dx_1}{dt}\\
+    \dfrac{dx_2}{dt}\\
+    \vdots\\
+    \dfrac{dx_n}{dt}
+\end{bmatrix}
+\]</span></p>
+<p>则 <strong>（4-1）</strong> 可表示为 <span class="math display">\[
+\frac{d\vec{x}}{dt}=\pmb{A}(t)\vec{x}+\vec{f}(t)
+\]</span></p>
+<h1 id="求解一阶常微分方程">求解一阶常微分方程</h1>
+<h2 id="分离变量法">分离变量法</h2>
+<p>分离变形后直接积分</p>
+<h2 id="变量代换">变量代换</h2>
+<h3 id="齐次化">齐次化</h3>
+<p>为求解如 <span class="math display">\[
+\frac{dy}{dx}=f(x,y)
+\]</span> 的形式</p>
+<p>如果有<span class="math inline">\(f(x,y)\equiv g(\frac{y}{x})\)</span>则做变量代换<span class="math inline">\(y=u x\)</span>可化原方程为 <span class="math display">\[
+\frac{du}{dx}=\frac{g(u)-u}{x}
+\]</span> 此时分离后可直接积分</p>
+<h3 id="二元一次分式">二元一次分式</h3>
+<p>为求解方程 <span class="math display">\[
+\frac{dy}{dx}=\frac{a_1x+b_1y+c_1}{a_2x+b_2y+c_2}
+\]</span> 且其满足 <span class="math display">\[
+\left\{\begin{matrix}
+   a_1^2+a_2^2\ne 0\\
+   b_1^2+b_2^2\ne 0\\
+   a_1^2+b_2^2\ne 0\\
+   a_2^2+b_1^2\ne 0
+\end{matrix}\right.
+\]</span> &gt; 当上述限制条件不存在时，其是容易分离后直接积分的</p>
+<p>我们分三种情况讨论</p>
+<h4 id="当-c_1c_20">(1)当 <span class="math inline">\(c_1=c_2=0\)</span></h4>
+<p>容易得 <span class="math display">\[
+\frac{dy}{dx}=\frac{a_1+b_1\frac{y}{x}}{a_2+b_2\frac{y}{x}}
+\]</span> 只需用齐次化的方式处理即可求解</p>
+<h4 id="当-c_12c_22ne-0leftbeginmatrixa_1b_1a_2b_2endmatrixright0">(2)当 <span class="math inline">\(c_1^2+c_2^2\ne 0,\left|\begin{matrix}a_1&amp;b_1\\a_2&amp;b_2\end{matrix}\right|=0\)</span></h4>
+<p>此时有 <span class="math inline">\(a_1b_2=a_2b_1\)</span></p>
+<h5 id="a_2b_2ne-0">Ⅰ <span class="math inline">\(a_2b_2\ne 0\)</span></h5>
+<p>令 <span class="math display">\[
+\frac{a_1}{a_2}=\frac{b_1}{b_2}=k
+\]</span> 则有 <span class="math display">\[
+\frac{dy}{dx}=\frac{k(a_2x+b_2y)+c_1}{a_2x+b_2y+c_2}
+\]</span> 做代换<span class="math display">\[u=a_2x+b_2y\]</span></p>
+<p>上式化为 <span class="math display">\[
+\frac{du}{dx}=a_2+b_2\frac{dy}{dx}=a_2+b_2\frac{ku+c_1}{u+c_2}
+\]</span> 而此式是容易分离后积分的</p>
+<h5 id="a_2b_20">Ⅱ <span class="math inline">\(a_2b_2=0\)</span></h5>
+<p>此时有 <span class="math inline">\(a_2=b_2=0\)</span></p>
+<p>即 <span class="math display">\[
+\frac{dy}{dx}=\frac{a_1x+b_1y+c_1}{c_2}
+\]</span> 令 <span class="math display">\[
+u=a_1x+b_1y
+\]</span> 则 <span class="math display">\[
+\frac{du}{dx}=a_1+\frac{b_1}{c_2}(u+c_1)
+\]</span></p>
+<h4 id="当-c_12c_22ne-0leftbeginmatrixa_1b_1a_2b_2endmatrixrightne0">(3) 当 <span class="math inline">\(c_1^2+c_2^2\ne 0,\left|\begin{matrix}a_1&amp;b_1\\a_2&amp;b_2\end{matrix}\right|\ne0\)</span></h4>
+<p>由<span class="math inline">\(\left|\begin{matrix}a_1&amp;b_1\\a_2&amp;b_2\end{matrix}\right|\ne0\)</span>知 <span class="math display">\[
+\left\{\begin{matrix}
+a_1x+b_1y+c_1=0\\
+a_2x+b_2y+c_2=0
+\end{matrix}\right.
+\]</span> 是有解的</p>
+<p>其解 <span class="math display">\[
+\begin{bmatrix}
+ x\\y
+\end{bmatrix}=
+\begin{bmatrix}
+x_0\\y_0
+\end{bmatrix}
+\]</span> 考虑平移变换 <span class="math display">\[
+\left\{\begin{matrix}
+x=X+x_0\\
+y=Y+y_0
+\end{matrix}\right.
+\]</span> 代入化简得 <span class="math display">\[
+\frac{dY}{dX}=\frac{a_1X+b_1Y}{a_2X+b_2Y}
+\]</span> 此式是为齐次化后容易求解的</p>
+<h3 id="类轮换对称式随便取的名">类轮换对称式（随便取的名）</h3>
+<p>方程 <span class="math display">\[
+yf(xy)dx+xg(xy)dy=0
+\]</span> 做代换 <span class="math display">\[
+u=xy
+\]</span> 即 <span class="math display">\[
+du=ydx+xdy
+\]</span> 带入得 <span class="math display">\[
+yf(u)dx+g(u)(du-ydx)=0
+\]</span></p>
+<p><span class="math display">\[
+g(u)du=y[g(u)-f(u)]dx=\frac{u}{x}[g(u)-f(u)]dx
+\]</span> 整理得 <span class="math display">\[
+\frac{g(u)}{u[g(u)-f(u)]}du=\frac{dx}{x}
+\]</span> 此式是可直接积分求解的</p>
+<h2 id="常数变易法">常数变易法</h2>
+<h3 id="通解公式">通解公式</h3>
+<p>一阶线性方程可以写成 <span class="math display">\[
+\frac{dy}{dx}=p(x)y+q(x)
+\]</span> 并称 <span class="math display">\[
+\frac{dy}{dx}=p(x)y
+\]</span> 为上式对应的齐线性方程</p>
+<p>齐线性方程是易解的，其通解为 <span class="math display">\[
+y=Ce^{\int p(x)dx}
+\]</span> 猜测非齐线性方程通解具有类似形式，即 <span class="math display">\[
+y=C(x)e^{\int p(x)dx}
+\]</span> 带入得 <span class="math display">\[
+\frac{dC(x)}{dx}=q(x)e^{-\int p(x)dx}
+\]</span> 故 <span class="math display">\[
+C(x)=\int q(x)e^{-\int p(x)dx}dx+\tilde{C}
+\]</span> 回代得 <span class="math display">\[
+y=e^{\int p(x)dx}[\int q(x)e^{-\int p(x)dx}dx+C]
+\]</span></p>
+<h3 id="伯努利方程">伯努利方程</h3>
+<p>称 <span class="math display">\[
+\frac{dy}{dx}+p(x)y=q(x)y^n
+\]</span> 且满足<span class="math inline">\((n\ne 0,1)\)</span>的方程为伯努利方程</p>
+<p>容易观察到到 <span class="math inline">\(y=0\)</span> 为一解，当 <span class="math inline">\(y\ne 0\)</span> 时，两边同乘 <span class="math inline">\(y^{-n}\)</span> 得 <span class="math display">\[
+y^{-n}\frac{dy}{dx}+p(x)y^{1-n}=q(x)
+\]</span> 令 <span class="math display">\[
+y^{1-n}=z
+\]</span> 则有 <span class="math display">\[
+\frac{dz}{dx}=(1-n)y^{-n}\frac{dy}{dx}
+\]</span> 回代得 <span class="math display">\[
+\frac{dz}{dx}+(1-n)p(x)z=(1-n)q(x)
+\]</span> 这是一一阶非齐线性常微分方程，可通过通解公式求解</p>
+<h2 id="凑全微分法和积分因子法">凑全微分法和积分因子法</h2>
+<h3 id="恰当方程">恰当方程</h3>
+<p>若对 <span class="math display">\[
+M(x,y)dx+N(x,y)dy=0
+\]</span> 恰好有 <span class="math display">\[
+du(x,y)\equiv M(x,y)dx+N(x,y)dy
+\]</span> 则称其为<strong>恰当方程</strong>或<strong>全微分方程</strong></p>
+<p>则其通积分 <span class="math display">\[
+u(x,y)= C
+\]</span> 即所求通解</p>
+<h4 id="恰当方程的验证">恰当方程的验证</h4>
+<p>若对 <span class="math display">\[
+M(x,y)dx+N(x,y)dy=0
+\]</span> 有 <span class="math display">\[
+\dfrac{\partial M}{\partial y}=\dfrac{\partial N}{\partial x}
+\]</span> 则其为恰当方程，否则不是恰当方程</p>
+<h4 id="uxy-的求解"><span class="math inline">\(u(x,y)\)</span> 的求解</h4>
+<p>显然 <span class="math display">\[
+\left\{\begin{matrix}
+\dfrac{\partial u}{\partial x}=M(x,y)\\\\
+\dfrac{\partial u}{\partial y}=N(x,y)
+\end{matrix}\right.
+\]</span> 对其积分得 <span class="math display">\[u(x,y)=\int M(x,y)dx+\varphi(y)\]</span> 则有 <span class="math display">\[
+\frac{\partial u}{\partial y}=
+\frac{\partial}{\partial y}
+\int M(x,y)dx
++{\varphi}&#39;(y)
+\]</span> 故 <span class="math display">\[
+{\varphi}&#39;(y)=N(x,y)-
+\frac{\partial}{\partial y}
+\int M(x,y)dx
+\]</span> 积分后回代即可求出 <span class="math inline">\(u(x,y)\)</span></p>
+<p>若考虑 <span class="math display">\[
+u(x,y)=\int N(x,y)dy+\phi(x)
+\]</span> 其过程也是类似的</p>
+<h3 id="凑全微分法">凑全微分法</h3>
+<p>这个靠感觉，给个例题感受下</p>
+<p>例1.求解方程 <span class="math inline">\((3x^2+6xy^2)dx+(6x^2y+4y^3)dy=0\)</span></p>
+<p>解:</p>
+<p>显然其为恰当方程，整理得 <span class="math display">\[
+d(x^3)+d(y^4)+d(3x^2y^2)=0
+\]</span> 即 <span class="math display">\[
+d(x^3+y^4+3x^2y^2)=0
+\]</span> 通积分得 <span class="math display">\[
+x^3+y^4+3x^2y^2=C
+\]</span></p>
+<h4 id="常用的全微分公式">常用的全微分公式</h4>
+<p><span class="math display">\[d(xy)=ydx+xdy\]</span></p>
+<p><span class="math display">\[d(x^2siny)=2xsinydx+x^2cosydy\]</span></p>
+<p><span class="math display">\[d(\frac{x}{y})=\frac{ydx-xdy}{y^2}\]</span></p>
+<p><span class="math display">\[d(\frac{y}{x})=\frac{xdy-ydx}{x^2}\]</span></p>
+<p><span class="math display">\[d(ln|\frac{x}{y}|)=\frac{ydx-xdy}{y^2}\]</span></p>
+<p><span class="math display">\[d(arctan\frac{x}{y})=\frac{ydx-xdy}{x^2+y^2}\]</span></p>
+<h3 id="积分因子法">积分因子法</h3>
+<p>若对 <span class="math display">\[
+M(x,y)dx+N(x,y)dy=0
+\]</span> 有 <span class="math display">\[
+\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\ne 0
+\]</span> 假定存在 <span class="math inline">\(\mu(x,y)\)</span> 使得 <span class="math display">\[
+\mu(Mdx+Ndy)\equiv du(x,y)
+\]</span> 则称其为原方程的一积分因子</p>
+<h4 id="积分因子的求法">积分因子的求法</h4>
+<h5 id="公式法">公式法</h5>
+<p>对于 <span class="math display">\[
+M(x,y)dx+N(x,y)dy=0
+\]</span> 有 <span class="math display">\[
+\left\{\begin{matrix}
+    \varphi (x)\equiv \dfrac{\dfrac{\partial M}{\partial y}-\dfrac{\partial N}{\partial x}}{N}\\\\
+    \psi (y)\equiv \dfrac{\dfrac{\partial N}{\partial x}-\dfrac{\partial M}{\partial y}}{M}
+\end{matrix}\right.
+\]</span> 则 <span class="math display">\[
+\left\{\begin{matrix}
+    \mu(x)=e^{\int\varphi(x)dx}\\
+    \mu(y)=e^{\int\psi(y)dy}
+\end{matrix}\right.
+\]</span></p>
+<h5 id="逆推法不记公式看个人喜好">逆推法（不记公式，看个人喜好）</h5>
+<p>对于 <span class="math display">\[
+M(x,y)dx+N(x,y)dy=0
+\]</span> 假定存在 <span class="math inline">\(\mu(x)\)</span>使得 <span class="math display">\[
+\frac{\partial(\mu(x)M)}{y}-\frac{\partial(\mu(x)N)}{\partial x}=0
+\]</span> 求解上述方程即可求出 <span class="math inline">\(\mu(x)\)</span> ，同理也可求出 <span class="math inline">\(\mu(y)\)</span></p>
+<p>由于实际题目中可能 <span class="math inline">\(\mu(x)\)</span> 是易求的，也可能 <span class="math inline">\(\mu(y)\)</span> 是易求的，运气差的话要尝试2次</p>
+<h2 id="引入参数法">引入参数法</h2>
+<h3 id="可解出未知函数或未知量的方程">可解出未知函数（或未知量）的方程</h3>
+<h4 id="yfxfracpartial-ypartial-x"><span class="math inline">\(y=f(x,\frac{\partial y}{\partial x})\)</span></h4>
+<p>引入参数 <span class="math inline">\(\dfrac{\partial y}{\partial x}=p\)</span> ,则有 <span class="math display">\[
+p=\frac{\partial f}{\partial x}+\frac{\partial f}{\partial p}\frac{dp}{dx}
+\]</span> 这是可解的，其其通解满足以下形式 <span class="math display">\[
+p=\varphi(x,C) \longrightarrow
+y=f(x.\varphi(x,C))
+\]</span></p>
+<p><span class="math display">\[
+x=\psi(p,C) \longrightarrow
+\left\{\begin{matrix}
+    x=\psi(p,C)\\
+    y=f(\psi(p,c),p)
+\end{matrix}\right.
+\]</span></p>
+<p><span class="math display">\[
+\Phi(x,p,C)=0 \longrightarrow
+\left\{\begin{matrix}
+    \Phi(x,p,C)=0\\
+    y=f(x,p)
+\end{matrix}\right.
+\]</span></p>
+<h4 id="xfyfracdydx"><span class="math inline">\(x=f(y,\frac{dy}{dx})\)</span></h4>
+<p>引入参数 <span class="math inline">\(\frac{dy}{dx}=p\)</span> ,则原方程变为 <span class="math display">\[
+x=f(y,p)
+\]</span> 对 <span class="math inline">\(y\)</span> 求导有 <span class="math inline">\(\frac{dx}{dy}=\frac{1}{p}\)</span> 故 <span class="math display">\[
+\frac{1}{p}=\frac{\partial f}{\partial y}+\frac{\partial f}{\partial p}\frac{dp}{dy}
+\]</span></p>
+<h3 id="不显含未知函数或自变量的方程">不显含未知函数（或自变量）的方程</h3>
+<h4 id="不显含-y-的方程">不显含 <span class="math inline">\(y\)</span> 的方程</h4>
+<p><span class="math display">\[
+F(x,y&#39;)=0
+\]</span> 令 <span class="math inline">\(y&#39;=p\)</span> 则方程变为 <span class="math display">\[
+F(x,p)=0
+\]</span> 其存在一参数形式 <span class="math display">\[
+x=\varphi(t),p=\psi(t)
+\]</span> 则有 <span class="math display">\[
+dy=pdx=\psi(t)\varphi&#39;(t)dt
+\]</span> 综上，有其参数形式通解 <span class="math display">\[
+\left\{\begin{matrix}
+    x=\varphi(t)\\
+    y=\int\psi(t)\varphi&#39;(t)dt+C
+\end{matrix}\right.
+\]</span></p>
+<h4 id="不显含-x-的方程">不显含 <span class="math inline">\(x\)</span> 的方程</h4>
+<p><span class="math display">\[
+F(y,y&#39;)=0
+\]</span> 令 <span class="math inline">\(y&#39;=p\)</span> ，方程化为 <span class="math display">\[
+F(y,p)=0
+\]</span> 其存在一参数形式 <span class="math display">\[
+y=\varphi(t),p=\psi(t)
+\]</span> 则有 <span class="math display">\[
+dx=\frac{dy}{p}=\frac{\varphi&#39;(t)}{\psi(t)}dt
+\]</span> 综上，有其参数形式通解 <span class="math display">\[
+\left\{\begin{matrix}
+    x=\int\dfrac{\varphi&#39;(t)}{\psi(t)}dt+C\\
+    y=\varphi(t)
+\end{matrix}\right.
+\]</span></p>
+<h1 id="求解高阶常微分方程">求解高阶常微分方程</h1>
+<h2 id="非常系数微分方程">非常系数微分方程</h2>
+<h3 id="齐线性微分方程">齐线性微分方程</h3>
+<h4 id="齐线性微分方程解的结构">齐线性微分方程解的结构</h4>
+<p>如果 <span class="math inline">\(y_1(x),y_2(x),\cdots,y_n(x)\)</span> 是齐线性方程在定义区间 <span class="math inline">\(I\)</span> 的 <span class="math inline">\(n\)</span> 个线性无关的解则方程的通解为 <span class="math display">\[
+y=C_1y_1(x)+C_2y_2(x)+\cdots+C_ny_n(x)
+\]</span> 其中 <span class="math inline">\(C_1,C_2,\cdots,C_n\)</span> 为任意常数，并称 <span class="math inline">\(y_1(x),y_2(x),\cdots,y_n(x)\)</span> 为原方程的基本解组</p>
+<h4 id="观察法求解二阶齐线性微分方程">观察法求解二阶齐线性微分方程</h4>
+<h5 id="可能的简单特解">可能的简单特解</h5>
+<p>对于方程 <span class="math display">\[
+y&#39;&#39;+p_1(x)y&#39;+p_2(x)y=0
+\]</span> (1).当 <span class="math inline">\(p_1(x)+xp_2(x)=0\)</span> 时， <span class="math inline">\(y=x\)</span> 为其一解 (2).当 <span class="math inline">\(1+p_1(x)+p_2(x)=0\)</span> 时 <span class="math inline">\(y=e^x\)</span> 为其一解 (3).当 <span class="math inline">\(1-p_1(x)+p_2(x)=0\)</span> 时， <span class="math inline">\(y=e^{-x}\)</span> 为其一解 (4).当 <span class="math inline">\(\lambda^2+\lambda p_1(x)+p_2(x)=0\)</span> 时， <span class="math inline">\(y=e^{\lambda x}\)</span> 为其一解</p>
+<h5 id="代入法求另一解">代入法求另一解</h5>
+<p>设 <span class="math inline">\(y_1\)</span> 为 <span class="math inline">\(y&#39;&#39;+p_1(x)y&#39;+p_2(x)y=0\)</span> 的一个非零特解 则可设 <span class="math inline">\(y_2=C(x)y_1\)</span> 为其另一与 <span class="math inline">\(y_1\)</span> 线性无关的解 代入原方程化简得 <span class="math display">\[
+(2y_1&#39;+p_1(x)y1)C&#39;(x)+y_1C&#39;&#39;(x)=0
+\]</span> 分离变量后积分得 <span class="math display">\[
+C(x)=\int\dfrac{e^{-\int p_1(x)dx}}{y_1^2}dx
+\]</span> 带回得 <span class="math display">\[
+y_2=y_1\int\dfrac{e^{-\int p_1(x)dx}}{y_1^2}dx
+\]</span></p>
+<h3 id="非齐线性微分方程">非齐线性微分方程</h3>
+<h4 id="非齐线性微分方程解的结构">非齐线性微分方程解的结构</h4>
+<p>设 <span class="math inline">\(y^*\)</span> 为 <span class="math inline">\(y^{(n)}+p_1(x)y^{(n-1)}+\cdots+p_{n-1}(x)y&#39;+p_n(x)y=f(x)\)</span> 的一特解， <span class="math inline">\(\bar{y}=C_1y_1(x)+C_2y_2(x)+\cdots+C_ny_n(x)\)</span> 为原方程对应的齐线性方程的通解，则 <span class="math inline">\(y=\bar{y}+y^*\)</span> 为其通解</p>
+<h4 id="特解的求解">特解的求解</h4>
+<p>设 <span class="math display">\[
+y=C_1y_1(x)+C_2y_2(x)+\cdots+C_ny_n(x) \tag{3-10}
+\]</span> 为 <span class="math display">\[
+y^{(n)}+p_1(x)y^{(n-1)}+\cdots+p_{n-1}(x)y&#39;+p_n(x)y=0\tag{3-2}
+\]</span> 的通解</p>
+<p>常数变易法得 <span class="math display">\[
+y=C_1(x)y_1(x)+C_2(x)y_2(x)+\cdots+C_n(x)y_n(x) \tag{3-11}
+\]</span> 对 <span class="math inline">\(x\)</span> 求导得 <span class="math display">\[
+y&#39;=C_1(x)y&#39;_1(x)+C_2(x)y&#39;_2(x)+\cdots+C_n(x)y&#39;_n(x)+\\
+y_1(x)C_1&#39;(x)+y_2(x)C_2&#39;(x)+\cdots+y_n(x)C&#39;_x(x)
+\]</span> 为求解 <span class="math inline">\(C_i(x)\)</span> ，需要 <span class="math inline">\(n-1\)</span> 个限制条件 令 <span class="math display">\[
+y_1(x)C_1&#39;(x)+y_2(x)C_2&#39;(x)+\cdots+y_n(x)C&#39;_n(x)=0 \tag{3-11-1}
+\]</span> 得 <span class="math display">\[
+y&#39;=C_1(x)y&#39;_1(x)+C_2(x)y&#39;_2(x)+\cdots+C_n(x)y&#39;_n(x) \tag{3-12-1}
+\]</span> 同理有条件 <span class="math display">\[
+y_1&#39;(x)C_1&#39;(x)+y_2&#39;(x)C_2&#39;(x)+\cdots+y_n&#39;(x)C&#39;_n(x)=0 \tag{3-11-2}
+\]</span> 和表达式 <span class="math display">\[
+y&#39;&#39;=C_1(x)y&#39;&#39;_1(x)+C_2(x)y&#39;&#39;_2(x)+\cdots+C_n(x)y&#39;&#39;_n(x) \tag{3-12-2}
+\]</span> 重复上述操作有第 <span class="math inline">\(n-1\)</span> 个条件 <span class="math display">\[
+y_1(x)^{(n-2)}C_1&#39;(x)+y_2(x)^{(n-2)}C_2&#39;(x)+\cdots+y_n(x)^{(n-2)}C&#39;_n(x)=0 \\ \tag{3-11-(n-1)}
+\]</span> 与表达式 <span class="math display">\[
+y^{(n-1)}=C_1(x)y^{(n-1)}_1(x)+C_2(x)y^{(n-1)}_2(x)+\cdots+C_n(x)y^{(n-1)}_n(x) \\ \tag{3-12-(n-1)}
+\]</span> 最终对式 <strong>(3-12-(n-1))</strong> 再求导得 <span class="math display">\[
+y^{(n)}=C_1(x)y^{(n)}_1(x)+C_2(x)y^{(n)}_2(x)+\cdots+C_n(x)y^{(n)}_n(x)+\\
+y_1^{n-1}(x)C_1&#39;(x)+y_2^{n-1}(x)C_2&#39;(x)+\cdots+y_n^{n-1}(x)C_n&#39;(x)+
+\]</span> 回代得 <span class="math display">\[
+y_1(x)^{(n-1)}C_1&#39;(x)+y_2(x)^{(n-1)}C_2&#39;(x)+\cdots+y_n(x)^{(n-1)}C&#39;_n(x)=f(x) \\ \tag{3-11-n}
+\]</span> 所以 <strong>(3-11-1),(3-11-2),...,(3-11-n),</strong> 构成了一个线性方程组，且其系数矩阵的行列式即为原非齐线性方程对应的齐线性方程的一基础解组的朗斯基行列式，其恒不等于0，所以该线性方程组有唯一解</p>
+<p>设求得 <span class="math display">\[
+C_i&#39;(x)=\varphi&#39;_i(x)
+\]</span> 则有 <span class="math display">\[
+C_i(x)=\int\varphi&#39;_i(x)dx+k_i
+\]</span> 回代得 <span class="math display">\[
+y=\sum_{i=1}^{n}{[\int\varphi&#39;_i(x)dx+k_i]y_i(x)}
+\]</span> 取 <span class="math inline">\(k_i=0\)</span> ，则得解 <span class="math display">\[
+y=\sum_{i=1}^{n}{y_i(x)\int\varphi&#39;_i(x)dx}
+\]</span></p>
+<h2 id="常系数微分方程">常系数微分方程</h2>
+<h3 id="常系数齐线性微分方程">常系数齐线性微分方程</h3>
+<h4 id="特征根法">特征根法</h4>
+<h5 id="二阶常系数齐线性方程的特征根法">二阶常系数齐线性方程的特征根法</h5>
+<p>二阶常系数齐线性方程的一般形式为 <span class="math display">\[
+y&#39;&#39;+p_1y&#39;+p_2y=0 \tag{3-14}
+\]</span> 其中 <span class="math inline">\(p_1,p_2\)</span> 是常数，称 <span class="math inline">\(r^2+p_1r+p_2=0\)</span> 为该方程的特征方程， <span class="math inline">\(r_1,r_2\)</span> 为其两根称为特征根，接下来对特征根分别讨论</p>
+<h6 id="r_1-ne-r_2r_1-in-rr_2-in-r">（1） <span class="math inline">\(r_1 \ne r_2,r_1 \in R,r_2 \in R\)</span></h6>
+<p>两个线性无关的特解分别为 <span class="math display">\[
+y_1=e^{r_1x},y_2=e^{r_2x}
+\]</span> 通解为 <span class="math display">\[
+y=C_1e^{r_1x}+C_2e^{r_2x}
+\]</span></p>
+<h6 id="r_1r_2-dfracp_12r_1-in-rr_2-in-r">（2） <span class="math inline">\(r_1=r_2=-\dfrac{p_1}{2},r_1 \in R,r_2 \in R\)</span></h6>
+<p>特解 <span class="math display">\[
+y_1=e^{rx},y_2=xe^{rx}
+\]</span> 通解 <span class="math display">\[
+y=C_1e^{rx}+C_2xe^{rx}=(C_1+C_2x)e^{rx}
+\]</span></p>
+<h6 id="r_12alphapm-ibetabetane0r_12in-c">（3） <span class="math inline">\(r_{1,2}=\alpha\pm i\beta,\beta\ne0,r_{1,2}\in C\)</span></h6>
+<p>特解 <span class="math display">\[
+y_1=e^{\alpha x}cos\beta x,y_2=e^{\alpha x}sin\beta x,
+\]</span> 通解 <span class="math display">\[
+y=e^{\alpha x}(C_1cos\beta x+C_2sin\beta x)
+\]</span></p>
+<h5 id="高阶常系数齐线性方程的解">高阶常系数齐线性方程的解</h5>
+<table>
+
+<thead>
+<tr class="header">
+<th>特征方程的根</th>
+<th>微分方程对应的线性无关解</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Ⅰ)单实根 <span class="math inline">\(r\)</span></td>
+<td>对应一个解: <span class="math inline">\(y_1=e^{rx}\)</span></td>
+</tr>
+<tr class="even">
+<td>(Ⅱ)一对单虚根 $r_{1,2}=i$</td>
+<td>对应两个线性无关解: <span class="math inline">\(y_1=e^{\alpha x}cos\beta x,y_2=e^{\alpha x}sin\beta x\)</span></td>
+</tr>
+<tr class="odd">
+<td>(Ⅲ) <span class="math inline">\(k\)</span> 重实根 <span class="math inline">\(r\)</span></td>
+<td>对应 <span class="math inline">\(k\)</span> 个线性无关解: <span class="math inline">\(y_1=e^{rx},y_2=xe^{rx},\cdots,y_k=x^{k-1}e^{rx}\)</span></td>
+</tr>
+<tr class="even">
+<td>(Ⅳ)一对 <span class="math inline">\(k\)</span> 重虚根 <span class="math inline">\(r_{1,2}=\alpha\pm i\beta\)</span></td>
+<td>对应 <span class="math inline">\(2k\)</span> 个线性无关解: <span class="math inline">\(y_1=e^{\alpha x}cos\beta x,y_2=e^{\alpha x}sin\beta x;y_3=xe^{\alpha x}cos\beta x,y_4=xe^{\alpha x}sin\beta x;\cdots \cdots;y_{2k-1}=x^{k-1}e^{\alpha x}cos\beta x,y_{2k}=x^{k-1}e^{\alpha x}sin\beta x\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="常系数非齐线性微分方程">常系数非齐线性微分方程</h3>
+<h4 id="待定系数法求解二阶常系数非齐线性微分方程的特解">待定系数法求解二阶常系数非齐线性微分方程的特解</h4>
+<p>二阶常系数非齐微分方程的一般形式为 <span class="math display">\[
+y&#39;&#39;+p_1y&#39;+p_2y=f(x)\tag{3-17}
+\]</span></p>
+<h5 id="类型ⅰ-fxelambda-xqx-lambda-为常数-p_mx-为-m-次多项式">类型Ⅰ <span class="math inline">\(f(x)=e^{\lambda x}Q(x)\)</span> ，<span class="math inline">\(\lambda\)</span> 为常数， <span class="math inline">\(p_m(x)\)</span> 为 <span class="math inline">\(m\)</span> 次多项式</h5>
+<p>则 <strong>（3-17）</strong> 有如下形式的特解 <span class="math display">\[
+y^*=x^ke^{\lambda x}Q_m(x)\tag{3-18}
+\]</span> 其中 <span class="math inline">\(Q_m(x)\)</span> 为 <span class="math inline">\(m\)</span> 次多项式， <span class="math inline">\(k\)</span> 为 <span class="math inline">\(\lambda\)</span> 作为 <strong>（3-17）</strong> 的特征方程的根的重数（如果 <span class="math inline">\(\lambda\)</span> 不是特征根，则取 <span class="math inline">\(k=0\)</span> ） 为求 <span class="math inline">\(Q_m(x)\)</span> ，将 <strong>（3-18）</strong> 回代 <strong>（3-17）</strong> 后展开并比较系数即可</p>
+<h5 id="类型ⅱ-fxealpha-xp_lxcosbeta-xq_nxsinbeta-x-alphabeta-为常数-p_lxq_nx-分别为-ln-次多项式">类型Ⅱ <span class="math inline">\(f(x)=e^{\alpha x}[P_l(x)cos\beta x+Q_n(x)sin\beta x]\)</span> , <span class="math inline">\(\alpha,\beta\)</span> 为常数， <span class="math inline">\(P_l(x),Q_n(x)\)</span> 分别为 <span class="math inline">\(l,n\)</span> 次多项式</h5>
+<p>此时，方程 <strong>（3-17）</strong> 具有如下形式的特解 <span class="math display">\[
+y^*=x^ke^{\alpha x}[R_m^{(1)}(x)cos\beta x+R_m^{(2)}(x)sin\beta x]
+\]</span> 其中 <span class="math inline">\(\alpha\pm i\beta\)</span> 不是特征方程的根时， <span class="math inline">\(k=0\)</span> ；当 <span class="math inline">\(\alpha\pm i\beta\)</span> 是特征方程的根时， <span class="math inline">\(k=1\)</span> ； <span class="math inline">\(R_m^{(1)}(x),R_m^{(2)}(x)\)</span> 是 <span class="math inline">\(m\)</span> 次多项式， <span class="math inline">\(m=max\{l,n\}\)</span></p>
+<h2 id="可降阶的常微分方程">可降阶的常微分方程</h2>
+<h3 id="ynfx-型的方程"><span class="math inline">\(y^{(n)}=f(x)\)</span> 型的方程</h3>
+<p>两边同时积分</p>
+<h3 id="fxykyk1cdotsyn0-型的方程且满足-1le-kle-n"><span class="math inline">\(F(x,y^{(k)},y^{(k+1)},\cdots,y^{(n)})=0\)</span> 型的方程，且满足 <span class="math inline">\((1\le k\le n)\)</span></h3>
+<p>对于方程 <span class="math display">\[
+F(x,y^{(k)},y^{(k+1)},\cdots,y^{(n)})=0\tag{3-29}
+\]</span> 作变量代换 <span class="math inline">\(y^{(k)}=p\)</span> ，则有 <span class="math display">\[
+F(x,p&#39;,p&#39;&#39;,\cdots,p^{(n-k)})=0\tag{3-30}
+\]</span> 如果 <strong>（3-30）</strong> 有通解 <span class="math display">\[
+y^{(k)}=p=\varphi(x,C_1,C_2,\cdots,C_{n-k})
+\]</span> 两边同时积分可求解</p>
+<h3 id="fyyycdotsyn0-型的方程"><span class="math inline">\(F(y,y&#39;,y&#39;&#39;,\cdots,y^{(n)})=0\)</span> 型的方程</h3>
+<p>对于方程 <span class="math display">\[
+F(y,y&#39;,y&#39;&#39;,\cdots,y^{(n)})=0
+\]</span> 作变量代换 <span class="math inline">\(y&#39;=p\)</span> 则有 <span class="math display">\[
+\frac{dy}{dx}=p\\
+\frac{d^2x}{dy^2}=\frac{dp}{dx}=\frac{dp}{dy}\cdot\frac{dy}{dx}=p\frac{dp}{dy}\\
+\frac{d^3p}{dy^3}=\frac{d}{dx}(p\frac{dp}{dy})=p\frac{d}{dy}(p\frac{dp}{dy})=p^2\frac{d^2p}{dy^2}+p(\frac{dp}{dy})^2\\
+\cdots \cdots \cdots \cdots
+\]</span> 逐步回代后可将方程降阶为易求的形式</p>
+<h3 id="fxyycdotsynfracddxvarphixyycdotsyn-10-型的方程"><span class="math inline">\(F(x,y,y&#39;,\cdots,y^{(n)})=\frac{d}{dx}\varPhi(x,y,y&#39;,\cdots,y^{(n-1)})=0\)</span> 型的方程</h3>
+<p>先求解 <span class="math display">\[
+\varPhi(x,y,y&#39;,\cdots,y^{(n-1)})=C
+\]</span></p>
+<p>再继续考虑求解原方程</p>
+<h1 id="求解常系数一阶常微分方程组">求解常系数一阶常微分方程组</h1>
+<h2 id="常系数一阶齐线性常微分方程组">常系数一阶齐线性常微分方程组</h2>
+<h3 id="常系数齐线性常微分方程组通解的结构">常系数齐线性常微分方程组通解的结构</h3>
+<h4 id="向量函数的线性无关与朗斯基行列式">向量函数的线性无关与朗斯基行列式</h4>
+<p>设 <span class="math inline">\(\vec{\varphi}_1(t),\vec{\varphi}_2(t),\cdots,\vec{\varphi}_m(t)\)</span> 为定义在 <span class="math inline">\(I\)</span> 上的 <span class="math inline">\(m\)</span> 个 <span class="math inline">\(n\)</span> 维向量函数，如果存在 <span class="math inline">\(m\)</span> 个不全为 <span class="math inline">\(0\)</span> 的常数 <span class="math inline">\(C_1,C_2,\cdots,C_m\)</span> 使得 <span class="math display">\[
+\forall t \in I \Rrightarrow C_1\vec{\varphi}_1(t)+C_2\vec{\varphi}_2(t)+\cdots+C_m\vec{\varphi}_m(t)\equiv0
+\]</span> 则称其为在区间 <span class="math inline">\(I\)</span> 上是<strong>线性相关的</strong>，否则则称为是<strong>线性无关的</strong></p>
+<p>设由 <span class="math inline">\(\vec{\varphi}_1(t),\vec{\varphi}_2(t),\cdots,\vec{\varphi}_m(t)\)</span> 构成的<strong>朗斯基行列式</strong> <span class="math display">\[
+W(x)=
+\begin{vmatrix}
+    {\varphi}_{11}(t)&amp;{\varphi}_{12}(t)&amp;\cdots&amp;{\varphi}_{1n}(t)\\
+    {\varphi}_{21}(t)&amp;{\varphi}_{22}(t)&amp;\cdots&amp;{\varphi}_{2n}(t)\\
+    \vdots&amp;\vdots&amp; &amp;\vdots\\
+    {\varphi}_{n1}(t)&amp;{\varphi}_{n2}(t)&amp;\cdots&amp;{\varphi}_{nn}(t)
+\end{vmatrix}
+\]</span></p>
+<p>则有 <span class="math display">\[
+\vec{\varphi}_1(t),\vec{\varphi}_2(t),\cdots,\vec{\varphi}_m(t)在区间I上线性相关\Rightarrow \forall t \in I,W(t)\equiv 0
+\]</span></p>
+<h4 id="基本解组与基解矩阵">基本解组与基解矩阵</h4>
+<p>对于齐线性微分方程组 <span class="math display">\[
+\frac{d\vec{x}}{dt}=\pmb{A}(t)\vec{x} \tag{4-6}
+\]</span></p>
+<p>如果 <span class="math inline">\(\vec{\varphi}_1(t),\vec{\varphi}_2(t),\cdots,\vec{\varphi}_n(t)\)</span> 是 <strong>（4-6）</strong> 在区间 <span class="math inline">\(I\)</span> 上的 <span class="math inline">\(n\)</span> 个线性无关的解，那么称这组向量函数为原方程组的<strong>基本解组</strong></p>
+<p>记一 <span class="math inline">\(n\times n\)</span> 矩阵 <span class="math inline">\(\pmb{\varPhi}(t)\)</span> 的每一列都是 <strong>（4-6）</strong> 的一个解 <span class="math inline">\(\varphi_i(t)\)</span></p>
+<p>即 <span class="math display">\[
+\pmb{\varPhi}(t)=(\vec{\varphi}_1(t),\vec{\varphi}_2(t),\cdots,\vec{\varphi}_n(t))
+\]</span></p>
+<p>所以 <span class="math display">\[
+\pmb{\varPhi}(t)=\begin{vmatrix}
+    {\varphi}_{11}(t)&amp;{\varphi}_{12}(t)&amp;\cdots&amp;{\varphi}_{1n}(t)\\
+    {\varphi}_{21}(t)&amp;{\varphi}_{22}(t)&amp;\cdots&amp;{\varphi}_{2n}(t)\\
+    \vdots&amp;\vdots&amp; &amp;\vdots\\
+    {\varphi}_{n1}(t)&amp;{\varphi}_{n2}(t)&amp;\cdots&amp;{\varphi}_{nn}(t)
+\end{vmatrix}
+\]</span></p>
+<p>则称 <span class="math display">\[
+\pmb{\varPhi}(t)
+\]</span></p>
+<p>为式 <strong>（4-6）</strong> 的一个解矩阵，若满足 <span class="math inline">\(\forall t \in I,det\pmb{\varPhi}(t)\ne 0\)</span> 则称其为 <strong>（4-6）</strong> 的一个基解矩阵</p>
+<h3 id="待定系数法法求解常系数一阶齐线性微分方程组">待定系数法法求解常系数一阶齐线性微分方程组</h3>
+<h4 id="系数矩阵的特征根都为单根">系数矩阵的特征根都为单根</h4>
+<p>若系数矩阵有 <span class="math inline">\(n\)</span> 个不同的特征根 <span class="math inline">\(\lambda_1,\lambda_2,\cdots,\lambda_n\)</span> 且 <span class="math inline">\(\vec{T}_i\)</span> 为 <span class="math inline">\(\lambda_i\)</span> 所对应的特征向量则其基解矩阵 <span class="math display">\[
+\pmb{\varPhi}(t)=(\vec{T}_1(t)e^{\lambda_1 t},\vec{T}_2(t)e^{\lambda_2 t},\cdots,\vec{T}_n(t)e^{\lambda_n t})
+\]</span></p>
+<h4 id="系数矩阵的特征根存在重根">系数矩阵的特征根存在重根</h4>
+<p>设系数矩阵有 <span class="math inline">\(m\)</span> 个不相同的特征根 <span class="math inline">\(\lambda_i,(i\le m)\)</span> 对应的重数为 <span class="math inline">\(k_i\)</span> 且有 <span class="math inline">\(\sum_{i=1}^{m}k_i=n\)</span> ，则对于特征根 <span class="math inline">\(\lambda_i\)</span> ，方程组有 <span class="math inline">\(k_i\)</span> 个如下形式的线性无关的解 <span class="math display">\[
+\begin{bmatrix}
+    \begin{bmatrix}
+        a_{10}\\
+        a_{20}\\
+        \vdots\\
+        a_{n0}
+    \end{bmatrix}+
+    \begin{bmatrix}
+        a_{11}\\
+        a_{21}\\
+        \vdots\\
+        a_{n1}
+    \end{bmatrix}t+
+    \cdots+
+    \begin{bmatrix}
+        a_{1,k_i-1}\\
+        a_{2,k_i-1}\\
+        \vdots\\
+        a_{n,k_i-1}
+    \end{bmatrix}t^{k_i-1}
+\end{bmatrix}e^{\lambda_it}
+\]</span></p>
+<h4 id="系数矩阵的特征根存在虚根">系数矩阵的特征根存在虚根</h4>
+<p>若存在虚数解 <span class="math inline">\(\vec{z}(t)=\vec{\varphi}(t)+i\vec{\psi}(t)\)</span> 则其实部和虚部都是原方程的解</p>
+<h2 id="常系数一阶非齐线性微分方程组的求解">常系数一阶非齐线性微分方程组的求解</h2>
+<p>对于 <span class="math display">\[
+\frac{d\vec{x}}{dt}=\pmb{A}(t)\vec{x}+\vec{f}(t)
+\]</span> 采用待定系数法求解其特解 <span class="math inline">\(\varphi^*(t)\)</span></p>
+<h3 id="vecftp_1tp_2tcdotsp_nttealpha-t-其中-p_it-是关于-t-的多项式"><span class="math inline">\(\vec{f}(t)=(P_1(t),P_2(t),\cdots,P_n(t))^Te^{\alpha t}\)</span> 其中 <span class="math inline">\(P_i(t)\)</span> 是关于 <span class="math inline">\(t\)</span> 的多项式</h3>
+<p>此时存在如下形式的特解 <span class="math display">\[
+\varphi^*(t)=(Q_1(t),Q_2(t),\cdots,Q_m(t))^Te^{\alpha t}
+\]</span> 其中 <span class="math inline">\(Q_i(t)\)</span> 是关于 <span class="math inline">\(t\)</span> 的待定多项式，它们的次数都是 <span class="math inline">\(m+l\)</span> 次 ， <span class="math inline">\(m\)</span> 为 <span class="math inline">\(P_i(t)\)</span> 的最高次数；当 <span class="math inline">\(\alpha\)</span> 为特征根时， <span class="math inline">\(l\)</span> 为其重数，否则 <span class="math inline">\(l=0\)</span> ，将上述形式回代到原方程后展开并比较系数即可解得其一特解</p>
+<h3 id="vecftp_1tcosbeta-ttildep_1sinbeta-tcdotsp_ntcosbeta-ttildep_n-sinbeta-ttealpha-t-其中-p_ittildep_it-均是关于-t-的多项式"><span class="math inline">\(\vec{f}(t)=(P_1(t)cos\beta t,\tilde{P}_1sin\beta t,\cdots,P_n(t)cos\beta t,\tilde{P}_n sin\beta t)^Te^{\alpha t}\)</span> 其中 <span class="math inline">\(P_i(t),\tilde{P}_i(t)\)</span> 均是关于 <span class="math inline">\(t\)</span> 的多项式</h3>
+<p>此时存在如下形式的特解 <span class="math display">\[
+\varphi^*(t)=(Q_1(t)cos\beta t,\tilde{Q}_1sin\beta t,\cdots,Q_n(t)cos\beta t,\tilde{Q}_n sin\beta t)^Te^{\alpha t}
+\]</span></p>
+<p>其中 <span class="math inline">\(Q_i(t),\tilde{Q}_i(t)\)</span> 是关于 <span class="math inline">\(t\)</span> 的待定实系数多项式，它们的次数都是 <span class="math inline">\(m+l\)</span> 次 ， <span class="math inline">\(m\)</span> 为 <span class="math inline">\(P_i(t),\tilde{P}_i(t)\)</span> 的最高次数；当 <span class="math inline">\(\alpha+i\beta\)</span> 为特征根时， <span class="math inline">\(l\)</span> 为其重数，否则 <span class="math inline">\(l=0\)</span> ，将上述形式回代到原方程后展开并比较系数即可解得其一特解</p>
+<h1 id="附录">附录</h1>
+<h2 id="鸣谢">鸣谢</h2>
+<p>非常感谢 [隐私原因，已删除]大佬 允许我使用他的思维导图作为模板创作了这篇小文 ψ(｀∇´)ψ</p>
+<h2 id="版本历史记录">版本历史记录</h2>
+<p>2021/7/2 发布 v1.0.0</p>
+<p>2021/7/2 本地存档，未发布 v1.0.1 增加了许可协议的详细描述，修正了一些小错误</p>
+<p>2021/7/3 发布 v1.1.0 完成所有ToDo任务</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="category-chain-item">课程笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0/" class="print-no-link">#学习</a>
+      
+        <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="print-no-link">#常微分方程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程学习笔记</div>
+      <div>https://ooj2003.github.io/2022/03/12/笔记/常微分方程学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>OOJ2003</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月12日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年12月28日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/20/%E6%8A%80%E6%9C%AF/%E7%94%A8rust%E6%90%9E%E4%B8%AA%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A81/" title="用rust搞个数据结构--链表1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">用rust搞个数据结构--链表1</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"OOJ2003/OOJ2003.github.io","repo-id":"R_kgDOGc8frQ","category":"Announcements","category-id":"DIC_kwDOGc8frc4CQTmF","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

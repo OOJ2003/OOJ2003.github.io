@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cheems.png">
+  <link rel="icon" href="/img/cheems.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="OOJ2003">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="愉悦的使用现代工具做java实验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="idea配置jsp开发环境">
+<meta property="og:url" content="https://ooj2003.github.io/2022/09/02/%E9%85%8D%E7%BD%AE/idea%E9%85%8D%E7%BD%AEjsp%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="OOJ&#39;s Blog">
+<meta property="og:description" content="愉悦的使用现代工具做java实验">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/763c604d3c3745dfdc2b8d393e954102-20220902091924-03802b.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/f36cb6aaf7bd7760b06d12fec95b4e09-20220902093318-2abf13.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/c2b54d6cda5583ed7b74844e83b03afd-20220902093630-a42199.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/a1fe7e8f229b44ffe8d6917a5c5f5b73-20220902093851-7f15f3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/9b70520b277f2ef5e293d1bc8b48bb90-20220902094827-a9db0c.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/b094b52298f7f6a7e90c744bd3408322-20220902094923-901348.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/f71cdfda9dc0baa07e058967dd6a2510-20220902102314-599d34.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/982b07a886ab0989c602d901acb1eab1-20220902102337-708269.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/c289127e57b7e0be5ffe840508a84971-20220902095201-8d62dd.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/43831753259c55cd713d08a1aebb645a-20220902101726-4f97e6.png">
+<meta property="article:published_time" content="2022-09-02T08:50:58.000Z">
+<meta property="article:modified_time" content="2022-09-10T21:22:38.000Z">
+<meta property="article:author" content="OOJ2003">
+<meta property="article:tag" content="配置记录">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/763c604d3c3745dfdc2b8d393e954102-20220902091924-03802b.png">
+  
+  
+  
+  <title>idea配置jsp开发环境 - OOJ&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ooj2003.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>OOJ&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="idea配置jsp开发环境"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-02 08:50" pubdate>
+          2022年9月2日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">idea配置jsp开发环境</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="准备工作">准备工作</h2>
+<p>教育邮箱，学生证，代理工具（可选），<a target="_blank" rel="noopener" href="https://steampp.net/">watt toolkit</a> （可选，用于在没有代理工具的情况下访问 github），<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-migration.cgi">tomcat 二进制分发</a>（此处使用的为 tomcat10.2.3)。</p>
+<h2 id="具体配置">具体配置</h2>
+<h3 id="教育认证">教育认证</h3>
+<p>如果你已完成了 jetbrains 的教育认证，跳过这一部分。</p>
+<ol type="1">
+<li>（可选）进行 github 学生包认证，需要教育邮箱和学生证照片，不要使用代理，学生认证会根据 ip 判断位置。（注：除本项外其余均建议在代理环境下完成，外网的连接通畅对查找资料和下载安装资源有很大的帮助。）</li>
+<li>使用学生包认证 jetbrains 教育认证，如果没有做 1，可以直接使用教育邮箱认证。</li>
+<li>下载 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/toolbox-app/">toolbox</a> 并登录你注册的 jetbrains 账户，安装 IntelliJ IDEA Ultimate 版本，当你认证了学生身份后，你能够免费的使用这些付费 ide 。</li>
+</ol>
+<h3 id="新建项目">新建项目</h3>
+<p>打开 idea，然后按照下图新建项目，位置选择一个你喜欢的且不包含特殊字符的就行。 <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/763c604d3c3745dfdc2b8d393e954102-20220902091924-03802b.png" srcset="/img/loading.gif" lazyload alt="配置图" /></p>
+<p>生成器使用 jakarta ee，模板 web 应用程序，构建系统 maven 。</p>
+<p>应用程序服务器首次创建项目需要手动导入，选择新建 tomcat 服务器，然后地址选择 tomcat 解压后所在的地址。</p>
+<p>jdk 则不用预先安装，在项目配置里选择下载 jdk 后找到 1.8 版本的 jdk 就可以了，idea 会自动处理好，推荐 openjdk 或者 azul 。</p>
+<h3 id="项目配置">项目配置</h3>
+<p>下图是项目的文件结构，接下来我们写的 jsp 文件均保存在 webapp 目录或其子目录内。 <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/f36cb6aaf7bd7760b06d12fec95b4e09-20220902093318-2abf13.png" srcset="/img/loading.gif" lazyload /></p>
+<p>用 idea 打开项目，你的界面应该和下图类似。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/c2b54d6cda5583ed7b74844e83b03afd-20220902093630-a42199.png" srcset="/img/loading.gif" lazyload /></p>
+<p>右上角的绿色三角和红色虫子分别是运行和调试，点击绿色三角，idea 会自动构建并通过浏览器打开，如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/a1fe7e8f229b44ffe8d6917a5c5f5b73-20220902093851-7f15f3.png" srcset="/img/loading.gif" lazyload /></p>
+<p>在 webapp 目录中新建 ex1 目录，然后在 ex1 中新建 inputWord.jsp 和 showDictionary.jsp 文件，文件内容如下。</p>
+<p>inputWord.jsp</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs html">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;<br><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;font-size: small&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;showDictionary.jsp&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;get&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">form</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><br>            请输入单词（用空格分隔）：<br>            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;word&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;送出&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>showDictionary.jsp</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs html">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;<br>&lt;%@ page import=&quot;java.util.*&quot; %&gt;<br><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color: white&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;font-size: medium&quot;</span>&gt;</span><br>    &lt;%!<br>        TreeSet<span class="hljs-tag">&lt;<span class="hljs-name">String</span>&gt;</span> dictionary = new TreeSet<span class="hljs-tag">&lt;&gt;</span>();<br>        public void addWord(String s) &#123;<br>            dictionary.addAll(Arrays.asList(s.split(&quot; &quot;)));<br>        &#125;<br>    %&gt;<br><br>    &lt;%<br>	    String str = request.getParameter(&quot;word&quot;);<br>        addWord(str);<br>        for (String si: dictionary) &#123;<br>            out.print(&quot;&quot; + si + &quot;<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>&quot;);<br>        &#125;<br>    %&gt;<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行后应该如下图所示。 <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/9b70520b277f2ef5e293d1bc8b48bb90-20220902094827-a9db0c.png" srcset="/img/loading.gif" lazyload /></p>
+<p>也可以在 idea 中打开，按下图第一个按钮即可。 <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/b094b52298f7f6a7e90c744bd3408322-20220902094923-901348.png" srcset="/img/loading.gif" lazyload /></p>
+<p>继续测试，打开页面输入内容后点击送出。 <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/f71cdfda9dc0baa07e058967dd6a2510-20220902102314-599d34.png" srcset="/img/loading.gif" lazyload /> <img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/982b07a886ab0989c602d901acb1eab1-20220902102337-708269.png" srcset="/img/loading.gif" lazyload /></p>
+<p>到此，大致配置已经完成。</p>
+<h2 id="疑难解惑">疑难解惑</h2>
+<h3 id="idea-无法自动补全部分函数报错且提示找不到方法调用-out.print">idea 无法自动补全部分函数，报错且提示找不到方法调用 out.print()</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/c289127e57b7e0be5ffe840508a84971-20220902095201-8d62dd.png" srcset="/img/loading.gif" lazyload /></p>
+<p>打开 文件/项目结构/模块 然后点击加号选择 jar 或目录，然后选择你安装的 tomcat 中的 lib 目录，应用配置并重启 idea。</p>
+<h3 id="tomcat-日志乱码">tomcat 日志乱码</h3>
+<p>idea 设置里打开文件编码选项，里面所有选择全部修改为 utf-8，bom 选项为不带 bom。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/OOJ2003/blog-img@main/blog-images/2022/09/02/43831753259c55cd713d08a1aebb645a-20220902101726-4f97e6.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="使用-out.print-后-jsp-页面乱码">使用 out.print 后 jsp 页面乱码</h3>
+<p>创建如下函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> String <span class="hljs-title function_">toUTF8</span><span class="hljs-params">(String s)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(s.getBytes(), StandardCharsets.UTF_8);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>非常典型的 utf-8 编码问题，使用 out.print 或类似函数时调用上述静态方法包装你的字符串。</p>
+<h3 id="中文界面字体...etc">中文/界面/字体...etc</h3>
+<p>设置选项中点击插件，搜索 chinese，安装中文语言包。</p>
+<p>主题我使用的是 material theme 插件的 one dark pro，字体为 fira code nerd font 。</p>
+<p>其余推荐插件：</p>
+<ol type="1">
+<li>rainbow brackets (彩虹括号)</li>
+<li>Atom Material Icons (material design 风格的图标包)</li>
+<li>copilot (github 的 ai 代码补全工具，需要 github 学生包才能免费使用)</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">环境配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" class="print-no-link">#配置记录</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>idea配置jsp开发环境</div>
+      <div>https://ooj2003.github.io/2022/09/02/配置/idea配置jsp开发环境/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>OOJ2003</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月2日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年9月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/25/%E9%85%8D%E7%BD%AE/%E8%BD%AF%E8%B7%AF%E7%94%B1-%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86%E5%90%8E%E5%87%BA%E7%8E%B0%E7%9A%84git%E9%94%99%E8%AF%AF/" title="软路由/路由器配置代理后出现的git错误">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">软路由/路由器配置代理后出现的git错误</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/30/%E9%A2%98%E8%A7%A3/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%B0%E4%BA%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E9%81%93%E9%A2%98/" title="一点二进制">
+                        <span class="hidden-mobile">一点二进制</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"OOJ2003/OOJ2003.github.io","repo-id":"R_kgDOGc8frQ","category":"Announcements","category-id":"DIC_kwDOGc8frc4CQTmF","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
