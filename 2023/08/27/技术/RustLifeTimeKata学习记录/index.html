@@ -1,0 +1,1169 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cheems.png">
+  <link rel="icon" href="/img/cheems.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="OOJ2003">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="又是与编译器斗智斗勇的一天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RustLifeTimeKata学习记录">
+<meta property="og:url" content="https://ooj2003.github.io/2023/08/27/%E6%8A%80%E6%9C%AF/RustLifeTimeKata%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="OOJ&#39;s Blog">
+<meta property="og:description" content="又是与编译器斗智斗勇的一天">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-27T10:38:21.000Z">
+<meta property="article:modified_time" content="2023-09-10T20:10:00.000Z">
+<meta property="article:author" content="OOJ2003">
+<meta property="article:tag" content="rust">
+<meta property="article:tag" content="生命周期">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>RustLifeTimeKata学习记录 - OOJ&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ooj2003.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>OOJ&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/links/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>友链</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="RustLifeTimeKata学习记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-27 10:38" pubdate>
+          2023年8月27日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          95 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">RustLifeTimeKata学习记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>最近闲下来有点空，于是决定在玩 compose 之外重新看点 Rust 相关的内容，也因为我的 Rust 理解基本就是半吊子水平，一涉及到并发/协程 etc 就歇菜了。。。所以我决定从生命周期开始重新学起来，之后再看看 Tokio 的相关实现，这次学习的参考资料就是一本有关 Rust 生命周期实践的小册——<a target="_blank" rel="noopener" href="https://github.com/tfpk/lifetimekata/">《Rust LIfetimeKata》</a>。除了一些概念上的讲解外，这个项目还有配套的一些习题，我也会把我的回答和理解放在这篇文章里。</p>
+<h1 id="开始之前的闲聊">开始之前的闲聊</h1>
+<p>在开始之前我们还是照例聊聊一些边角料，对于非 <code>CPP</code> 主力的大多数开发者来说，生命周期应该是一个相当陌生的东西，注意我说的不是业务层面的生命周期函数等，而是指引用等变量的存活时间段。</p>
+<p>因为有 <code>GC</code> 兜底，无论是前端还是后端，都不用考虑到如此细枝末节的东西，<code>Runtime</code> 会帮助我们处理一切，真是太棒了！。。吗？</p>
+<p>即使不考虑系统级编程或者量化交易等对性能有极端要求的场景，传统的后端业务在部分场景中也会因为 <code>GC</code> 的各种缺陷导致性能瓶颈<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="事实上这种场景非常罕见，我见到的例子只有 cloudflare 和 reddit 用 rust 重写自己相关业务用于获取性能提升的案例。">[1]</span></a></sup>，此时你就不得不用 <code>Rust/CPP</code> 去重写对应的实现。</p>
+<p>但是没有 <code>GC</code> 的保护，去写内存安全的程序犹如在钢丝上行走，很多 <code>CPP</code> 开发的程序，尤其是那些没有引入 <code>Modern CPP</code> 的项目，就会很容易出现各种各样的内存安全问题。</p>
+<p>生命周期是一种更加折中的方式，通过手动指定引用的生命周期约束的方式，编译器在大多数情况下可以正确的实现并获得与手动析构相同的性能，再配合各类智能指针，几乎可以覆盖大多数场景。</p>
+<p>不过你真的需要生命周期吗？假设你所有的类型都使用值类型并保证不变性，再配合智能指针的使用，可以在保证一定性能的前提下同时避免生命周期的使用，但是如果这样玩的话，那还不如写 <code>Erlang</code> 呢😂。</p>
+<h1 id="生命周期标注">生命周期标注</h1>
+<p>前几章的内容比较简单，这里就放下 exercise 的答案。</p>
+<h2 id="exercise">exercise</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">identity</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt;(number: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>) <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span> &#123;<br>    number<br>&#125;<br><span class="hljs-comment">//没什么可说的，返回值和输入值有一样的生命周期</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">split</span>&lt;<span class="hljs-symbol">&#x27;a</span>, <span class="hljs-symbol">&#x27;b</span>&gt;(text: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span>, delimiter: &amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">str</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span>&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">last_split</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">matches</span>: <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-type">str</span>&gt; = <span class="hljs-built_in">vec!</span>[];<br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..text.<span class="hljs-title function_ invoke__">len</span>() &#123;<br>        <span class="hljs-keyword">if</span> i &lt; last_split &#123;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> text[i..].<span class="hljs-title function_ invoke__">starts_with</span>(delimiter) &#123;<br>            matches.<span class="hljs-title function_ invoke__">push</span>(&amp;text[last_split..i]);<br>            last_split = i + delimiter.<span class="hljs-title function_ invoke__">len</span>();<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> last_split &lt; text.<span class="hljs-title function_ invoke__">len</span>() &#123;<br>        matches.<span class="hljs-title function_ invoke__">push</span>(&amp;text[last_split..]);<br>    &#125;<br><br>    matches<br>&#125;<br><span class="hljs-comment">// 这个相对有意思一些，delimiter 是分隔符，而返回的值的资源全部从 text 中获取，所以后两者应该拥有相同的生命周期</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">only_if_greater_hard</span>&lt;<span class="hljs-symbol">&#x27;a</span>, <span class="hljs-symbol">&#x27;b</span>&gt;(<br>    number: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>,<br>    greater_than: &amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">i32</span>,<br>    otherwise: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>,<br>) <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span> &#123;<br>    <span class="hljs-keyword">if</span> number &gt; greater_than &#123;<br>        number<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        otherwise<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 函数要么返回 number 要么返回 otherwise，所以这两者应该拥有至少一样长的生命周期，另一个函数参数则独自拥有一个生命周期</span><br></code></pre></td></tr></table></figure>
+<h1 id="函数的生命周期省略规则">函数的生命周期省略规则</h1>
+<p>在实际编写代码时，你可能会发现很多情况下并不需要为每个函数的引用参数都添加生命周期标注，这是因为 rust 编译器在这几年的演进过程中已经包含了很多对生命周期的改善，对于一些常见的模式，编译器可以自动推断出其生命周期约束。然而，这种自动推断有些时候会推导出完全不符合我们意图的生命周期。</p>
+<p>参考相关<a target="_blank" rel="noopener" href="https://github.com/rust-lang/reference/blob/master/src/lifetime-elision.md">文档</a>，对于函数的生命周期省略规则如下。</p>
+<ol type="1">
+<li>函数参数中每个省略周期标注的参数都会被给予一个独立的生命周期参数。</li>
+<li>如果参数中只使用了一个生命周期，则将其作为所有省略的输出生命周期。</li>
+<li>对于方法签名， Self 引用的生命周期会被作为省略的输出生命周期。</li>
+</ol>
+<h2 id="exercise-1">exercise</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> require_lifetimes::require_lifetimes;<br><br><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">example_a</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt;(_number: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>) <span class="hljs-punctuation">-&gt;</span> (&amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>, &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>) &#123;<br>    <span class="hljs-built_in">unimplemented!</span>()<br>&#125;<br><br><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">example_b</span>&lt;<span class="hljs-symbol">&#x27;a</span>, <span class="hljs-symbol">&#x27;b</span>, <span class="hljs-symbol">&#x27;c</span>, <span class="hljs-symbol">&#x27;d</span>&gt;(<br>    _first_arg: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>,<br>    _second_arg: &amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">i32</span>,<br>    _third_arg: &amp;<span class="hljs-symbol">&#x27;c</span> <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-symbol">&#x27;d</span> <span class="hljs-type">i32</span>&gt;,<br>) &#123;<br>    <span class="hljs-built_in">unimplemented!</span>()<br>&#125;<br><br><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">example_c</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt;(_first_arg: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>, _second_arg: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>) <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span> &#123;<br>    <span class="hljs-built_in">unimplemented!</span>()<br>&#125;<br><br><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">example_d</span>&lt;<span class="hljs-symbol">&#x27;a</span>, <span class="hljs-symbol">&#x27;b</span>&gt;(_first_arg: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>, _second_arg: &amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">i32</span>) <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span> &#123;<br>    <span class="hljs-built_in">unimplemented!</span>()<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="可变引用和容器">可变引用和容器</h1>
+<p>其实可变引用这个词就很微妙，语义上说起是 <code>mutable</code> 是完全正确的，但是从实际应用角度来看，将其称之为独占引用会更恰当，与之相对的，常规的引用应该被称为共享引用。</p>
+<p>之所以会这么称呼是因为 <code>rust</code> 限制一个变量的引用在同一时间只能有以下三种情况：</p>
+<ol type="1">
+<li>不存在任何引用</li>
+<li>任意个共享引用</li>
+<li>一个独占引用（<code>mut reference</code>)</li>
+</ol>
+<p>所以 <code>mut reference</code> 相较于常规的 <code>reference</code> ，会有很多不同之处，尤其是在类型系统上的差异，这块的内容我们会在之后的章节讨论。</p>
+<p>现在我们来看下列例子。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">insert_value</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt;(<br>    my_vec: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-keyword">mut</span> <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>&gt;,<br>    value: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">i32</span>,<br>) &#123;<br>    my_vec.<span class="hljs-title function_ invoke__">push</span>(value)<br>&#125;<br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">my_vec</span> = <span class="hljs-built_in">vec!</span>[];<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">val1</span> = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">val2</span> = <span class="hljs-number">2</span>;<br><br>    <span class="hljs-title function_ invoke__">insert_value</span>(&amp;<span class="hljs-keyword">mut</span> my_vec, &amp;val1);<br>    <span class="hljs-title function_ invoke__">insert_value</span>(&amp;<span class="hljs-keyword">mut</span> my_vec, &amp;val2);<br><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;my_vec:?&#125;&quot;</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>这段代码看似没有什么问题，但是实际上没办法通过编译。</p>
+<p>在这个例子中，函数签名将入参的所有生命周期都被约束到了 <code>'a</code> 一个生命周期上，这是一个非常严格的限制。</p>
+<p><code>&amp;val1</code> 和 <code>&amp;val2</code> 在这个例子中生命周期一直持续到了 <code>main</code> 函数结束，第一次调用 <code>insert_value</code> 函数时，创建了一个 mut reference ，由于函数签名的约束，这几个入参至少有着同样长的生命周期，所以此处使用的临时引用也被约束至少活到 main 函数结束，第二次调用 <code>insert_value</code> 时也是同样的情况，此时就违背了引用的规则——同一时间只能有一个可变引用。</p>
+<p>解决问题的方法同样也在函数签名之上，就像刚才提到的，所有入参都被约束到 <code>'a</code> 是一个极其严苛的约束，为了解决这个问题，我们首先来分析 <code>insert_value</code> 的意图。</p>
+<p>这个函数通过一个类型为 <code>&amp;mut Vec&lt;&amp;i32&gt;</code> 的引用，并接受另一个类型为 <code>&amp;i32</code> 的引用，并将其插入到前一个引用指向的 <code>Vec</code> 中。这里涉及到三类引用，对容器的引用，容器内的引用类型的值，以及一个待插入容器的引用，为了分析方便，我们分别将其称为 <code>'r</code>,<code>'container</code> 以及 <code>'val</code>。</p>
+<p>实际上这里在分析生命周期的时候还应该加上容器本身的生命周期，但这是多余的！因为容器的有效性依赖与其内部值的有效性，所以在这里，容器的生命周期至多与其所持有的值的生命周期一样长，也就是说，只要容器本身没被析构，其所包含的所有值都应该是有效的。所以，为了分析方便，我们在此处只需要考虑容器持有的值的共有最短生命周期 <code>'container</code> 。</p>
+<p>在插入操作后，<code>value</code> 的生命周期同样也受到了原容器 <code>my_vec</code> 的关联，所以 <code>'val</code> 的生命周期肯定是比容器的生命周期以及容器的生命周期长的，其次，容器内的值都有着至少为 <code>'container</code> 的生命周期，所以有 <code>'val: 'container</code> 这层关系。也就是说我们可以将其简化到如下的函数签名。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">insert_value</span>&lt;<span class="hljs-symbol">&#x27;r</span>,<span class="hljs-symbol">&#x27;container</span>,<span class="hljs-symbol">&#x27;val</span>&gt;(<br>    my_vec: &amp;<span class="hljs-symbol">&#x27;r</span> <span class="hljs-keyword">mut</span> <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;container</span> <span class="hljs-type">i32</span>&gt;,<br>    value: &amp;<span class="hljs-symbol">&#x27;val</span> <span class="hljs-type">i32</span>,<br>)<br><span class="hljs-keyword">where</span> <span class="hljs-symbol">&#x27;val</span>: <span class="hljs-symbol">&#x27;container</span><br></code></pre></td></tr></table></figure>
+<p>where 子句的约束 <code>'val: 'container</code> 读作 <code>'val</code> 长于 <code>'container</code>。</p>
+<p>代码修改到这里其实已经可以通过编译了，但是其还可以进一步简化。</p>
+<p>别忘了在插入后 <code>value</code> 已经成为容器所持有的值的一员，所以它们都有着至少一样长的生命周期！所以上述函数签名可以进一步修改如下。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">insert_value</span>&lt;<span class="hljs-symbol">&#x27;r</span>, <span class="hljs-symbol">&#x27;val</span>&gt;(my_vec: &amp;<span class="hljs-symbol">&#x27;r</span> <span class="hljs-keyword">mut</span> <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;val</span> <span class="hljs-type">i32</span>&gt;, value: &amp;<span class="hljs-symbol">&#x27;val</span> <span class="hljs-type">i32</span>)<br></code></pre></td></tr></table></figure>
+<p>是不是更加清爽了？当然之所以能这么修改，是因为生命周期是泛型参数，也就是说其满足里氏替换规则，换言之就是编译时每个入参和返回值的生命周期满足函数签名中对类型的约束就完全没问题。</p>
+<p>在这例子中 <code>&amp;val1</code> 明显长于 <code>&amp;val2</code> ，但是其都满足修改后的 insert_value 对生命周期的约束 aka 对应生命周期是函数签名中对应部分的子类型。</p>
+<p>关于生命周期和类型系统的联系，我们会在后续章节详细讨论。</p>
+<h2 id="exercise-2">exercise</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[require_lifetimes(!)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">vector_set</span>&lt;<span class="hljs-symbol">&#x27;container</span>, <span class="hljs-symbol">&#x27;val</span>&gt;(<br>    vector: &amp;<span class="hljs-symbol">&#x27;container</span> <span class="hljs-keyword">mut</span> <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;val</span> <span class="hljs-type">str</span>&gt;,<br>    loc: <span class="hljs-type">usize</span>,<br>    new: &amp;<span class="hljs-symbol">&#x27;val</span> <span class="hljs-type">str</span>,<br>) &#123;<br>    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> You will need to write this code yourself.</span><br>    <span class="hljs-comment">//       Don&#x27;t worry, it&#x27;s only one line long.</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(e) = vector.<span class="hljs-title function_ invoke__">get_mut</span>(loc) &#123;<br>        *e = new;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1 id="生命周期与类型系统">生命周期与类型系统</h1>
+<p>注意，这一部分并不是来自于 LifetimeKata，但是我认为讨论类型系统对于理解生命周期的应用非常有必要，所以我额外插入了此章节。</p>
+<p>在开始之前我们先介绍一些之后会用到的术语。</p>
+<blockquote>
+<p>里氏替换原则：</p>
+<p>子类可以替代基类工作，由于 Rust 没有常规面向对象的类设计，所以在这里我们指的是子类型。</p>
+</blockquote>
+<blockquote>
+<p>型变：</p>
+<p>此处指的是通过某些方式派生后的子类型相较派生后父类型的关系，可以参考<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Wik</a></p>
+</blockquote>
+<p>好的，有了上述概念的支撑，我们可以继续来研究生命周期的问题了。</p>
+<p>根据 Reference 的文档页面，对于常见的类型而言，其型变规则如下</p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Variance in <code>'a</code></th>
+<th>Variance in <code>T</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&amp;'a T</code></td>
+<td>covariant</td>
+<td>covariant</td>
+</tr>
+<tr class="even">
+<td><code>&amp;'a mut T</code></td>
+<td>covariant</td>
+<td>invariant</td>
+</tr>
+<tr class="odd">
+<td><code>*const T</code></td>
+<td></td>
+<td>covariant</td>
+</tr>
+<tr class="even">
+<td><code>*mut T</code></td>
+<td></td>
+<td>invariant</td>
+</tr>
+<tr class="odd">
+<td><code>[T]</code> and <code>[T; n]</code></td>
+<td></td>
+<td>covariant</td>
+</tr>
+<tr class="even">
+<td><code>fn() -&gt; T</code></td>
+<td></td>
+<td>covariant</td>
+</tr>
+<tr class="odd">
+<td><code>fn(T) -&gt; ()</code></td>
+<td></td>
+<td>contravariant</td>
+</tr>
+<tr class="even">
+<td><code>std::cell::UnsafeCell&lt;T&gt;</code></td>
+<td></td>
+<td>invariant</td>
+</tr>
+<tr class="odd">
+<td><code>std::marker::PhantomData&lt;T&gt;</code></td>
+<td></td>
+<td>covariant</td>
+</tr>
+<tr class="even">
+<td><code>dyn Trait&lt;T&gt; + 'a</code></td>
+<td>covariant</td>
+<td>invariant</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其中 covariant 指的是协变，invariant 不变，contravariant 逆变。</p>
+<p>在这张表格中，只要属性上是允许 mutable 的，对于 <code>T</code> 来说，其都是不变的，反之则是协变的，而函数的入参相较于 <code>T</code> 来说则是逆变的。</p>
+<p>我们引用 <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/nomicon/subtyping.html">Nomicon</a> 的例子来说明这些规则。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">debug</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt;(a: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span>, b: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span>) &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;a = &#123;a:?&#125; b = &#123;b:?&#125;&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">hello</span>: &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span> = <span class="hljs-string">&quot;hello&quot;</span>;<br>    &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">world</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;world&quot;</span>);<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">world</span> = &amp;world; <span class="hljs-comment">// &#x27;world has a shorter lifetime than &#x27;static</span><br>        <span class="hljs-title function_ invoke__">debug</span>(hello, world); <span class="hljs-comment">// hello silently downgrades from `&amp;&#x27;static str` into `&amp;&#x27;world str`</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>所以对于一个 <code>&amp;'a T</code>来说，接受一个 <code>&amp;'b T where 'b: 'a</code> 是完全没有问题的，这完全符合直觉，因为我们使用了一个生命周期长于约束的引用。</p>
+<p>不加证明的，<code>&amp;'a U</code> 也能接受一个 <code>&amp;'a T</code> ，其中 <code>T</code> 为 <code>U</code> 的子类型（里氏替换规则）。</p>
+<p>但是对于 <code>&amp;mut 'a T'</code> ，情况就变得特殊起来了，我们来看下列例子。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">assign</span>&lt;T&gt;(input: &amp;<span class="hljs-keyword">mut</span> T, val: T) &#123;<br>    *input = val;<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">hello</span>: &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span> = <span class="hljs-string">&quot;hello&quot;</span>;<br>    &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">world</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;world&quot;</span>);<br>        <span class="hljs-title function_ invoke__">assign</span>(&amp;<span class="hljs-keyword">mut</span> hello, &amp;world);<br>    &#125;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;hello&#125;&quot;</span>); <span class="hljs-comment">// use after free 😿</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这段代码无法通过编译，很明显我们的 hello 变成了一个无效的悬垂引用，但是编译器是怎么知道的呢？</p>
+<p>首先 assign 函数是没有任何问题的，这只是一个重新赋值的常见操作而已，问题应该发生在 main 函数的调用中。</p>
+<p>对于 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">assign</span>&lt;T&gt;(input: &amp;<span class="hljs-keyword">mut</span> T, val: T)<br></code></pre></td></tr></table></figure></p>
+<p>其在编译时被单例化成如下形式（<code>&amp;String</code> 可以被  Deref 成 <code>&amp;str</code>）</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">assign</span>(input: &amp;<span class="hljs-keyword">mut</span> &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>, val: &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>)<br></code></pre></td></tr></table></figure>
+<p>而我们传入的 <code>input</code> 是 <code>&amp;mut &amp;'static str</code>，<code>val</code> 是 <code>&amp;'b str</code></p>
+<p>但是显然在调用的时候不可能满足 <code>'b: 'static</code>，故无法编译。</p>
+<p>还有另外一个角度来说明，但是我不确定这样解释是正确的，我们在此假设对于泛型函数，若其调用能通过编译检查则有 rustc 的单例化对参数顺序无关。</p>
+<p>那么可以有以下单例化形式：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">assign</span>(input: &amp;<span class="hljs-keyword">mut</span> &amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">str</span>, val: &amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">str</span>)<br></code></pre></td></tr></table></figure>
+<p>其中<strong>不满足</strong> <code>'b: 'static</code>，那么在调用时 <code>input</code> 的类型必须为其标注的类型或其子类型。</p>
+<p>但 <code>&amp;mut T</code> 对于 <code>T</code> 是不变的，所以 <code>&amp;mut &amp;'static str</code> 不是 <code>&amp;mut &amp;'b str</code> 的子类型，故编译无法通过。</p>
+<p>到此我们已经初步讨论了生命周期和类型系统相结合的情形，但这是显然不够的，如果需要进一步的了解相关信息，可以看看下列资料。</p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/nomicon/intro.html">《The Rustonomicon》</a> 死灵书，the black art of unsafe rust 🦀</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md#2-if-t-static-then-t-must-be-valid-for-the-entire-program">《Common Rust Lifetime Misconceptions》</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/nightly/reference/">《The Reference》</a> 参考手册，大而全</li>
+</ol>
+<h1 id="复合类型上的生命周期">复合类型上的生命周期</h1>
+<p>就像生命周期标注会出现在函数签名上，声明一个使用到引用的枚举或者结构体也会要求生命周期标注。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Sample</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt; &#123;<br>    data: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span><br>&#125;<br><br><span class="hljs-keyword">enum</span> <span class="hljs-title class_">AnotherSample</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt; &#123;<br>    <span class="hljs-title function_ invoke__">Some</span>(&amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span>),<br>    <span class="hljs-literal">None</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这没什么稀奇的，就像编写带有常规泛型参数的结构体和枚举一样，不过变成了单引号开头的生命周期。</p>
+<h2 id="exercise-3">exercise</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Difference</span>&lt;<span class="hljs-symbol">&#x27;a</span>, <span class="hljs-symbol">&#x27;b</span>&gt; &#123;<br>    first_only: <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span>&gt;,<br>    second_only: <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">str</span>&gt;,<br>&#125;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">find_difference</span>&lt;<span class="hljs-symbol">&#x27;a</span>, <span class="hljs-symbol">&#x27;b</span>&gt;(sentence1: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-type">str</span>, sentence2: &amp;<span class="hljs-symbol">&#x27;b</span> <span class="hljs-type">str</span>) <span class="hljs-punctuation">-&gt;</span> Difference&lt;<span class="hljs-symbol">&#x27;a</span>, <span class="hljs-symbol">&#x27;b</span>&gt;<br></code></pre></td></tr></table></figure>
+<h1 id="impl-块中的生命周期">impl 块中的生命周期</h1>
+<p>当我们给复合类型加上了生命周期标注后，对应的 <code>impl</code> 语句也要带上对应的生命周期参数。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Sample</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>    data: &amp;<span class="hljs-symbol">&#x27;a</span> T,<br>&#125;<br><br><span class="hljs-keyword">impl</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; Sample&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(data: &amp;<span class="hljs-symbol">&#x27;a</span> T) <span class="hljs-punctuation">-&gt;</span> Sample&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>        Sample &#123; data: data &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上述例子还可以继续简化</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; Sample&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(data: &amp;<span class="hljs-symbol">&#x27;a</span> T) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        Sample &#123; data &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>或者你可以让编译器帮你推断生命周期，但是我个人感觉这已经没什么必要了。。。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span>&lt;<span class="hljs-symbol">&#x27;a</span>, T&gt; Sample&lt;<span class="hljs-symbol">&#x27;_</span>, T&gt; &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(data: &amp;<span class="hljs-symbol">&#x27;a</span> T) <span class="hljs-punctuation">-&gt;</span> Sample&lt;<span class="hljs-symbol">&#x27;_</span>, T&gt; &#123;<br>        Sample &#123; data &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="exercise-4">Exercise</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// First, the struct:</span><br><br><span class="hljs-comment">/// This struct keeps track of where we&#x27;re up to in the string.</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">WordIterator</span>&lt;<span class="hljs-symbol">&#x27;s</span>&gt; &#123;<br>    position: <span class="hljs-type">usize</span>,<br>    string: &amp;<span class="hljs-symbol">&#x27;s</span> <span class="hljs-type">str</span><br>&#125;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">WordIterator</span> &#123;<br>    <span class="hljs-comment">/// Creates a new WordIterator based on a string.</span><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(string: &amp;<span class="hljs-type">str</span>) <span class="hljs-punctuation">-&gt;</span> WordIterator &#123;<br>        WordIterator &#123;<br>            position: <span class="hljs-number">0</span>,<br>            string<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-comment">/// Gives the next word. `None` if there aren&#x27;t any words left.</span><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next_word</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-type">str</span>&gt; &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">start_of_word</span> = &amp;<span class="hljs-keyword">self</span>.string[<span class="hljs-keyword">self</span>.position..];<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">index_of_next_space</span> = start_of_word.<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-string">&#x27; &#x27;</span>).<span class="hljs-title function_ invoke__">unwrap_or</span>(start_of_word.<span class="hljs-title function_ invoke__">len</span>());<br>        <span class="hljs-keyword">if</span> start_of_word.<span class="hljs-title function_ invoke__">len</span>() != <span class="hljs-number">0</span> &#123;<br>            <span class="hljs-keyword">self</span>.position += index_of_next_space + <span class="hljs-number">1</span>;<br>            <span class="hljs-title function_ invoke__">Some</span>(&amp;start_of_word[..index_of_next_space]) <br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-literal">None</span><br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">text</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;Twas brillig, and the slithy toves // Did gyre and gimble in the wabe: // All mimsy were the borogoves, // And the mome raths outgrabe. &quot;</span>);<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">word_iterator</span> = WordIterator::<span class="hljs-title function_ invoke__">new</span>(&amp;text);<br>    <br>    <span class="hljs-built_in">assert_eq!</span>(word_iterator.<span class="hljs-title function_ invoke__">next_word</span>(), <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-string">&quot;Twas&quot;</span>));<br>    <span class="hljs-built_in">assert_eq!</span>(word_iterator.<span class="hljs-title function_ invoke__">next_word</span>(), <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-string">&quot;brillig,&quot;</span>));<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="example-1">Example 1</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">next_word</span>&lt;<span class="hljs-symbol">&#x27;borrow</span>&gt;(&amp;<span class="hljs-symbol">&#x27;borrow</span> <span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-symbol">&#x27;borrow</span> <span class="hljs-type">str</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>这个可以编译，但是不太符合实际需求。因为独占引用和返回值都有着同样的生命周期约束，所以在后者没有被 <code>drop</code> 掉之前你甚至都不能再次调用这个函数。</p>
+<h3 id="example-2">Example 2</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">next_word</span>&lt;<span class="hljs-symbol">&#x27;borrow</span>&gt;(&amp;<span class="hljs-symbol">&#x27;borrow</span> <span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-symbol">&#x27;lifetime</span> <span class="hljs-type">str</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>这个是正确的，返回值拥有和 <code>self</code> 一样的生命周期约束。</p>
+<h3 id="example3">Example3</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">next_word</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-symbol">&#x27;lifetime</span> <span class="hljs-type">str</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>在完整展开后这个和 Example2 的语义是一致的。</p>
+<h3 id="example4">Example4</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">next_word</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;&amp;<span class="hljs-type">str</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>在展开后这个和 Example1 的语义是一致的。</p>
+<h1 id="特殊的生命周期们">特殊的生命周期们</h1>
+<h2 id="static">’static</h2>
+<p>这是一个极其具有迷惑性的生命周期，因为按照其他语言的理解来看，<code>static</code> 就是静态的变量，所以 <code>'static</code> 就意味着始终有效。。。吗？</p>
+<p>尽管通过 <code>const</code> 修饰的或者字面量等都满足 <code>'static</code> 的约并且在程序运行期间始终有效，但是这并不意味着满足上述约束的所有变量都是始终有效的，关于这个问题的详细分析，可以参考这篇<a target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md#2-if-t-static-then-t-must-be-valid-for-the-entire-program">文章</a>，以及其对应的<a target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/translations/zh-hans/common-rust-lifetime-misconceptions.md#2-%E5%A6%82%E6%9E%9C-t-static-%E9%82%A3%E4%B9%88-t-%E7%9B%B4%E5%88%B0%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9D%9F%E4%B8%BA%E6%AD%A2%E9%83%BD%E4%B8%80%E5%AE%9A%E6%98%AF%E6%9C%89%E6%95%88%E7%9A%84">译文</a>。</p>
+<h2 id="section">’_</h2>
+<p>这个特殊的生命周期表示让编译器自动推断，在有些 <code>impl</code> 的实现中，若其不依赖于 <code>self</code> 之外的生命周期，通常可以标注 <code>'_</code>，另外在某些 <code>trait object</code> 的类型中也会用到，不过这块比较特殊，我们会在之后的章节中讨论。</p>
+<h2 id="exercise-5">Exercise</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">UniqueWords</span> &#123;<br>    sentence: &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>,<br>    unique_words: <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>&gt;,<br>&#125;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">UniqueWords</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(sentence: &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>) <span class="hljs-punctuation">-&gt;</span> UniqueWords &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">unique_words</span> = sentence<br>            .<span class="hljs-title function_ invoke__">split</span>(<span class="hljs-string">&#x27; &#x27;</span>)<br>            .collect::&lt;HashSet&lt;_&gt;&gt;()<br>            .<span class="hljs-title function_ invoke__">into_iter</span>()<br>            .collect::&lt;<span class="hljs-type">Vec</span>&lt;_&gt;&gt;();<br><br>        UniqueWords &#123;<br>            sentence,<br>            unique_words,<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">get_sorted_words</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-symbol">&#x27;_</span> <span class="hljs-type">str</span>&gt; &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">unique_words</span> = <span class="hljs-keyword">self</span>.unique_words.<span class="hljs-title function_ invoke__">clone</span>();<br>        unique_words.<span class="hljs-title function_ invoke__">sort</span>();<br>        unique_words<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="trait-object-的生命周期省略规则">trait object 的生命周期省略规则</h1>
+<p>与在 <code>Rust</code> 中我们遇到的其他情形不同，<code>trait object</code> 的生命周期有着特殊的规则。</p>
+<p>在没有显式指定生命周期时，<code>trait object</code> 的默认生命周期为 <code>'static</code>，当使用 <code>'_</code> 时，编译器使用常规的生命周期省略规则推断。</p>
+在将<code>trait object</code>作为泛型参数的一部分时。省略规则就变得更为复杂了，完整的解释和示例可以参考 <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/lifetime-elision.html#default-trait-object-lifetimes">Reference</a>以及其<a target="_blank" rel="noopener" href="https://rustwiki.org/zh-CN/reference/lifetime-elision.html#%E9%BB%98%E8%AE%A4%E7%9A%84-trait%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">译文</a>。
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>事实上这种场景非常罕见，我见到的例子只有 cloudflare 和 reddit 用 rust 重写自己相关业务用于获取性能提升的案例。 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/rust/" class="category-chain-item">rust</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/rust/" class="print-no-link">#rust</a>
+      
+        <a href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="print-no-link">#生命周期</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>RustLifeTimeKata学习记录</div>
+      <div>https://ooj2003.github.io/2023/08/27/技术/RustLifeTimeKata学习记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>OOJ2003</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月27日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年9月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/17/%E6%8A%80%E6%9C%AF/Rust%E5%B9%B6%E5%8F%91%E5%85%A5%E5%9D%91%E8%AE%B0%E5%BD%95/" title="Rust并发入坑记录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Rust并发入坑记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/28/%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B0%8F%E6%8A%84%E6%9C%AC/" title="操作系统复习笔记">
+                        <span class="hidden-mobile">操作系统复习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"OOJ2003/OOJ2003.github.io","repo-id":"R_kgDOGc8frQ","category":"Announcements","category-id":"DIC_kwDOGc8frc4CQTmF","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
